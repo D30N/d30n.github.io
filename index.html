@@ -113,7 +113,8 @@
   .work .w-link{font-weight:700;color:var(--lime);font-size:14px}
 
   /* ---------- Links ---------- */
-  .link-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+  .link-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  @media(max-width:480px){.lbtn{padding:13px 14px;gap:9px}.lbtn .li svg{width:22px;height:22px}.lbtn small{font-size:11px}}
   .lbtn{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px;font-weight:600;transition:.25s}
   .lbtn:hover{border-color:var(--pink);transform:translateY(-3px)}
   .lbtn .li{display:flex;align-items:center}
