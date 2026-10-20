@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WhatsApp userbot — Deepak Deon</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0f; --bg2:#101018; --ink:#f2f0ea; --dim:#9a97a8;
+    --lime:#c8f542; --violet:#8b7bff; --pink:#ff7ad9; --line:#26262f;
+    --card:#12121a;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--lime);color:#0a0a0f}
+  .wrap{max-width:760px;margin:0 auto;padding:0 clamp(18px,5vw,40px)}
+  header{display:flex;justify-content:space-between;align-items:center;padding:26px 0 8px}
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:.06em}
+  .logo span{color:var(--lime)}
+  .home-link{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .home-link:hover{color:var(--lime)}
+  .sec-tag{font-family:'JetBrains Mono',monospace;color:var(--violet);font-size:13px;letter-spacing:.25em;text-transform:uppercase;margin:44px 0 12px}
+  h1.title{font-weight:700;font-size:clamp(30px,6vw,46px);line-height:1.25;margin-bottom:30px}
+  .post{font-size:18.5px;line-height:1.9;color:#e9e7e0}
+  .post p{margin:0 0 1.35em}
+  .post figure{margin:2em 0}
+  .post img{width:100%;height:auto;border-radius:14px;display:block}
+  .post figcaption{color:var(--dim);font-size:13.5px;text-align:center;margin-top:10px;line-height:1.5}
+  .post h3{font-size:25px;line-height:1.4;margin:1.7em 0 .6em;color:var(--ink)}
+  .post h4{font-size:21px;line-height:1.45;margin:1.6em 0 .55em;color:var(--ink)}
+  .post blockquote{border-left:3px solid var(--lime);padding-left:18px;margin:1.8em 0;color:#d8d5cc}
+  .post a{color:var(--lime);text-decoration:underline;text-underline-offset:3px}
+  .post hr{border:none;border-top:1px solid var(--line);margin:2.4em 0}
+  .post ul,.post ol{margin:0 0 1.35em 1.25em}
+  .post li{margin-bottom:.45em}
+  .post iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;margin:1.8em 0}
+  .views-row{display:flex;align-items:center;gap:8px;margin-top:38px;color:var(--dim)}
+  .views-row svg{width:20px;height:20px;display:block}
+  .views-row .vc-num{font-size:15.5px;font-weight:500;letter-spacing:.03em}
+  .pn{display:flex;justify-content:space-between;gap:14px;margin-top:30px;border-top:1px solid var(--line);padding-top:22px}
+  .pn a{flex:1;font-size:14.5px;font-weight:600;color:var(--dim);transition:.25s;line-height:1.5}
+  .pn a:hover{color:var(--lime)}
+  .pn a.next{text-align:right}
+  .pn .dir{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:5px;color:var(--violet)}
+  .back{display:inline-block;margin:30px 0 6px;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .back:hover{color:var(--lime)}
+  footer{border-top:1px solid var(--line);padding:26px clamp(18px,6vw,72px);display:flex;justify-content:center;text-align:center;color:var(--dim);font-size:13px;max-width:1280px;margin:44px auto 0}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="../../">DEON<span>.</span></a>
+    <a class="home-link" href="../">&larr; Android / Tech</a>
+  </header>
+  <div class="sec-tag">// Articles</div>
+  <h1 class="title">WhatsApp userbot</h1>
+  <article class="post">
+<figure><img src="../../assets/img/af7b3e20fd32aadb930a2.jpg"/><figcaption></figcaption></figure><p><strong>എന്താണ് വാട്സാപ്പ് യൂസർബോട്ട്?</strong></p><p><br/>നമ്മുടെ വാട്സാപ്പ് അക്കൗണ്ടിൽ login ചെയ്ത ഒരു virtual assistant നമുക്കുവേണ്ടി ജോലി ചെയ്യുകയാണെങ്കിൽ എങ്ങനെയുണ്ടാവും?</p><p><br/>അതായത് നമ്മൾ നമ്മുടെ ഫോണിൽ നിന്ന് മെസ്സേജ് വഴി ഒരു കമാൻഡ് കൊടുക്കുമ്പോൾ അതിനനുസരിച്ച് ദൂരെ ഒരു സെർവറിൽ ഇരുന്ന് ഈ virtual assistant നമ്മളെ help ചെയ്യുന്നു.</p><p><br/>ഉദാഹരണത്തിന്, ഞാൻ ഒരു ചാറ്റിൽ ".weather Kochi" എന്ന് മെസ്സേജ് അയച്ചു എന്ന് കരുതുക. അപ്പോൾ തന്നെ userbot ൽ ഉള്ള എന്റെ virtual assistant എനിക്ക് കൊച്ചിയിലെ കാലാവസ്ഥ അറിയണം എന്നു മനസ്സിലാക്കി ഞാൻ അയച്ച ആ മെസ്സേജിനു താഴെ കൊച്ചിയിലെ weather report അയക്കുന്നു.<br/>(ഇതെല്ലാം നടക്കുന്നത് സെക്കന്റുകൾക്കുള്ളിലാണ്.)</p><p><br/>അതുപോലെ തന്നെ, സുഹൃത്ത് അയച്ചു തന്നെ യൂട്യൂബ് ലിങ്കിന് റിപ്ലൈ ആയി ഞാൻ ".video" എന്ന് മെസ്സേജ് അയച്ചു. ഇത് കണ്ട എന്റെ virtual assistant, എനിക്ക് ആ ലിങ്കിൽ ഉള്ള വീഡിയോ വേണം എന്ന് മനസ്സിലാക്കി അപ്പോൾ തന്നെ അത് ഡൌൺലോഡ് ചെയ്ത് അയച്ചുതരുന്നു.</p><p></p><figure><img src="../../assets/img/e388bef52be3e93deb920.jpg"/><figcaption></figcaption></figure><p><br/>Dot . ഇടുന്നത് ഇത് കമാൻഡ് ആണെന്ന് virtual assistant ന് മനസ്സിലാവാൻ വേണ്ടിയാണ്.</p><p><br/>• യൂട്യൂബിൽ നിന്ന് ഡൌൺലോഡ് ചെയ്യാൻ<br/>.ytl space link<br/>• ഇൻസ്റ്റഗ്രാമിൽ നിന്നും ഡൌൺലോഡ് ചെയ്യാൻ<br/>.insta space link<br/>• ഫേസ്ബുക്കിൽ നിന്നും ഡൌൺലോഡ് ചെയ്യാൻ<br/>.fb space link<br/>• ഫോട്ടോ / വിഡിയോ സ്റ്റിക്കർ ആക്കാൻ<br/>.sticker (reply to media)<br/>• സ്റ്റിക്കർ ഫോട്ടോ / വീഡിയോ ആക്കാൻ<br/>.photo / video (reply to sticker)<br/>• വീഡിയോ mp3 ആക്കാൻ<br/>.mp3 (reply to video)<br/>• ഫോട്ടോ pdf ആക്കാൻ<br/>.pdf (reply to photo)<br/>• പാട്ട് സേർച്ച്‌ ചെയ്ത് ഡൌൺലോഡ് ചെയ്യാൻ<br/>.song song name or YouTube link<br/>• ഗ്രൂപ്പ്‌ മാനേജ് ചെയ്യാൻ<br/>.kick .mute .block etc<br/>• വോട്ടിംഗ് നടത്താൻ<br/>.vote<br/>• View Once media ഡൌൺലോഡ് ചെയ്യാൻ<br/>.vv</p><p><br/>ഇങ്ങനെ വ്യത്യസ്ത കമാൻഡുകളുടെ സഹായത്തോടെ ചാറ്റിനുള്ളിൽ വെച്ചു തന്നെ ധാരാളം കാര്യങ്ങൾ നമുക്ക് userbot നെക്കൊണ്ട് ചെയ്യിക്കാൻ കഴിയും.</p><p><br/><strong>എങ്ങനെയാണ് WhatsApp userbot സെറ്റ് ചെയ്യുന്നത്?</strong></p><p><br/>Requirements:</p><p><br/>• Heroku account &amp; API token <br/>Sign up: <a href="https://signup.heroku.com/" rel="noopener" target="_blank">https://signup.heroku.com/</a><br/>(ലോഗിൻ ചെയ്തതിനു ശേഷം മുകളിലെ profile picture ൽ ക്ലിക്ക് ചെയ്ത് settings tab എടുത്താൽ create authorisation എന്ന് കാണാം. എന്തെങ്കിലും ഒരു പേര് കൊടുത്ത് create ബട്ടൺ ക്ലിക്ക് ചെയ്താൽ API token കിട്ടും. അത് copy ചെയ്തു വെക്കുക.</p><p><br/>• SESSION_ID<br/>Virtual assistant ന് ലോഗിൻ access കൊടുക്കണം.<br/><a href="https://levanter.up.railway.app/md" rel="noopener" target="_blank">https://levanter.up.railway.app/md</a><br/>ഈ ലിങ്ക് open ചെയ്ത് കാണുന്ന QR code വാട്സാപ്പിലെ link a device ഓപ്‌ഷനിൽ പോയി scan ചെയ്ത് connect ആക്കുക.<br/>QR code ന്റെ താഴെയുള്ള session ID കോപ്പി ചെയ്തു വെക്കുക.</p><p><br/>Deployment:</p><p><br/>Click here <a href="http://heroku.com/deploy?template=https://github.com/lyfe00011/whatsapp-bot-md" rel="noopener" target="_blank">http://heroku.com/deploy?template=https://github.com/lyfe00011/whatsapp-bot-md</a><br/>&amp; fill in the blanks 😁</p><p><br/>(App name, heroku api, session ഇത് മൂന്നും കൊടുത്താൽ മതി.)</p><p><br/>Click deploy.<br/>App build ആവുന്നതുവരെ കാത്തിരിക്കുക.<br/>ശേഷം, manage app ബട്ടൺ വരും. അത് എടുത്ത് രണ്ടാമത്തെ ടാബിലെ change dyno type എന്നതിൽ worker എന്നുള്ളത് on ആക്കിയാൽ ഏതാനും നിമിഷങ്ങൾക്കുള്ളിൽ bot റൺ ആവും.</p><p><br/>NB:<br/>Q: Is it safe to use a userbot?<br/>A: I don't know 🤷‍♂️<br/>സ്വന്തം റിസ്കിൽ പണിത് ഉപയോഗിക്കുക.</p><p><a href="https://t.me/DeonWrites" rel="noopener" target="_blank">@DeonWrites</a><br/><br/>💬 <a href="https://t.me/DeonWrites/847" rel="noopener" target="_blank">Add a comment to this post</a></p><hr/><p>Related topic:<br/>• <a href="../../android/what-are-telegram-userbots-11-06/">എന്താണ് ടെലഗ്രാമിലെ യൂസർ ബോട്ടുകൾ? എങ്ങനെ ഉപയോഗിക്കാം?</a></p><hr/>
+  </article>
+  <div class="views-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="vc-num" data-base="535">535</span></div>
+  <a class="back" href="../">&larr; All Android / Tech</a>
+</div>
+<footer><span>&copy; 2026 Deepak Deon</span></footer>
+
+<script>
+(function(){
+  var el=document.querySelector('.vc-num'); if(!el) return;
+  var base=parseInt(el.getAttribute('data-base')||'0',10)||0;
+  var NS='deepakdeon-site', KEY='android-whatsapp-userbot-08-28';
+  var done=false; try{ done=!!sessionStorage.getItem('vc-'+KEY); }catch(e){}
+  fetch('https://abacus.jasoncameron.dev/'+(done?'get':'hit')+'/'+NS+'/'+KEY)
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d && typeof d.value==='number'){
+        el.textContent=(base+d.value).toLocaleString('en-US');
+        if(!done){ try{ sessionStorage.setItem('vc-'+KEY,'1'); }catch(e){} }
+      }
+    }).catch(function(){});
+})();
+</script>
+
+</body>
+</html>
