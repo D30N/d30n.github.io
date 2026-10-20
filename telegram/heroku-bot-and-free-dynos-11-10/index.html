@@ -80,7 +80,20 @@
 <figure><img src="../../assets/img/b728058a7a6b8c3b48c00.jpg"/><figcaption></figcaption></figure><p><br/>Heroku അക്കൗണ്ടിലെ <a href="https://t.me/DeonWrites/612?comment=12180" rel="noopener" target="_blank">free dynos</a> 550hrs / month ആണെന്ന് അറിയാമല്ലോ...<br/>അതായത് 550/24 = ഏകദേശം 23 ദിവസം.</p><p><br/>അതുകൊണ്ട് തന്നെ userbot ഉൾപ്പെടെയുള്ളവ പലർക്കും മാസത്തിലെ അവസാനത്തെ ആഴ്ച ഉപയോഗിക്കാൻ കഴിയാറില്ല.<br/>(ചിലർ ഒക്കെ Heroku app ownership change ചെയ്ത് run ചെയ്യിക്കാറുണ്ട്.)</p><p><br/>Bots use ചെയ്യാത്ത സമയത്ത് Heroku worker turn off ചെയ്ത് dynos save ചെയ്യാൻ കഴിയുമെന്ന് നമുക്ക് അറിയാം. പക്ഷേ എപ്പോളും Heroku login ചെയ്ത് ഇത് toggle ചെയ്യുന്നത് ബുദ്ധിമുട്ടാണ് അല്ലേ...</p><p><br/>എന്നാൽ ഈ കാര്യം manual ആയോ automatic ആയോ ഒരു Telegram Heroku Bot ന്റെ സഹായത്തോടെ remotely ചെയ്യാൻ കഴിയും.</p><p><br/>For example: <a href="https://t.me/HK_heroku_BOT" rel="noopener" target="_blank">@HK_heroku_BOT</a></p><p><br/>ആദ്യം തന്നെ bot open ചെയ്ത് Heroku അക്കൗണ്ട് authorize ചെയ്യുക.</p><figure><img src="../../assets/img/e5d321cd960f413dfb42b.jpg"/><figcaption>Authorisation </figcaption></figure><p><strong>Authorization token</strong> copy ചെയ്തെടുത്ത് bot ൽ paste ചെയ്താൽ bot &amp; heroku account connect ആവും.<br/></p><p>ശേഷം ബോട്ടിൽ വരുന്ന ബട്ടൺ മെനുവിൽ നിന്നും schedule ഓപ്ഷൻ എടുത്ത് അതിൽ start time ഉം end time ഉം കൊടുത്താൽ daily ആ സമയത്ത് heroku worker automatically off/on ആയിക്കോളും.</p><p></p><figure><img src="../../assets/img/a205a7d85591e342df5ae.jpg"/><figcaption>Schedule</figcaption></figure><p>Time UTC ൽ ആണ് കൊടുക്കേണ്ടത്. സ്ക്രീന്ഷോട്ടിൽ Start time 2:30 (12a.m IST) ഉം End time 18:30 (8a.m IST) ഉം ആണ് ഞാൻ കൊടുത്തിരിക്കുന്നത്.<br/></p><p>So, per day 8 മണിക്കൂർ save ആവുന്നുണ്ട്.<br/>After 23 days, 23 × 8 = 184 hrs<br/>Which is enough for 7 days month end ig.<br/></p><p>Meths yeppedi mwonuse 🤣🤙<br/></p><p>മാത്രമല്ല, ഈ ബോട്ട് വഴി worker toggle ചെയ്യാനും, collaborator add ചെയ്യാനും transfer ചെയ്യാനും, logs check ചെയ്യാനും, environment vars manage ചെയ്യാനും ഒക്കെ കഴിയും. (ഒന്നിലധികം heroku accounts ഉള്ളവർക്ക് എല്ലാത്തിലും ഒരു common collaborator add ചെയ്തിട്ട് ആ account വഴി അതിലെ എല്ലാ bots ഉം manage ചെയ്യാം.)</p><p></p><figure><img src="../../assets/img/5fcc4262d5be4b52b2dc7.jpg"/><figcaption>Main menu</figcaption></figure><p>- <a href="https://t.me/DeonWrites" rel="noopener" target="_blank">@DeonWrites</a> -</p><p>• <a href="../../telegram/">ടെലഗ്രാമിനെക്കുറിച്ച് കൂടുതൽ വായിക്കാം...</a></p><hr/><p>💬 <a href="https://t.me/DeonWrites/612" rel="noopener" target="_blank">Add a comment to this post</a> <br/></p>
   </article>
   <div class="views-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="vc-num" data-base="1235">1,235</span></div>
-  <a class="back" href="../">&larr; All Telegram posts</a>
+  <style>
+.cmt{margin:34px 0 6px;padding:22px 20px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.cmt h2{font-size:20px;margin:0 0 6px;color:var(--ink)}
+.cmt p{margin:0 0 14px;font-size:13.5px;color:var(--dim);line-height:1.55}
+.cmt iframe{width:100%;height:660px;border:0;border-radius:10px;background:#fff}
+.cmt .cmt-alt{display:inline-block;margin-top:12px;font-size:13px;color:var(--lime)}
+</style>
+<section class="cmt">
+  <h2>💬 Add a comment to this post</h2>
+  <p>Your comment goes straight to Deon &mdash; nothing shows up here until he has reviewed it.</p>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdYMN8qCT6FhcwEhvoPxiyemcFJIU4G3-h0FWo2C2JKxtlL2w/viewform?embedded=true&entry.1588219255=Heroku%20bot%20and%20free%20dynos" loading="lazy" title="Comment form"></iframe>
+  <a class="cmt-alt" href="https://docs.google.com/forms/d/e/1FAIpQLSdYMN8qCT6FhcwEhvoPxiyemcFJIU4G3-h0FWo2C2JKxtlL2w/viewform?usp=pp_url&entry.1588219255=Heroku%20bot%20and%20free%20dynos" target="_blank" rel="noopener">Form not loading? Open it here &rarr;</a>
+</section>
+<a class="back" href="../">&larr; All Telegram posts</a>
 </div>
 <footer><span>&copy; 2026 Deepak Deon</span></footer>
 
