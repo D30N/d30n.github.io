@@ -1,6 +1,6 @@
 # Deepak Deon — Portfolio
 
-🌐 **Visit the website:** https://d30n.github.io/deepakdeon/
+🌐 **Visit the website:** https://d30n.github.io
 
 My personal portfolio — Blogger • Tweep • Tech Enthusiast.
 Android apps, Telegram bots, tech stories and all my links in one place.
