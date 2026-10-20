@@ -82,7 +82,7 @@
   .sec-tag{font-family:'JetBrains Mono',monospace;color:var(--violet);font-size:13px;letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px}
   h2{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(34px,6.5vw,72px);line-height:1;margin-bottom:34px}
   h2 em{font-style:normal;color:var(--lime)}
-  .reveal{opacity:0;transform:translateY(38px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .95s cubic-bezier(.22,1,.36,1),transform .95s cubic-bezier(.22,1,.36,1)}
   .reveal.in{opacity:1;transform:none}
 
   .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,4vw,56px)}
@@ -219,10 +219,10 @@
       life, and writing short stories and memoirs. And I love taking photos and videos too!
     </p>
     <div class="stats reveal">
-      <div class="stat"><div class="num">56K+</div><div class="lbl">Instagram followers</div></div>
-      <div class="stat"><div class="num">15K+</div><div class="lbl">@DeonWrites subscribers</div></div>
-      <div class="stat"><div class="num">17</div><div class="lbl">Android apps built</div></div>
-      <div class="stat"><div class="num">273</div><div class="lbl">Stories &amp; tech posts</div></div>
+      <div class="stat"><div class="num" data-count="56" data-suffix="K+">56K+</div><div class="lbl">Instagram followers</div></div>
+      <div class="stat"><div class="num" data-count="15" data-suffix="K+">15K+</div><div class="lbl">@DeonWrites subscribers</div></div>
+      <div class="stat"><div class="num" data-count="17" data-suffix="">17</div><div class="lbl">Android apps built</div></div>
+      <div class="stat"><div class="num" data-count="273" data-suffix="">273</div><div class="lbl">Stories &amp; tech posts</div></div>
     </div>
   </div>
 </section>
@@ -316,11 +316,37 @@
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    document.querySelectorAll('.reveal').forEach(function(el, i){ el.style.transitionDelay = (i % 4) * 70 + 'ms'; io.observe(el); });
   })();
 </script>
 <script>
 document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListener('click',function(){var h=document.documentElement;if(h.getAttribute('data-theme')==='light'){h.removeAttribute('data-theme');try{localStorage.setItem('dd-theme','dark')}catch(e){}}else{h.setAttribute('data-theme','light');try{localStorage.setItem('dd-theme','light')}catch(e){}}})});
+</script>
+<script>
+  // Animated stat counters (easeOutExpo, run once when the stats scroll into view)
+  (function(){
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var box = document.querySelector('.stats'); if (!box) return;
+    var done = false;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting || done) return;
+        done = true; io.disconnect();
+        document.querySelectorAll('.stat .num[data-count]').forEach(function(el){
+          var target = +el.dataset.count, suf = el.dataset.suffix || '', t0 = null, DUR = 1500;
+          function step(ts){
+            if (!t0) t0 = ts;
+            var p = Math.min((ts - t0) / DUR, 1);
+            var ease = 1 - Math.pow(2, -10 * p);
+            el.textContent = Math.round(target * ease) + suf;
+            if (p < 1) requestAnimationFrame(step); else el.textContent = target + suf;
+          }
+          requestAnimationFrame(step);
+        });
+      });
+    }, { threshold: 0.35 });
+    io.observe(box);
+  })();
 </script>
 </body>
 </html>
