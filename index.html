@@ -42,13 +42,14 @@
   @media(max-width:640px){nav ul a{font-size:11px;letter-spacing:.12em}}
 
   /* ---------- Hero ---------- */
-  header{min-height:100svh;display:flex;flex-direction:row;align-items:center;gap:clamp(24px,4vw,56px);padding:110px clamp(18px,6vw,72px) 40px;position:relative}
-  .hero-text{flex:1;min-width:0}
+  header{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:110px clamp(18px,6vw,72px) 40px;position:relative}
+  .hero-top{display:flex;align-items:flex-start;gap:clamp(10px,3vw,44px)}
+  .hero-top h1{flex:1;min-width:0}
   .hero-photo{flex:0 0 auto}
-  .hero-photo img{width:clamp(240px,29vw,400px);aspect-ratio:1;object-fit:cover;border-radius:30px;border:1px solid var(--line);box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 6px rgba(200,245,66,.05);animation:floaty 5.5s ease-in-out infinite}
-  @keyframes floaty{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(1deg)}}
+  .hero-photo img{width:clamp(200px,27vw,350px);display:block;animation:floaty 5.5s ease-in-out infinite}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-10px) rotate(1deg)}}
   @media(min-width:901px){h1{font-size:clamp(50px,8.4vw,122px)}}
-  @media(max-width:900px){header{flex-direction:column;align-items:flex-start;justify-content:center}.hero-photo{margin-top:30px}.hero-photo img{width:min(290px,70vw)}}
+  @media(max-width:900px){h1{font-size:11vw}.hero-photo img{width:36vw}}
   .hello{font-family:'JetBrains Mono',monospace;color:var(--lime);font-size:clamp(14px,2vw,18px);letter-spacing:.15em;margin-bottom:14px}
   h1{font-family:'Archivo',sans-serif;font-weight:900;line-height:.94;text-transform:uppercase;font-size:clamp(52px,12.5vw,168px);letter-spacing:-.01em}
   h1 .row{display:block;overflow:hidden}
@@ -158,6 +159,7 @@
 <header id="home">
   <div class="hero-text">
   <div class="hello">hello there 👋</div>
+  <div class="hero-top">
   <h1>
     <span class="row"><span>Deepak</span></span>
     <span class="row"><span>Deon</span></span>
@@ -169,9 +171,9 @@
   <div class="hero-cta">
     <a class="btn solid" href="#links">All my links ↓</a>
     <a class="btn ghost" href="#contact">Reach me out</a>
+  <div class="hero-photo"><img src="avatar.png" alt="Deepak Deon" /></div>
   </div>
   </div>
-  <div class="hero-photo"><img src="avatar.jpg" alt="Deepak Deon" /></div>
   <div class="scroll-hint">scroll</div>
 </header>
 
