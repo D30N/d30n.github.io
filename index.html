@@ -43,13 +43,7 @@
 
   /* ---------- Hero ---------- */
   header{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:110px clamp(18px,6vw,72px) 40px;position:relative}
-  .hero-top{display:flex;align-items:flex-start;gap:clamp(10px,3vw,44px)}
-  .hero-top h1{flex:1;min-width:0}
-  .hero-photo{flex:0 0 auto}
-  .hero-photo img{width:clamp(200px,27vw,350px);display:block;animation:floaty 5.5s ease-in-out infinite}
-  @keyframes floaty{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-10px) rotate(1deg)}}
-  @media(min-width:901px){h1{font-size:clamp(50px,8.4vw,122px)}}
-  @media(max-width:900px){h1{font-size:9.8vw}.hero-photo img{width:30vw}.hero-top{gap:8px}}
+
   .hello{font-family:'JetBrains Mono',monospace;color:var(--lime);font-size:clamp(14px,2vw,18px);letter-spacing:.15em;margin-bottom:14px}
   h1{font-family:'Archivo',sans-serif;font-weight:900;line-height:.94;text-transform:uppercase;font-size:clamp(52px,12.5vw,168px);letter-spacing:-.01em}
   h1 .row{display:block;overflow:hidden}
@@ -167,7 +161,6 @@
     <span class="row"><span>Deon</span></span>
     <span class="row"><span>Here<i class="dot">.</i></span></span>
   </h1>
-  <div class="hero-photo"><img src="avatar.png" alt="Deepak Deon" /></div>
   </div>
   <p class="hero-sub">Hi! My name is <b>Deepak Deon</b> and I'm a
   <span class="rotator" id="rotator">Blogger</span>
