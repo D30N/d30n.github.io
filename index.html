@@ -126,6 +126,22 @@
   .lbtn .li svg{width:27px;height:27px;display:block}
   .lbtn small{display:block;color:var(--dim);font-weight:400;font-size:12px}
 
+  /* ---------- Popular reels ---------- */
+  .reelwrap{overflow:hidden;cursor:grab;touch-action:pan-y;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+  .reelwrap.dragging{cursor:grabbing}
+  .reeltrack{display:flex;gap:16px;width:max-content;will-change:transform}
+  .reeltrack img{-webkit-user-drag:none;user-select:none}
+  .rcard{position:relative;width:216px;aspect-ratio:9/16;flex:none;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--card);transition:transform .3s,border-color .3s}
+  .rcard:hover{transform:translateY(-6px);border-color:var(--lime)}
+  .rcard img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.22,1,.36,1)}
+  .rcard:hover img{transform:scale(1.06)}
+  .rcard .play{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;background:rgba(4,5,12,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.25)}
+  .rcard .play svg{width:13px;height:13px;fill:#fff;margin-left:2px}
+  .rcard .cap{position:absolute;left:0;right:0;bottom:0;padding:40px 14px 13px;background:linear-gradient(180deg,transparent,rgba(2,3,8,.9) 55%);color:#fff}
+  .rcard .cap b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:14.5px;font-weight:600;line-height:1.35}
+  .rcard .meta{display:flex;align-items:center;gap:6px;margin-top:7px;font-size:12px;color:#c9cede;font-family:'JetBrains Mono',monospace}
+  .rcard .meta svg{width:12px;height:12px;fill:var(--pink);flex:none}
+
   /* ---------- Contact / footer ---------- */
   .big-cta{text-align:center;padding-bottom:30px}
   .big-cta h2{font-size:clamp(40px,9vw,110px)}
@@ -217,6 +233,104 @@
       <div class="stat"><div class="num" data-count="273" data-suffix="">273</div><div class="lbl">Stories &amp; tech posts</div></div>
     </div>
   </div>
+</section>
+
+<!-- Popular Reels -->
+<section id="reels">
+  <div class="sec-tag reveal">// most loved on instagram</div>
+  <h2 class="reveal">My Popular <em>Reels</em></h2>
+  <div class="reelwrap reveal"><div class="reeltrack" id="reeltrack">
+    <a class="rcard" href="https://www.instagram.com/reel/C4fuEIXPA3p/" target="_blank" rel="noopener">
+      <img src="assets/reels/C4fuEIXPA3p.jpg" alt="Malayalam handwritten text on Instagram stories and reels" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>How to add Malayalam handwritten text on Instagram stories &amp; reels</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>221.5K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/C9FQuuvO8Dx/" target="_blank" rel="noopener">
+      <img src="assets/reels/C9FQuuvO8Dx.jpg" alt="Music composition using Suno AI" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Music composition using Suno AI</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>131.3K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/C7JegXOvkmK/" target="_blank" rel="noopener">
+      <img src="assets/reels/C7JegXOvkmK.jpg" alt="Customised notebooks from Classmate by ITC" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Customised notebooks from Classmate by ITC</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>114.9K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DdgEYzQNYDp/" target="_blank" rel="noopener">
+      <img src="assets/reels/DdgEYzQNYDp.jpg" alt="Let's steal the vibe" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Let's steal the vibe 😉</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>110.9K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DLZHUG-yGgL/" target="_blank" rel="noopener">
+      <img src="assets/reels/DLZHUG-yGgL.jpg" alt="WhatsApp View Once saving using Userbot" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>WhatsApp View Once saving using Userbot — Part 1</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>96.7K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/CvjtMtsMzAW/" target="_blank" rel="noopener">
+      <img src="assets/reels/CvjtMtsMzAW.jpg" alt="Configure an NFC tag or NFC sticker" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Configure an NFC tag / NFC sticker</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>70.1K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/CwFcZqFNPjF/" target="_blank" rel="noopener">
+      <img src="assets/reels/CwFcZqFNPjF.jpg" alt="Expense calculator" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Expense calculator 💰</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>51.5K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DZpRkQPSRYU/" target="_blank" rel="noopener">
+      <img src="assets/reels/DZpRkQPSRYU.jpg" alt="Telegram restricted in India — use a proxy" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Telegram restricted in India? Use a proxy to get access</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>40.1K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/C7_x2Cjvsr-/" target="_blank" rel="noopener">
+      <img src="assets/reels/C7_x2Cjvsr-.jpg" alt="Turn off these Facebook settings immediately" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Turn off these Facebook settings immediately!</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>30.9K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DCWSVVtymG3/" target="_blank" rel="noopener">
+      <img src="assets/reels/DCWSVVtymG3.jpg" alt="Restore deleted WhatsApp chats" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Restore deleted WhatsApp chats from backup</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>27.4K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/Db7sZBNNJFh/" target="_blank" rel="noopener">
+      <img src="assets/reels/Db7sZBNNJFh.jpg" alt="Damn crazy website to watch series, movies and animes" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Damn crazy website to watch series, movies &amp; animes</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>14.4K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DBT_c8iuBCO/" target="_blank" rel="noopener">
+      <img src="assets/reels/DBT_c8iuBCO.jpg" alt="Pending follow requests on Instagram" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>See your pending follow requests on Instagram</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>14.2K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DDuGUKxNZyi/" target="_blank" rel="noopener">
+      <img src="assets/reels/DDuGUKxNZyi.jpg" alt="ഇന്നൊരു ഉടായിപ്പ് പരിചയപ്പെടാം" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>ഇന്നൊരു ഉടായിപ്പ് പരിചയപ്പെടാം!</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>10.3K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DW57NS9Es_p/" target="_blank" rel="noopener">
+      <img src="assets/reels/DW57NS9Es_p.jpg" alt="Google Pay Pocket Money UPI Circle explainer" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Google Pay Pocket Money (UPI Circle) isn't a scam — don't worry</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>7.2K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DebL82Bta4L/" target="_blank" rel="noopener">
+      <img src="assets/reels/DebL82Bta4L.jpg" alt="Free alternatives to Microsoft and Adobe paid software" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Free alternatives to Microsoft &amp; Adobe's paid software</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5.0K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/Db47yPjSUYM/" target="_blank" rel="noopener">
+      <img src="assets/reels/Db47yPjSUYM.jpg" alt="ChatGPT new voice update — Part 2" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>ChatGPT's new voice update feels like a real person — Part 2</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>4.5K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DYmEpV2yx0r/" target="_blank" rel="noopener">
+      <img src="assets/reels/DYmEpV2yx0r.jpg" alt="Find people who do not follow you back" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Find the people you follow who don't follow you back</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3.1K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DZZ6O98yWUb/" target="_blank" rel="noopener">
+      <img src="assets/reels/DZZ6O98yWUb.jpg" alt="List and cancel auto pays linked to your number" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>List &amp; cancel all auto-pays linked to your number</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2.8K likes</span></span>
+    </a>
+  </div></div>
 </section>
 
 <!-- Links -->
@@ -332,6 +446,85 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
       });
     }, { threshold: 0.35 });
     io.observe(box);
+  })();
+</script>
+<script>
+  // Reels marquee: auto-slide + drag with flick momentum (smooth glide), seamless loop
+  (function(){
+    var wrap = document.querySelector('.reelwrap'),
+        track = document.getElementById('reeltrack');
+    if (!wrap || !track) return;
+    track.innerHTML += track.innerHTML; // duplicate the set so the loop wraps seamlessly
+    track.querySelectorAll('img').forEach(function(im){ im.draggable = false; });
+    var half = 0, off = 0, SPEED = 0.6; // auto-slide px per frame
+    var dragging = false, hovering = false, startX = 0, startOff = 0, moved = 0, lastDragEnd = 0;
+    var vel = 0, samples = [], lastT = 0; // fling velocity, px per ms
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function measure(){ half = track.scrollWidth / 2; }
+    function wrapOff(){
+      if (half <= 0) return;
+      while (off <= -half) off += half;
+      while (off > 0) off -= half;
+    }
+    function render(){ track.style.transform = 'translateX(' + off + 'px)'; }
+    function frame(now){
+      if (!lastT) lastT = now;
+      var dt = Math.min(now - lastT, 50); lastT = now;
+      if (!dragging) {
+        if (Math.abs(vel) > 0.02) {
+          // momentum glide: travel with the flick velocity, friction eases it out
+          off += vel * dt;
+          vel *= Math.pow(0.95, dt / 16.7);
+          if (Math.abs(vel) <= 0.02) vel = 0;
+          wrapOff(); render();
+        } else if (!hovering && !reduced && Date.now() - lastDragEnd > 800) {
+          off -= SPEED * (dt / 16.7); wrapOff(); render();
+        }
+      }
+      requestAnimationFrame(frame);
+    }
+    wrap.addEventListener('pointerdown', function(e){
+      dragging = true; vel = 0; samples = []; moved = 0; startX = e.clientX; startOff = off;
+      wrap.classList.add('dragging');
+      try { wrap.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    wrap.addEventListener('pointermove', function(e){
+      if (!dragging) return;
+      var dx = e.clientX - startX;
+      if (Math.abs(dx) > moved) moved = Math.abs(dx);
+      off = startOff + dx; wrapOff(); render();
+      var t = performance.now();
+      samples.push({ x: e.clientX, t: t });
+      while (samples.length > 2 && t - samples[0].t > 120) samples.shift();
+    });
+    function endDrag(){
+      if (!dragging) return;
+      dragging = false; lastDragEnd = Date.now();
+      wrap.classList.remove('dragging');
+      // flick velocity from the last ~120ms of the drag
+      if (samples.length > 1) {
+        var a = samples[0], b = samples[samples.length - 1], span = b.t - a.t;
+        if (span > 0) {
+          vel = (b.x - a.x) / span;
+          if (vel > 2.5) vel = 2.5;
+          if (vel < -2.5) vel = -2.5;
+          if (Math.abs(vel) < 0.15) vel = 0;
+        }
+      }
+      samples = [];
+    }
+    wrap.addEventListener('pointerup', endDrag);
+    wrap.addEventListener('pointercancel', endDrag);
+    // a real drag must not turn into a click on a reel
+    wrap.addEventListener('click', function(e){
+      if (moved > 8) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+    wrap.addEventListener('mouseenter', function(){ hovering = true; });
+    wrap.addEventListener('mouseleave', function(){ hovering = false; });
+    measure(); render();
+    window.addEventListener('load', measure);
+    window.addEventListener('resize', measure);
+    requestAnimationFrame(frame);
   })();
 </script>
 </body>
