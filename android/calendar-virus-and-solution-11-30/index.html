@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calendar virus and solution — Deepak Deon</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0f; --bg2:#101018; --ink:#f2f0ea; --dim:#9a97a8;
+    --lime:#c8f542; --violet:#8b7bff; --pink:#ff7ad9; --line:#26262f;
+    --card:#12121a;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--lime);color:#0a0a0f}
+  .wrap{max-width:760px;margin:0 auto;padding:0 clamp(18px,5vw,40px)}
+  header{display:flex;justify-content:space-between;align-items:center;padding:26px 0 8px}
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:.06em}
+  .logo span{color:var(--lime)}
+  .home-link{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .home-link:hover{color:var(--lime)}
+  .sec-tag{font-family:'JetBrains Mono',monospace;color:var(--violet);font-size:13px;letter-spacing:.25em;text-transform:uppercase;margin:44px 0 12px}
+  h1.title{font-weight:700;font-size:clamp(30px,6vw,46px);line-height:1.25;margin-bottom:30px}
+  .post{font-size:18.5px;line-height:1.9;color:#e9e7e0}
+  .post p{margin:0 0 1.35em}
+  .post figure{margin:2em 0}
+  .post img{width:100%;height:auto;border-radius:14px;display:block}
+  .post figcaption{color:var(--dim);font-size:13.5px;text-align:center;margin-top:10px;line-height:1.5}
+  .post h3{font-size:25px;line-height:1.4;margin:1.7em 0 .6em;color:var(--ink)}
+  .post h4{font-size:21px;line-height:1.45;margin:1.6em 0 .55em;color:var(--ink)}
+  .post blockquote{border-left:3px solid var(--lime);padding-left:18px;margin:1.8em 0;color:#d8d5cc}
+  .post a{color:var(--lime);text-decoration:underline;text-underline-offset:3px}
+  .post hr{border:none;border-top:1px solid var(--line);margin:2.4em 0}
+  .post ul,.post ol{margin:0 0 1.35em 1.25em}
+  .post li{margin-bottom:.45em}
+  .post iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;margin:1.8em 0}
+  .views-row{display:flex;align-items:center;gap:8px;margin-top:38px;color:var(--dim)}
+  .views-row svg{width:20px;height:20px;display:block}
+  .views-row .vc-num{font-size:15.5px;font-weight:500;letter-spacing:.03em}
+  .pn{display:flex;justify-content:space-between;gap:14px;margin-top:30px;border-top:1px solid var(--line);padding-top:22px}
+  .pn a{flex:1;font-size:14.5px;font-weight:600;color:var(--dim);transition:.25s;line-height:1.5}
+  .pn a:hover{color:var(--lime)}
+  .pn a.next{text-align:right}
+  .pn .dir{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:5px;color:var(--violet)}
+  .back{display:inline-block;margin:30px 0 6px;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .back:hover{color:var(--lime)}
+  footer{border-top:1px solid var(--line);padding:26px clamp(18px,6vw,72px);display:flex;justify-content:center;text-align:center;color:var(--dim);font-size:13px;max-width:1280px;margin:44px auto 0}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="../../">DEON<span>.</span></a>
+    <a class="home-link" href="../">&larr; Android / Tech</a>
+  </header>
+  <div class="sec-tag">// Articles</div>
+  <h1 class="title">Calendar virus and solution</h1>
+  <article class="post">
+<figure><img src="../../assets/img/61a76c7472a4867f878b8.jpg"/><figcaption></figcaption></figure><p><strong>എന്താണ് കലണ്ടർ വൈറസ്?</strong></p><figure><img src="../../assets/img/0b35eee97f056dc2ab11a.jpg"/><figcaption></figcaption></figure><p><strong>സത്യത്തിൽ ഇത് virus അല്ല. നിങ്ങൾക്ക് വന്ന ഒരു E-mail ലൂടെ നിങ്ങളുടെ Calendar ൽ ഓട്ടോമാറ്റിക്കായി create ആയ കുറേ spam events ആണ് വൈറസ് എന്ന പേരിൽ കാണുന്നത്.</strong></p><p><br/></p><p>ഫോണിൽ വൈറസ് ഉണ്ടെന്ന് തെറ്റിദ്ധരിപ്പിച്ച് നിങ്ങളെക്കൊണ്ട് ഏതെങ്കിലും anti-virus എന്ന പേരിലുള്ള adwares ഓ spywares ഓ ഒക്കെ ഇൻസ്റ്റാൾ ചെയ്യിക്കൽ ആണ് ഈ fake virus events വഴി അവരുടെ ലക്ഷ്യം.</p><p><br/></p><p>ഒരൊറ്റ e-mail വഴി നൂറുകണക്കിന് spam events ആണ് ഇങ്ങനെ നമ്മുടെ കലണ്ടറിൽ തനിയെ create ആവുന്നത്. അതുകൊണ്ടുതന്നെ ഓരോന്നായി ഡിലീറ്റ് ചെയ്യുന്നത് ബുദ്ധിമുട്ടാണ്. മാത്രമല്ല Google account ആയിട്ട് sync ആയതുകൊണ്ട് Calendar ആപ്പ് data clear ചെയ്താലോ re-install ചെയ്താലോ ഒന്നും ഇത് പോവില്ല.</p><p><br/></p><p><strong>എങ്ങനെ remove ചെയ്യാം?</strong> (Solution)<br/></p><p><br/>Desktop mode ൽ <a href="https://calendar.google.com/calendar/u/0/r/settings" rel="noopener" target="_blank">calendar.google.com</a> ഓപ്പൺ ചെയ്ത് അതിലെ settings ൽ event settings എടുക്കുക.</p><p></p><figure><img src="../../assets/img/f53eaaf0d9575ac77a87b.jpg"/><figcaption></figcaption></figure><p><br/>ഇതിൽ 'Automatically add invitations' എന്നത് screenshot ൽ ഉള്ളതുപോലെ No ആക്കിയാൽ ഭാവിയിൽ events automatically add ആവുന്നത് തടയാം.</p><p>ശേഷം താഴെ Events from Gmail എന്നത് എടുക്കുക</p><p></p><figure><img src="../../assets/img/4e22fae3941bb11bfab55.jpg"/><figcaption></figcaption></figure><p><br/>ഇതിൽ 'Show events automatically created by Gmail in my calendar' എന്നത് screenshot ൽ ഉള്ളതുപോലെ uncheck ചെയ്താൽ already add ആയ spam events ഒക്കെ remove ആവുന്നതാണ്.</p><p></p><p><a href="https://t.me/DeonWrites" rel="noopener" target="_blank">@DeonWrites</a> </p><hr/><p>💬 <a href="https://t.me/DeonWrites/645" rel="noopener" target="_blank">Add a comment to this post</a> <br/></p>
+  </article>
+  <div class="views-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="vc-num" data-base="1266">1,266</span></div>
+  <nav class="pn"><a class="prev" href="../stop-full-screen-ads-using-current-activity-app-11-23/"><span class="dir">&larr; Previous</span>3rd party ആപ്പുകൾ (adware) bac…</a><a class="next" href="../enhance-and-colorize-old-blurry-photos-12-10/"><span class="dir">Next &rarr;</span>ക്ലാരിറ്റി കുറഞ്ഞ പഴയ ഫോട്ടോസ്…</a></nav>
+  <a class="back" href="../">&larr; All Android / Tech</a>
+</div>
+<footer><span>&copy; 2026 Deepak Deon</span></footer>
+
+<script>
+(function(){
+  var el=document.querySelector('.vc-num'); if(!el) return;
+  var base=parseInt(el.getAttribute('data-base')||'0',10)||0;
+  var NS='deepakdeon-site', KEY='android-calendar-virus-and-solution-11-30';
+  var done=false; try{ done=!!sessionStorage.getItem('vc-'+KEY); }catch(e){}
+  fetch('https://abacus.jasoncameron.dev/'+(done?'get':'hit')+'/'+NS+'/'+KEY)
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d && typeof d.value==='number'){
+        el.textContent=(base+d.value).toLocaleString('en-US');
+        if(!done){ try{ sessionStorage.setItem('vc-'+KEY,'1'); }catch(e){} }
+      }
+    }).catch(function(){});
+})();
+</script>
+
+</body>
+</html>

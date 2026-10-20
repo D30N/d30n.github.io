@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Userge userbot setup — Deepak Deon</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0f; --bg2:#101018; --ink:#f2f0ea; --dim:#9a97a8;
+    --lime:#c8f542; --violet:#8b7bff; --pink:#ff7ad9; --line:#26262f;
+    --card:#12121a;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--lime);color:#0a0a0f}
+  .wrap{max-width:760px;margin:0 auto;padding:0 clamp(18px,5vw,40px)}
+  header{display:flex;justify-content:space-between;align-items:center;padding:26px 0 8px}
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:.06em}
+  .logo span{color:var(--lime)}
+  .home-link{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .home-link:hover{color:var(--lime)}
+  .sec-tag{font-family:'JetBrains Mono',monospace;color:var(--violet);font-size:13px;letter-spacing:.25em;text-transform:uppercase;margin:44px 0 12px}
+  h1.title{font-weight:700;font-size:clamp(30px,6vw,46px);line-height:1.25;margin-bottom:30px}
+  .post{font-size:18.5px;line-height:1.9;color:#e9e7e0}
+  .post p{margin:0 0 1.35em}
+  .post figure{margin:2em 0}
+  .post img{width:100%;height:auto;border-radius:14px;display:block}
+  .post figcaption{color:var(--dim);font-size:13.5px;text-align:center;margin-top:10px;line-height:1.5}
+  .post h3{font-size:25px;line-height:1.4;margin:1.7em 0 .6em;color:var(--ink)}
+  .post h4{font-size:21px;line-height:1.45;margin:1.6em 0 .55em;color:var(--ink)}
+  .post blockquote{border-left:3px solid var(--lime);padding-left:18px;margin:1.8em 0;color:#d8d5cc}
+  .post a{color:var(--lime);text-decoration:underline;text-underline-offset:3px}
+  .post hr{border:none;border-top:1px solid var(--line);margin:2.4em 0}
+  .post ul,.post ol{margin:0 0 1.35em 1.25em}
+  .post li{margin-bottom:.45em}
+  .post iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;margin:1.8em 0}
+  .views-row{display:flex;align-items:center;gap:8px;margin-top:38px;color:var(--dim)}
+  .views-row svg{width:20px;height:20px;display:block}
+  .views-row .vc-num{font-size:15.5px;font-weight:500;letter-spacing:.03em}
+  .pn{display:flex;justify-content:space-between;gap:14px;margin-top:30px;border-top:1px solid var(--line);padding-top:22px}
+  .pn a{flex:1;font-size:14.5px;font-weight:600;color:var(--dim);transition:.25s;line-height:1.5}
+  .pn a:hover{color:var(--lime)}
+  .pn a.next{text-align:right}
+  .pn .dir{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:5px;color:var(--violet)}
+  .back{display:inline-block;margin:30px 0 6px;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .back:hover{color:var(--lime)}
+  footer{border-top:1px solid var(--line);padding:26px clamp(18px,6vw,72px);display:flex;justify-content:center;text-align:center;color:var(--dim);font-size:13px;max-width:1280px;margin:44px auto 0}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="../../">DEON<span>.</span></a>
+    <a class="home-link" href="../">&larr; Telegram</a>
+  </header>
+  <div class="sec-tag">// Articles</div>
+  <h1 class="title">Userge userbot setup</h1>
+  <article class="post">
+<figure><img src="../../assets/img/7de777949c053e6215a21.jpg"/><figcaption></figcaption></figure><p><strong>എങ്ങനെയാണ് നമ്മുടെ അക്കൗണ്ടിൽ ഒരു userbot ലിങ്ക് ചെയ്യുന്നത് എന്നു നോക്കാം...</strong></p><p><br/>[<a href="/What-are-Telegram-userbots-11-06">എന്താണ് യൂസർബോട്ട് എന്നറിയാനായി ഇവിടെ ക്ലിക്ക് ചെയ്യുക</a>]</p><p><br/>Userbot തയ്യാറാക്കുന്നത് പലരും കരുതുന്നതുപോലെ അത്ര ആനക്കാര്യം ഒന്നുമല്ല, basic knowledge ഉള്ള ആർക്കും വളരെയെളുപ്പത്തിൽ ചെയ്യാൻ കഴിയും.<br/><br/></p><p><strong>Userbot ഉപയോഗിക്കുന്നത് safe ആണോ?</strong><br/><strong>ഇത് ഉപയോഗിച്ചാൽ ടെലഗ്രാം അക്കൗണ്ട് ബാൻ ആവുമോ?</strong><br/></p><p>The popular userbot codes are open-source. അതിന്മേലും അതെഴുതിയ devs ന്മേലും ഉള്ള വിശ്വാസത്തിൽ ധൈര്യമായി use ചെയ്യാം.<br/>നിങ്ങളായിട്ട് <a href="https://telegram.org/tos" rel="noopener" target="_blank">Telegram's terms of service</a> violate ചെയ്യാത്തിടത്തോളം ബാൻ ഒന്നും കിട്ടില്ല.</p><p><br/><strong>IMPORTANT THING:</strong> Userbot കഴിവതും സ്വയം configure ചെയ്യുക. മറ്റൊരാളുടെ സഹായം തേടുമ്പോൾ ഒരിക്കലും login credentials പോലുള്ള confidential things ഷെയർ ചെയ്യാതിരിക്കുക.</p><p><br/>അപ്പൊ കാര്യത്തിലേക്ക് കടക്കാം...<br/><strong>Userge userbot</strong> ആണ് നമ്മൾ setup ചെയ്യാൻ പോവുന്നത്.</p><p><br/><strong>Requirements:</strong></p><p>• <a href="https://signup.heroku.com/login" rel="noopener" target="_blank">Heroku account</a><br/>• API ID &amp; API HASH<br/>• BOT token <br/>• Pyrogram SESSION STRING<br/>• Database URL<br/>• Log channel ID &amp; your user ID</p><p><br/>ഇത്രയും കാര്യങ്ങൾ ആദ്യം തന്നെ കോപ്പി ചെയ്തു സൂക്ഷിക്കുക.</p><p><br/>1. API ID, API HASH, SESSION STRING, BOT TOKEN എന്നിവ എങ്ങനെയാണ് collect ചെയ്യുന്നത് എന്ന് <a href="/Telegram-VC-streaming-bot-10-25">ഈ article നോക്കി മനസ്സിലാക്കുക.</a></p><p>(SESSION STRING എടുക്കാൻ മുകളിലുള്ള method ബുദ്ധിമുട്ട് ഉണ്ടെങ്കിൽ <a href="https://t.me/usergeot/774296" rel="noopener" target="_blank">try these alternative methods</a>)</p><p><br/>2. Database url എടുക്കാനായി <a href="https://t.me/DW_Archive/35" rel="noopener" target="_blank">ഈ tutorial video കാണുക.</a></p><p><br/>3. ഒരു private ചാനൽ ഉണ്ടാക്കി അതിന്റെ ID കോപ്പി ചെയ്തു സൂക്ഷിക്കുക. (Example: -1001371274651) ID എടുക്കാനായി ആ ചാനലിലെ ഏതെങ്കിലും ഒരു മെസ്സേജ് <a href="https://t.me/MissRose_bot" rel="noopener" target="_blank">@MissRose_bot</a> ലേക്ക് forward ചെയ്തിട്ട് /id എന്ന് reply കൊടുത്താൽ മതി.</p><p><br/>4. ചാനലിലേക്ക് നേരത്തേ ഉണ്ടാക്കിയ ബോട്ടിനെ admin ആയി add ചെയ്യുക.</p><p><br/><strong>ഇനി Heroku ലേക്ക് deploy ചെയ്യാം...</strong></p><p><br/><a href="https://heroku.com/deploy?template=https://github.com/Jigarvarma2005/HelperScript-V2" rel="noopener" target="_blank">https://heroku.com/deploy?template=https://github.com/Jigarvarma2005/HelperScript-V2</a></p><p><br/>ഈ ലിങ്കിൽ ക്ലിക്ക് ചെയ്തു വരുന്ന പേജിൽ, നമ്മൾ നേരത്തെ collect ചെയ്തുവെച്ച variables ഓരോന്നായി fill ചെയ്ത് deploy അമർത്തുക.<br/></p><figure><img src="../../assets/img/38cf58c72e4d001484d4c.jpg"/><figcaption></figcaption></figure><p><br/>Deploy successful ആയതിനു ശേഷം manage apps എടുത്ത് worker mode ഓണാക്കിയാൽ userbot work ചെയ്തു തുടങ്ങും. Worker mode toggle ചെയ്യുന്നതിനെപ്പറ്റിയും മുകളിൽ പറഞ്ഞ article ൽ പറഞ്ഞിട്ടുണ്ട്.<br/>(Bot running ആണെന്ന് ഉറപ്പു വരുത്താനായി ഏതെങ്കിലും ചാറ്റിൽ .ping എന്ന് മെസ്സേജ് അയച്ചു നോക്കുക)</p><p><br/>Basic ഫീച്ചറുകളോടു കൂടി userge userbot റെഡിയായിട്ടുണ്ട്. ഏതെങ്കിലും ചാറ്റിൽ .help എന്ന് മെസ്സേജ് അയച്ചാൽ available ആയിട്ടുള്ള commands കാണാൻ കഴിയും.</p><p><br/>Full power ൽ കൂടുതൽ കാര്യങ്ങൾ explore ചെയ്യാൻ (Gdrive etc) opional ആയിട്ടുള്ള variables പിന്നീട് Heroku config vars ൽ ഓരോന്നായി add ചെയ്യാവുന്നതാണ്.<br/></p><figure><img src="../../assets/img/34e14bd198a2adfc38049.jpg"/><figcaption></figcaption></figure><p>ഉദാഹരണത്തിന്:<br/><br/><strong>KEY:</strong> CUSTOM_PLUGINS_REPO<br/><strong>VALUE:</strong> https://github.com/UsergeTeam/Userge-Plugins</p><p><br/>ഇങ്ങനെ add ചെയ്താൽ ആ <a href="https://github.com/UsergeTeam/Userge-Plugins" rel="noopener" target="_blank">repository</a> ൽ ഉള്ള അത്രയും features (plugins) userbot ൽ add ആവും.<br/>• <a href="https://github.com/UsergeTeam/Userge/blob/alpha/config.env.sample" rel="noopener" target="_blank">List of other optional variables you can add later on Heroku config. vars.</a><br/></p><p>HEROKU_APP_NAME, HEROKU_API_KEY എന്നീ variables (vars) ഇങ്ങനെ set ചെയ്താൽ പിന്നെ ബാക്കിയുള്ള variables ടെലഗ്രാമിൽ നിന്നു തന്നെ കമാൻഡ് വഴി remotely add ചെയ്യാൻ കഴിയും.<br/>(ഉദാ: .setvar PLUGINS_CHAT_ID -1001371274651)<br/></p><p><br/>Assistance ന് <a href="https://t.me/UsergeOT" rel="noopener" target="_blank">@UsergeOT</a> ഗ്രൂപ്പിൽ join ചെയ്യുക.</p><p><br/></p><p><strong>Finally... How to opt out of userbot?</strong><br/>പിന്നീട് വേണ്ടെന്ന് തോന്നിയാൽ userbot എങ്ങനെ ഒഴിവാക്കാം?<br/>Simple. Go to Settings &gt; Devices<br/>&amp; then terminate the 'Pyrogram session' 😇🤙</p><p>- <a href="https://t.me/DeonWrites" rel="noopener" target="_blank">@DeonWrites</a> -</p><hr/><p>Related articles:<br/>• <a href="/Heroku-bot-and-free-dynos-11-10">Heroku bots and free dynos.</a><br/>• <a href="/Telegram-uyir-09-20">ടെലഗ്രാമിനെക്കുറിച്ച് കൂടുതൽ വായിക്കാം...</a></p><hr/><p>💬 <a href="https://t.me/DeonWrites/613" rel="noopener" target="_blank">Add a comment to this post</a> <br/></p>
+  </article>
+  <div class="views-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="vc-num" data-base="2288">2,288</span></div>
+  <nav class="pn"><a class="prev" href="../what-are-telegram-userbots-11-06/"><span class="dir">&larr; Previous</span>എന്താണ് ടെലഗ്രാമിലെ യൂസർബോട്ടു…</a></nav>
+  <a class="back" href="../">&larr; All Telegram posts</a>
+</div>
+<footer><span>&copy; 2026 Deepak Deon</span></footer>
+
+<script>
+(function(){
+  var el=document.querySelector('.vc-num'); if(!el) return;
+  var base=parseInt(el.getAttribute('data-base')||'0',10)||0;
+  var NS='deepakdeon-site', KEY='telegram-userge-userbot-setup-11-11';
+  var done=false; try{ done=!!sessionStorage.getItem('vc-'+KEY); }catch(e){}
+  fetch('https://abacus.jasoncameron.dev/'+(done?'get':'hit')+'/'+NS+'/'+KEY)
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d && typeof d.value==='number'){
+        el.textContent=(base+d.value).toLocaleString('en-US');
+        if(!done){ try{ sessionStorage.setItem('vc-'+KEY,'1'); }catch(e){} }
+      }
+    }).catch(function(){});
+})();
+</script>
+
+</body>
+</html>

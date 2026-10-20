@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What are Telegram userbots? — Deepak Deon</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0f; --bg2:#101018; --ink:#f2f0ea; --dim:#9a97a8;
+    --lime:#c8f542; --violet:#8b7bff; --pink:#ff7ad9; --line:#26262f;
+    --card:#12121a;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--lime);color:#0a0a0f}
+  .wrap{max-width:760px;margin:0 auto;padding:0 clamp(18px,5vw,40px)}
+  header{display:flex;justify-content:space-between;align-items:center;padding:26px 0 8px}
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:.06em}
+  .logo span{color:var(--lime)}
+  .home-link{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .home-link:hover{color:var(--lime)}
+  .sec-tag{font-family:'JetBrains Mono',monospace;color:var(--violet);font-size:13px;letter-spacing:.25em;text-transform:uppercase;margin:44px 0 12px}
+  h1.title{font-weight:700;font-size:clamp(30px,6vw,46px);line-height:1.25;margin-bottom:30px}
+  .post{font-size:18.5px;line-height:1.9;color:#e9e7e0}
+  .post p{margin:0 0 1.35em}
+  .post figure{margin:2em 0}
+  .post img{width:100%;height:auto;border-radius:14px;display:block}
+  .post figcaption{color:var(--dim);font-size:13.5px;text-align:center;margin-top:10px;line-height:1.5}
+  .post h3{font-size:25px;line-height:1.4;margin:1.7em 0 .6em;color:var(--ink)}
+  .post h4{font-size:21px;line-height:1.45;margin:1.6em 0 .55em;color:var(--ink)}
+  .post blockquote{border-left:3px solid var(--lime);padding-left:18px;margin:1.8em 0;color:#d8d5cc}
+  .post a{color:var(--lime);text-decoration:underline;text-underline-offset:3px}
+  .post hr{border:none;border-top:1px solid var(--line);margin:2.4em 0}
+  .post ul,.post ol{margin:0 0 1.35em 1.25em}
+  .post li{margin-bottom:.45em}
+  .post iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;margin:1.8em 0}
+  .views-row{display:flex;align-items:center;gap:8px;margin-top:38px;color:var(--dim)}
+  .views-row svg{width:20px;height:20px;display:block}
+  .views-row .vc-num{font-size:15.5px;font-weight:500;letter-spacing:.03em}
+  .pn{display:flex;justify-content:space-between;gap:14px;margin-top:30px;border-top:1px solid var(--line);padding-top:22px}
+  .pn a{flex:1;font-size:14.5px;font-weight:600;color:var(--dim);transition:.25s;line-height:1.5}
+  .pn a:hover{color:var(--lime)}
+  .pn a.next{text-align:right}
+  .pn .dir{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:5px;color:var(--violet)}
+  .back{display:inline-block;margin:30px 0 6px;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .back:hover{color:var(--lime)}
+  footer{border-top:1px solid var(--line);padding:26px clamp(18px,6vw,72px);display:flex;justify-content:center;text-align:center;color:var(--dim);font-size:13px;max-width:1280px;margin:44px auto 0}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="../../">DEON<span>.</span></a>
+    <a class="home-link" href="../">&larr; Android / Tech</a>
+  </header>
+  <div class="sec-tag">// Articles</div>
+  <h1 class="title">What are Telegram userbots?</h1>
+  <article class="post">
+<figure><img src="../../assets/img/5ea922ad694fa712b9bff.jpg"/><figcaption></figcaption></figure><p><strong>എന്താണ് ടെലഗ്രാം യൂസർ ബോട്ട് (user-bot)?</strong></p><p><br/>Userbot എന്നു പറയുന്നത് technically ടെലഗ്രാമിന്റെ ഒരു unofficial client ആണ്. ഈ unofficial client വഴി നമ്മുടെ അക്കൗണ്ടിൽ login ചെയ്ത് ഒരാൾ (suppose a virtual assistant) നമുക്കുവേണ്ടി ജോലി ചെയ്യുകയാണെങ്കിൽ എങ്ങനെയുണ്ടാവും?</p><p><br/>അതായത് നമ്മൾ നമ്മുടെ ഫോണിൽ നിന്ന് മെസ്സേജ് വഴി ഒരു കമാൻഡ് കൊടുക്കുമ്പോൾ അതിനനുസരിച്ച് ദൂരെ ഒരു സെർവറിൽ ഇരുന്ന് ഈ virtual assistant നമ്മളെ help ചെയ്യുന്നു.</p><p><br/>ഉദാഹരണത്തിന്, ഞാൻ ഒരു ഗ്രൂപ്പിൽ ".weather Kochi" എന്ന് മെസ്സേജ് അയച്ചു എന്ന് കരുതുക. അപ്പോൾ തന്നെ userbot ൽ ഉള്ള എന്റെ virtual assistant എനിക്ക് കൊച്ചിയിലെ കാലാവസ്ഥ അറിയണം എന്നു മനസ്സിലാക്കി ഞാൻ അയച്ച ആ മെസ്സേജ് edit ചെയ്ത് കൊച്ചിയിലെ weather report ആക്കി മാറ്റുന്നു.<br/>(ഇതെല്ലാം നടക്കുന്നത് സെക്കന്റുകൾക്കുള്ളിലാണ്.)</p><p><br/>ഇങ്ങനെയാണ് userbots പ്രവർത്തിക്കുന്നത്.</p><p><br/><a href="/Useful-Telegram-Bots-09-20">ടെലഗ്രാമിലെ ബോട്ടുകളെക്കുറിച്ച്</a> അറിയാമായിരിക്കുമല്ലോ...</p><p><br/>YouTube ൽ നിന്ന് video ഡൌൺലോഡ് ചെയ്യാനും, ഒരു ഫോട്ടോ അയച്ചാൽ അത് സ്റ്റിക്കറോ pdf ഓ ആക്കി തരാനും, ഒരു ഫയലിന്റെ ലിങ്ക് കൊടുത്താൽ അത് ടെലഗ്രാമിലേക്ക് upload ചെയ്തു തരാനും, ടെലഗ്രാം ഫയൽ അയച്ചാൽ അത് Google drive ലേക്ക് upload ചെയ്തു തരാനും ഒക്കെ ഒരുപാട് ബോട്ടുകൾ ടെലഗ്രാമിൽ ഉണ്ട്.</p><p><br/>ഇങ്ങനെ നൂറുകണക്കിന് ആവശ്യങ്ങൾക്ക് നമ്മൾ ഉപയോഗിക്കുന്ന നൂറുകണക്കിന് ബോട്ടുകളുടെയെല്ലാം program code ഒരു യൂസർബോട്ടിൽ സെറ്റ് ചെയ്താലോ?<br/>എന്നിട്ട് ആ userbot നമ്മുടെ അക്കൗണ്ട് ആയി ലിങ്ക് ചെയ്താലോ?</p><p><br/>ഓരോ ബോട്ടിലും പോയി ചെയ്യേണ്ട കാര്യങ്ങൾ ഒക്കെ നമുക്ക് ഇഷ്ടമുള്ള ചാറ്റിൽ നിന്നുകൊണ്ട് മുന്നേ പറഞ്ഞ കമാൻഡുകളുടെ സഹായത്തോടെ userbot നെക്കൊണ്ട് ചെയ്യിക്കാം!</p><p><br/>അതായത്, എനിക്ക് സുഹൃത്ത് അയച്ചുതന്ന ഒരു വീഡിയോയിൽ നിന്ന് mp3 എടുക്കണം.<br/>അപ്പോൾ ഞാൻ ആ വീഡിയോ ഏതെങ്കിലും file converter bot ൽ അയച്ചു കൊടുക്കുന്നതിനു പകരം ആ ചാറ്റിൽ വെച്ചു തന്നെ അതിന് റിപ്ലൈ ആയിട്ട് ".convert mp3" എന്ന് മെസ്സേജ് അയക്കുന്നു. (dot ഇടുന്നത് ഞാൻ അയച്ച മെസ്സേജ് കമാൻഡ് ആണെന്ന് userbot ന് മനസ്സിലാവാൻ ആണ്.)</p><p><br/>അപ്പോൾ തന്നെ userbot അതിന്റെ സെർവറിൽ ഇരുന്ന് സെക്കന്റുകൾക്കുള്ളിൽ ആ വീഡിയോ ഡൌൺലോഡ് ചെയ്ത് mp3 ആക്കി convert ചെയ്ത് അതേ ചാറ്റിൽ എനിക്ക് upload ചെയ്തു തരുന്നു.<br/>(നമ്മൾ ചെയ്യുന്ന കാര്യങ്ങളൊക്കെ, message editing അടക്കം നമ്മളെക്കാൾ പതിന്മടങ്ങ്‌ വേഗത്തിൽ userbot ന് ചെയ്യാൻ കഴിയും.)</p><p><br/>ടെലഗ്രാം enthusiasts നിടയിൽ userbots ജനപ്രിയമാവുന്നത് ഈ അതിരില്ലാത്ത അത്രയും ഫീച്ചറുകൾ കൊണ്ട് പ്രയോജനപ്പെടുന്നതിനാലാണ്. Basic ആയിട്ടുള്ള Google search മുതൽ ടെലഗ്രാമിലെ ഏറ്റവും പുതിയ ഫീച്ചറുകളിൽ ഒന്നായ <a href="/Telegram-VC-streaming-bot-10-25">Video Chat Streaming</a> വരെ userbots നെക്കൊണ്ട് ചെയ്യിക്കാം.</p><p><br/>ടെലഗ്രാം ആപ്പ് എങ്ങനെയൊക്കെ, എന്തിനൊക്കെ ഉപയോഗിക്കാമോ (both positive and negative sides) അതുപോലെ തന്നെ userbot നെയും കൈകാര്യം ചെയ്യാൻ കഴിയും.<br/></p><p>Userge, Cat, Paperplane, Ultroid are different types of userbots. All are Open-source. Code available on GitHub</p><p><br/>Userbots എങ്ങനെ set ചെയ്യാം, userbot അക്കൗണ്ട് ആയി ലിങ്ക് ചെയ്യുന്നത് safe ആണോ എന്നൊക്കെയുള്ള കൂടുതൽ കാര്യങ്ങൾ മറ്റൊരു article ൽ പറയാൻ കഴിയും എന്ന് പ്രതീക്ഷിക്കുന്നു...</p><p><br/>താഴെയുള്ള വിഡിയോയിൽ ഉള്ളത് userge userbot ഉം അതിലെ ചില commands ഉം ആണ്.</p><figure><img src="../../assets/img/9b8babac10b9d63160134.mp4"/><figcaption>userge userbot</figcaption></figure><p>.tr = Translate (to English by default)<br/>.tr -ml = Translate to Malayalam<br/>.grs = Google reverse image search</p><p><br/>Custom added plugins അടക്കം userge userbot ൽ ഇതേപോലെ 150 ഓളം commands &amp; features ഉണ്ട്.</p><p><br/>- <a href="https://t.me/DeonWrites" rel="noopener" target="_blank">@DeonWrites</a> -</p><p><br/>• <a href="/WhatsApp-userbot-08-28">വാട്സാപ്പിൽ എങ്ങനെ യൂസർബോട്ട് സെറ്റ് ചെയ്യാം എന്നു നോക്കാം...</a></p><p>• <strong>UPDATE: </strong><a href="/Userge-userbot-setup-11-11">How to setup a Userge userbot on Telegram?</a></p><p>• <a href="/Telegram-uyir-09-20">ടെലഗ്രാമിനെക്കുറിച്ച് കൂടുതൽ വായിക്കാം...</a></p><hr/><p>💬 <a href="https://t.me/DeonWrites/603" rel="noopener" target="_blank">Add a comment to this post</a><br/></p>
+  </article>
+  <div class="views-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="vc-num" data-base="2334">2,334</span></div>
+  <nav class="pn"><a class="prev" href="../paytm-wallet-to-bank-without-kyc-08-21/"><span class="dir">&larr; Previous</span>Paytm wallet ൽ ഉള്ള ക്യാഷ് KYC…</a><a class="next" href="../request-to-remove-videos-from-porn-sites-09-11/"><span class="dir">Next &rarr;</span>Porn സൈറ്റുകളിൽ നിന്നും വീഡിയോ…</a></nav>
+  <a class="back" href="../">&larr; All Android / Tech</a>
+</div>
+<footer><span>&copy; 2026 Deepak Deon</span></footer>
+
+<script>
+(function(){
+  var el=document.querySelector('.vc-num'); if(!el) return;
+  var base=parseInt(el.getAttribute('data-base')||'0',10)||0;
+  var NS='deepakdeon-site', KEY='android-what-are-telegram-userbots-11-06';
+  var done=false; try{ done=!!sessionStorage.getItem('vc-'+KEY); }catch(e){}
+  fetch('https://abacus.jasoncameron.dev/'+(done?'get':'hit')+'/'+NS+'/'+KEY)
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d && typeof d.value==='number'){
+        el.textContent=(base+d.value).toLocaleString('en-US');
+        if(!done){ try{ sessionStorage.setItem('vc-'+KEY,'1'); }catch(e){} }
+      }
+    }).catch(function(){});
+})();
+</script>
+
+</body>
+</html>

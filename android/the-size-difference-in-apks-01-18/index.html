@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The size difference in apks — Deepak Deon</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0f; --bg2:#101018; --ink:#f2f0ea; --dim:#9a97a8;
+    --lime:#c8f542; --violet:#8b7bff; --pink:#ff7ad9; --line:#26262f;
+    --card:#12121a;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--lime);color:#0a0a0f}
+  .wrap{max-width:760px;margin:0 auto;padding:0 clamp(18px,5vw,40px)}
+  header{display:flex;justify-content:space-between;align-items:center;padding:26px 0 8px}
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:.06em}
+  .logo span{color:var(--lime)}
+  .home-link{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .home-link:hover{color:var(--lime)}
+  .sec-tag{font-family:'JetBrains Mono',monospace;color:var(--violet);font-size:13px;letter-spacing:.25em;text-transform:uppercase;margin:44px 0 12px}
+  h1.title{font-weight:700;font-size:clamp(30px,6vw,46px);line-height:1.25;margin-bottom:30px}
+  .post{font-size:18.5px;line-height:1.9;color:#e9e7e0}
+  .post p{margin:0 0 1.35em}
+  .post figure{margin:2em 0}
+  .post img{width:100%;height:auto;border-radius:14px;display:block}
+  .post figcaption{color:var(--dim);font-size:13.5px;text-align:center;margin-top:10px;line-height:1.5}
+  .post h3{font-size:25px;line-height:1.4;margin:1.7em 0 .6em;color:var(--ink)}
+  .post h4{font-size:21px;line-height:1.45;margin:1.6em 0 .55em;color:var(--ink)}
+  .post blockquote{border-left:3px solid var(--lime);padding-left:18px;margin:1.8em 0;color:#d8d5cc}
+  .post a{color:var(--lime);text-decoration:underline;text-underline-offset:3px}
+  .post hr{border:none;border-top:1px solid var(--line);margin:2.4em 0}
+  .post ul,.post ol{margin:0 0 1.35em 1.25em}
+  .post li{margin-bottom:.45em}
+  .post iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;margin:1.8em 0}
+  .views-row{display:flex;align-items:center;gap:8px;margin-top:38px;color:var(--dim)}
+  .views-row svg{width:20px;height:20px;display:block}
+  .views-row .vc-num{font-size:15.5px;font-weight:500;letter-spacing:.03em}
+  .pn{display:flex;justify-content:space-between;gap:14px;margin-top:30px;border-top:1px solid var(--line);padding-top:22px}
+  .pn a{flex:1;font-size:14.5px;font-weight:600;color:var(--dim);transition:.25s;line-height:1.5}
+  .pn a:hover{color:var(--lime)}
+  .pn a.next{text-align:right}
+  .pn .dir{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:5px;color:var(--violet)}
+  .back{display:inline-block;margin:30px 0 6px;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .back:hover{color:var(--lime)}
+  footer{border-top:1px solid var(--line);padding:26px clamp(18px,6vw,72px);display:flex;justify-content:center;text-align:center;color:var(--dim);font-size:13px;max-width:1280px;margin:44px auto 0}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="../../">DEON<span>.</span></a>
+    <a class="home-link" href="../">&larr; Android / Tech</a>
+  </header>
+  <div class="sec-tag">// Articles</div>
+  <h1 class="title">The size difference in apks</h1>
+  <article class="post">
+<p>പ്ലേ സ്റ്റോറിന് വെളിയിൽ നിന്ന് ആപ്പുകൾ (apk) ഡൌൺലോഡ് ചെയ്ത് ഫോണിൽ ഇൻസ്റ്റാൾ (sideload) ചെയ്തിട്ടുള്ളവരാണ് / ചെയ്യാറുള്ളവരാണ് നമ്മൾ...</p><p><br/>ചില ആപ്പുകൾ apk ഫയൽ ഡൌൺലോഡ് ചെയ്യുമ്പോൾ അതിന്റെ size, പ്ലേ സ്റ്റോറിൽ ഉള്ള അതേ ആപ്പിന്റെ size നേക്കാൾ കൂടുതൽ ആയിട്ടുള്ളത് ശ്രദ്ധിച്ചിട്ടുണ്ടാവും.</p><p><br/>ഉദാഹരണത്തിന്, ടെലഗ്രാമിന്റെ ഏറ്റവും പുതിയ വേർഷൻ പ്ലേ സ്റ്റോറിൽ കാണുന്നത് 28MB യും അതേ വേർഷന്റെ തന്നെ ടെലഗ്രാമിന്റെ <a href="https://t.me/TAndroidApk" rel="noopener" target="_blank">ഒഫീഷ്യൽ ചാനലിലുള്ള</a> apk ഫയൽ 61MB യും ആണ്.</p><figure><img src="../../assets/img/5a030b4ff41d1bbb94784.jpg"/><figcaption></figcaption></figure><p><br/>ഗൂഗിളിൽ സെർച്ച്‌ ചെയ്തു കിട്ടുന്ന ഇത്തരം apk ഫയൽസ് കണ്ടിട്ട് ഇനി അവർ അതിനകത്തു വല്ല spyware ഉം add ചെയ്തിട്ടാണോ ഇത്രയും size difference എന്ന് എപ്പോളെങ്കിലും ചിന്തിച്ചിട്ടുണ്ടോ?</p><p><br/><strong>എന്തുകൊണ്ടാണ് ഈ size difference?</strong></p><p><br/>ഓരോ ആൻഡ്രോയ്ഡ് ഫോണിനും വ്യത്യസ്ത CPU ആണുള്ളത്. അതുകൊണ്ടുതന്നെ ഓരോന്നിനും യോജിച്ച രീതിയിൽ വെവ്വേറെ കോഡുകൾ ഉൾപ്പെടുത്തിയാണ് ഡെവലപ്പർ ആപ്പ് പാക്കേജുകൾ (apk) ഉണ്ടാക്കുന്നത്.</p><p><br/>armeabi-v7a, arm64-v8a, x86, x86_64 ഒക്കെ ഇങ്ങനെ വ്യത്യസ്തങ്ങളായ cpu architectures ആണ്. (ABI)<br/>(നിങ്ങളുടെ ഫോണിന്റെ ABI specs അറിയാൻ <a href="https://play.google.com/store/apps/details?id=com.androidfung.drminfo" rel="noopener" target="_blank">DRM info എന്ന ആപ്പ്</a> ഉപയോഗിക്കാം)</p><p><br/>ഇങ്ങനെ എല്ലാ ഫോണിനും സപ്പോർട്ട് ആവുന്ന വിധത്തിലുള്ള universal apk ഫയലാണ് നമ്മൾ മുകളിൽ ടെലഗ്രാമിന്റെ ഒഫീഷ്യൽ ചാനലിൽ കണ്ടത്. മേൽപ്പറഞ്ഞ ABI ഉള്ള ഡിവൈസുകളിൽ എല്ലാം വർക്ക് ചെയ്യാനുള്ള resources ഈ ഒറ്റ apk ഫയലിൽ ഉണ്ടാവും.</p><p><br/>എന്നാൽ Telegram, Twitter, WhatsApp അടക്കമുള്ള popular ഡെവലപ്പേഴ്സ് ഒക്കെ പ്ലേ സ്റ്റോറിൽ ആപ്പുകൾ സബ്‌മിറ്റ് ചെയ്യുന്നത് AAB (Android App Bundle) എന്ന ഫോർമാറ്റിൽ ആണ്. So, play store ൽ നിന്ന് ഡൌൺലോഡ് ആവുന്ന ഫയലിൽ നമ്മുടെ ഫോണിന്റെ specifications അനുസരിച്ച് അതിനു വേണ്ട resources മാത്രമേ ഉണ്ടാവൂ. അതുകൊണ്ടാണ് universal apk യെ അപേക്ഷിച്ച് അതിന് size കുറവ്.</p><figure><img src="../../assets/img/f9cbd6266e8f33702c281.jpg"/><figcaption>61MB ഉള്ള Telegram apk ഫയലിനുള്ളിലെ supported ABIs &amp; their folders.</figcaption></figure><p>NB: വിശ്വാസ്യയോഗ്യമായ ഇടങ്ങളിൽ നിന്നു മാത്രമേ apk ഫയലുകൾ ഡൌൺലോഡ് ചെയ്ത് ഇൻസ്റ്റാൾ ചെയ്യാവൂ.</p><p><a href="https://t.me/DeonWrites" rel="noopener" target="_blank">@DeonWrites</a></p><hr/><p>💬 <a href="https://t.me/DeonWrites/702" rel="noopener" target="_blank">Add a comment to this post</a></p><hr/><p>Related topics:</p><p>• <a href="/Google-replacing-APK-with-AAB-07-04">ആൻഡ്രോയ്ഡ് ആപ്പുകൾ APK യിൽ നിന്ന് AAB ലേക്ക്...</a><br/>• <a href="/Virustotal-online-antivirus-scan-10-28">APK ഫയലുകൾ ഇനി ടെലഗ്രാമിനുള്ളിൽ തന്നെ Virustotal ബോട്ട് വെച്ച് സ്കാൻ ചെയ്യാം </a></p>
+  </article>
+  <div class="views-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="vc-num" data-base="3087">3,087</span></div>
+  <nav class="pn"><a class="prev" href="../read-aloud-by-google-06-20/"><span class="dir">&larr; Previous</span>ഗൂഗിളിന്റെ ന്യൂസ്‌ ഫീഡിൽ വരുന്…</a><a class="next" href="../google-replacing-apk-with-aab-07-04/"><span class="dir">Next &rarr;</span>പ്ലേ സ്റ്റോറിൽ ഇനിമുതൽ ആപ്പ് പ…</a></nav>
+  <a class="back" href="../">&larr; All Android / Tech</a>
+</div>
+<footer><span>&copy; 2026 Deepak Deon</span></footer>
+
+<script>
+(function(){
+  var el=document.querySelector('.vc-num'); if(!el) return;
+  var base=parseInt(el.getAttribute('data-base')||'0',10)||0;
+  var NS='deepakdeon-site', KEY='android-the-size-difference-in-apks-01-18';
+  var done=false; try{ done=!!sessionStorage.getItem('vc-'+KEY); }catch(e){}
+  fetch('https://abacus.jasoncameron.dev/'+(done?'get':'hit')+'/'+NS+'/'+KEY)
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d && typeof d.value==='number'){
+        el.textContent=(base+d.value).toLocaleString('en-US');
+        if(!done){ try{ sessionStorage.setItem('vc-'+KEY,'1'); }catch(e){} }
+      }
+    }).catch(function(){});
+})();
+</script>
+
+</body>
+</html>

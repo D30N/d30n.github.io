@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google replacing APK with AAB — Deepak Deon</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0f; --bg2:#101018; --ink:#f2f0ea; --dim:#9a97a8;
+    --lime:#c8f542; --violet:#8b7bff; --pink:#ff7ad9; --line:#26262f;
+    --card:#12121a;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--lime);color:#0a0a0f}
+  .wrap{max-width:760px;margin:0 auto;padding:0 clamp(18px,5vw,40px)}
+  header{display:flex;justify-content:space-between;align-items:center;padding:26px 0 8px}
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:.06em}
+  .logo span{color:var(--lime)}
+  .home-link{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .home-link:hover{color:var(--lime)}
+  .sec-tag{font-family:'JetBrains Mono',monospace;color:var(--violet);font-size:13px;letter-spacing:.25em;text-transform:uppercase;margin:44px 0 12px}
+  h1.title{font-weight:700;font-size:clamp(30px,6vw,46px);line-height:1.25;margin-bottom:30px}
+  .post{font-size:18.5px;line-height:1.9;color:#e9e7e0}
+  .post p{margin:0 0 1.35em}
+  .post figure{margin:2em 0}
+  .post img{width:100%;height:auto;border-radius:14px;display:block}
+  .post figcaption{color:var(--dim);font-size:13.5px;text-align:center;margin-top:10px;line-height:1.5}
+  .post h3{font-size:25px;line-height:1.4;margin:1.7em 0 .6em;color:var(--ink)}
+  .post h4{font-size:21px;line-height:1.45;margin:1.6em 0 .55em;color:var(--ink)}
+  .post blockquote{border-left:3px solid var(--lime);padding-left:18px;margin:1.8em 0;color:#d8d5cc}
+  .post a{color:var(--lime);text-decoration:underline;text-underline-offset:3px}
+  .post hr{border:none;border-top:1px solid var(--line);margin:2.4em 0}
+  .post ul,.post ol{margin:0 0 1.35em 1.25em}
+  .post li{margin-bottom:.45em}
+  .post iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;margin:1.8em 0}
+  .views-row{display:flex;align-items:center;gap:8px;margin-top:38px;color:var(--dim)}
+  .views-row svg{width:20px;height:20px;display:block}
+  .views-row .vc-num{font-size:15.5px;font-weight:500;letter-spacing:.03em}
+  .pn{display:flex;justify-content:space-between;gap:14px;margin-top:30px;border-top:1px solid var(--line);padding-top:22px}
+  .pn a{flex:1;font-size:14.5px;font-weight:600;color:var(--dim);transition:.25s;line-height:1.5}
+  .pn a:hover{color:var(--lime)}
+  .pn a.next{text-align:right}
+  .pn .dir{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:5px;color:var(--violet)}
+  .back{display:inline-block;margin:30px 0 6px;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .back:hover{color:var(--lime)}
+  footer{border-top:1px solid var(--line);padding:26px clamp(18px,6vw,72px);display:flex;justify-content:center;text-align:center;color:var(--dim);font-size:13px;max-width:1280px;margin:44px auto 0}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="../../">DEON<span>.</span></a>
+    <a class="home-link" href="../">&larr; Android / Tech</a>
+  </header>
+  <div class="sec-tag">// Articles</div>
+  <h1 class="title">Google replacing APK with AAB</h1>
+  <article class="post">
+<figure><img src="../../assets/img/3f62b4f0ec7b4687c47be.jpg"/><figcaption></figcaption></figure><p><strong>Android ആപ്പുകൾ .apk ൽ നിന്നും .aab ലേക്ക്.</strong><br/><br/>ആഗസ്ത് മാസം മുതൽ ഗൂഗിൾ പ്ലേ സ്റ്റോറിൽ നൽകുന്ന പുതിയ ആപ്പുകൾ / പുതിയ ആപ്പ് അപ്ഡേഷൻ ഒക്കെ AAB (Android App Bundle) ഫോർമാറ്റിൽ ആയിരിക്കും.<br/><br/><br/>APK (Android Package) യെക്കാൾ 15% വരെ കുറഞ്ഞ file size ആയിരിക്കും AAB ആപ്പുകൾ എന്നാണ് ഗൂഗിൾ പറയുന്നത്. അതുകൊണ്ടു തന്നെ വേഗത്തിൽ ഡൗൺലോഡ് ചെയ്യാനും കുറഞ്ഞ storage ൽ ഉപയോഗിക്കാനും കഴിയും.<br/><br/>So, Developers ന് ഇനിമുതൽ തങ്ങളുടെ ആപ്പ് ഓരോ device നും optimize ആവുന്ന വിധത്തിൽ പ്രത്യേകം build, sign ഒന്നും ചെയ്യേണ്ട ആവശ്യമില്ല. AAB ഉപയോഗിച്ച് ഓരോ device ന്റെയും configuration അനുസരിച്ച് Google Play വിതരണം ചെയ്തോളും.<br/><br/>2018 ലാണ് ഗൂഗിൾ AAB അവതരിപ്പിക്കുന്നത്. നിലവിൽ Adobe, Netflix, Twitter അടക്കം ഒരുപാട് ആപ്പുകൾ ഈ ഫോർമാറ്റിലാണ് ഉള്ളത്. ഈ വർഷത്തോടെ എല്ലാ ആപ്പ് submission ഉം AAB ലേക്ക് മാറ്റി Play Store ൽ നിന്നും APK പൂർണ്ണമായും ഉപേക്ഷിക്കാൻ ആണ് ഗൂഗിളിന്റെ തീരുമാനം.<br/><br/>ഇത് കൂടാതെ 150 MB ക്ക് മേലെ വരുന്ന ആപ്പുകൾക്ക് Play Asset Delivery (PAD) ഫീച്ചറും ഉണ്ട്. <br/>അതായത്, PUBG പോലുള്ള വലിയ size ഉള്ള ഗെയിമുകൾ ഇപ്പോൾ APK ക്ക് പുറമെ Expansion file (OBB) ഉപയോഗിച്ചാണ് run ചെയ്യുന്നത്. PAD ലൂടെ ഈ game resource files പ്ലേ സ്റ്റോറിൽ നിന്ന് തന്നെ എളുപ്പത്തിൽ ഡൗൺലോഡ് ചെയ്യാൻ കഴിയുന്ന സൗകര്യം കിട്ടും, OBB യും ഒഴിവാക്കും.<br/><br/>PAD ക്ക് പുറമെ Play Feature Delivery (PFD) യും ഉണ്ട്... ഒരു ആപ്പിലെ ഫീച്ചറുകൾക്ക് നമ്മുടെ ആവശ്യത്തിന് ഡൗൺലോഡ് ചെയ്തെടുക്കാനുള്ള സൗകര്യം.<br/><br/>എങ്കിലും, Amazon App Store, Huawei App Gallery ഒന്നും AAB സപ്പോർട്ട് ഇല്ലാത്തതിനാൽ developers ന് തങ്ങളുടെ ആപ്പുകൾ ഈ പ്ലാറ്റ്ഫോമുകളിൽ പബ്ലിഷ് ചെയ്യാൻ APK കൂടി ഉണ്ടാക്കേണ്ടി വരും.<br/>മാത്രമല്ല തങ്ങളുടെ 11th version ൽ Android Apps support കൊണ്ടുവരാൻ ഇരിക്കുന്ന Microsoft Windows നും ഇതൊരു തിരിച്ചടിയായേക്കും.</p><p></p><p>- DeOn -</p><hr/><p>💬 <a href="https://t.me/DeonWrites/337" rel="noopener" target="_blank">Add a comment to this post</a></p>
+  </article>
+  <div class="views-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="vc-num" data-base="849">849</span></div>
+  <nav class="pn"><a class="prev" href="../the-size-difference-in-apks-01-18/"><span class="dir">&larr; Previous</span>Apk ഫയലുകൾക്ക് play store അപ്പ…</a><a class="next" href="../is-watching-porn-is-illegal-in-india-10-16/"><span class="dir">Next &rarr;</span>വെബിലും ഫോണിലും അശ്ലീല വിഡിയോ…</a></nav>
+  <a class="back" href="../">&larr; All Android / Tech</a>
+</div>
+<footer><span>&copy; 2026 Deepak Deon</span></footer>
+
+<script>
+(function(){
+  var el=document.querySelector('.vc-num'); if(!el) return;
+  var base=parseInt(el.getAttribute('data-base')||'0',10)||0;
+  var NS='deepakdeon-site', KEY='android-google-replacing-apk-with-aab-07-04';
+  var done=false; try{ done=!!sessionStorage.getItem('vc-'+KEY); }catch(e){}
+  fetch('https://abacus.jasoncameron.dev/'+(done?'get':'hit')+'/'+NS+'/'+KEY)
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d && typeof d.value==='number'){
+        el.textContent=(base+d.value).toLocaleString('en-US');
+        if(!done){ try{ sessionStorage.setItem('vc-'+KEY,'1'); }catch(e){} }
+      }
+    }).catch(function(){});
+})();
+</script>
+
+</body>
+</html>
