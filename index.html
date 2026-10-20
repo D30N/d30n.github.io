@@ -186,8 +186,8 @@
     <span class="row"><span>Here<i class="dot">.</i></span></span>
   </h1>
   </div>
-  <p class="hero-sub">Hi! My name is <b>Deepak Deon</b> and I'm
-  <span class="rotator" id="rotator">a Digital creator</span>
+  <p class="hero-sub">Hi! My name is <b>Deepak Deon</b> and I'm <span id="rot-article">a</span>
+  <span class="rotator" id="rotator">Digital creator</span>
   Welcome to my portfolio website.</p>
   <div class="hero-cta">
     <a class="btn solid" href="#links">All my links ↓</a>
@@ -297,10 +297,10 @@
   // Rotating role words in the hero
   (function(){
     var words = ['a Digital creator', 'a Blogger', 'a Tweep', 'a Tech enthusiast', 'a Content creator', 'a Story writer', 'a Lyricist', 'a Photographer', 'a Cinematographer', 'a Video editor', 'a Graphic designer', 'a UI designer', 'a Web designer', 'an App developer', 'a Bot developer', 'a Web developer'];
-    var el = document.getElementById('rotator'), i = 0;
+    var el = document.getElementById('rotator'), art = document.getElementById('rot-article'), i = 0;
     setInterval(function(){
       el.style.opacity = '0';
-      setTimeout(function(){ i = (i+1) % words.length; el.textContent = words[i]; el.style.opacity = '1'; }, 280);
+      setTimeout(function(){ i = (i+1) % words.length; var w = words[i], sp = w.indexOf(' '); art.textContent = w.slice(0, sp); el.textContent = w.slice(sp+1); el.style.opacity = '1'; }, 280);
     }, 2600);
     el.style.transition = 'opacity .28s ease';
   })();
