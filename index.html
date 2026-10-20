@@ -54,10 +54,9 @@
   h1 .deon-svg{display:block;height:.94em;width:auto;overflow:visible;margin-left:-.04em}
   h1 .deon-svg text{font-family:'Archivo',sans-serif;font-weight:900;-webkit-text-stroke:0}
   h1 .deon-svg .base{fill:none;stroke:var(--ink);stroke-width:2.4}
-  h1 .deon-svg .laser{fill:none;stroke:#ff1f1f;stroke-width:4.4;stroke-dasharray:120 1280 120 1280;animation:laser-run 4.5s linear infinite;filter:drop-shadow(0 0 6px rgba(255,30,30,.95)) drop-shadow(0 0 16px rgba(255,0,0,.55))}
-  h1 .deon-svg .laser-core{fill:none;stroke:#ffb3b3;stroke-width:1.5;stroke-dasharray:120 1280 120 1280;animation:laser-run 4.5s linear infinite}
-  @keyframes laser-run{to{stroke-dashoffset:-2800}}
-  @media (prefers-reduced-motion: reduce){h1 .deon-svg .laser,h1 .deon-svg .laser-core{animation:none}}
+  h1 .deon-svg .beam-move{animation:beam-sweep 3.4s linear infinite;filter:drop-shadow(0 0 10px rgba(0,150,255,.9)) drop-shadow(0 0 22px rgba(0,110,255,.6))}
+  @keyframes beam-sweep{0%{transform:translateX(-280px)}58%{transform:translateX(680px)}100%{transform:translateX(680px)}}
+  @media (prefers-reduced-motion: reduce){h1 .deon-svg .beam-move{animation:none}}
   @keyframes rise{to{transform:translateY(0)}}
   .hero-sub{margin-top:26px;font-size:clamp(17px,2.6vw,26px);color:var(--dim);max-width:640px;line-height:1.5}
   .hero-sub b{color:var(--ink)}
@@ -167,7 +166,7 @@
   <div class="hero-top">
   <h1>
     <span class="row"><span>Deepak</span></span>
-    <span class="row"><span><svg class="deon-svg" viewBox="-8 0 643 188" role="img" aria-label="Deon"><text class="base" x="0" y="154" font-size="200" letter-spacing="-2">DEON</text><text class="laser" x="0" y="154" font-size="200" letter-spacing="-2">DEON</text><text class="laser-core" x="0" y="154" font-size="200" letter-spacing="-2">DEON</text></svg></span></span>
+    <span class="row"><span><svg class="deon-svg" viewBox="-8 0 643 188" role="img" aria-label="Deon"><defs><linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0066ff" stop-opacity="0"/><stop offset=".42" stop-color="#0090ff" stop-opacity=".55"/><stop offset=".5" stop-color="#eaf8ff" stop-opacity="1"/><stop offset=".58" stop-color="#0090ff" stop-opacity=".55"/><stop offset="1" stop-color="#0066ff" stop-opacity="0"/></linearGradient><mask id="deonOutlineMask" maskUnits="userSpaceOnUse" x="-20" y="-20" width="690" height="230"><text x="0" y="154" font-size="200" letter-spacing="-2" fill="none" stroke="#fff" stroke-width="7">DEON</text></mask></defs><text class="base" x="0" y="154" font-size="200" letter-spacing="-2">DEON</text><g mask="url(#deonOutlineMask)"><g class="beam-move"><rect x="0" y="-12" width="250" height="212" fill="url(#beamGrad)"/></g></g></svg></span></span>
     <span class="row"><span>Here<i class="dot">.</i></span></span>
   </h1>
   </div>
