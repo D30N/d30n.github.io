@@ -53,7 +53,492 @@
   h1 .dot{color:var(--lime);-webkit-text-stroke:0}
   h1 .row:nth-child(1) span{animation:rise 1s cubic-bezier(.22,1,.36,1) forwards, rgbShift 18s linear infinite}
   h1 .row:nth-child(3) span{animation:rise 1s cubic-bezier(.22,1,.36,1) .24s forwards, rgbShift 18s linear infinite}
-  @keyframes rgbShift{0%{color:#ffadad}33%{color:#b5f0a8}66%{color:#a5c8ff}100%{color:#ffadad}})();
+  @keyframes rgbShift{0%{color:#ffadad}33%{color:#b5f0a8}66%{color:#a5c8ff}100%{color:#ffadad}}
+  @keyframes rgbShiftD{0%{color:#e05252}33%{color:#4da34d}66%{color:#4d7dd1}100%{color:#e05252}}
+  html[data-theme="light"] h1 .row:nth-child(1) span, html[data-theme="light"] h1 .row:nth-child(3) span{animation-name:rise, rgbShiftD}
+  @media (prefers-reduced-motion: reduce){h1 .row:nth-child(1) span, h1 .row:nth-child(3) span{animation:rise 1s cubic-bezier(.22,1,.36,1) forwards}}
+  h1 .deon-svg{display:block;height:.94em;width:auto;overflow:visible;margin-left:-.04em}
+  h1 .deon-svg text{font-family:'Archivo',sans-serif;font-weight:900;-webkit-text-stroke:0}
+  h1 .deon-svg .base{fill:none;stroke:var(--ink);stroke-width:2.4}
+  h1 .deon-svg .beam-move{animation:beam-sweep 3.4s linear infinite;filter:drop-shadow(0 0 10px rgba(0,150,255,.9)) drop-shadow(0 0 22px rgba(0,110,255,.6))}
+  @keyframes beam-sweep{0%{transform:translateX(-280px)}58%{transform:translateX(680px)}100%{transform:translateX(680px)}}
+  @media (prefers-reduced-motion: reduce){h1 .deon-svg .beam-move{animation:none}}
+  @keyframes rise{to{transform:translateY(0)}}
+  .hero-sub{margin-top:26px;font-size:clamp(17px,2.6vw,26px);color:var(--dim);max-width:640px;line-height:1.5}
+  .hero-sub b{color:var(--ink)}
+  .rotator{display:block;width:max-content;max-width:100%;color:var(--lime);font-weight:700;border-bottom:3px solid var(--violet);font-size:1.3em;line-height:1.25;margin:2px 0 8px}
+  .hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:14px 28px;border-radius:99px;font-weight:700;font-size:15px;border:2px solid var(--ink);transition:.25s}
+  .btn.solid{background:var(--lime);border-color:var(--lime);color:#0a0a0f}
+  .btn:hover{transform:translateY(-3px)}
+  .btn.solid:hover{background:var(--ink);border-color:var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:#0a0a0f}
+  .scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);color:var(--dim);font-size:11px;letter-spacing:.3em;text-transform:uppercase;animation:bob 2s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+  /* ---------- Marquee ---------- */
+
+  /* ---------- Sections ---------- */
+  section{padding:clamp(70px,10vw,130px) clamp(18px,6vw,72px);max-width:1280px;margin:0 auto}
+  .sec-tag{font-family:'JetBrains Mono',monospace;color:var(--violet);font-size:13px;letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px}
+  h2{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(34px,6.5vw,72px);line-height:1;margin-bottom:34px}
+  h2 em{font-style:normal;color:var(--lime)}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .95s cubic-bezier(.22,1,.36,1),transform .95s cubic-bezier(.22,1,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,4vw,56px)}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr}}
+  .about-txt{font-size:clamp(16px,2vw,20px);line-height:1.75;color:var(--dim)}
+  .about-txt b{color:var(--ink)}
+  .about-txt .hl-l{color:var(--lime);font-weight:700}
+  .about-txt .hl-v{color:var(--violet);font-weight:700}
+  .about-txt .hl-p{color:var(--pink);font-weight:700}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+  .stat .num{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(30px,4vw,44px);color:var(--lime)}
+  .stat .lbl{color:var(--dim);font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+
+  /* ---------- Skills ---------- */
+  .chips{display:flex;flex-wrap:wrap;gap:12px}
+  .chip{border:1.5px solid var(--line);border-radius:99px;padding:12px 22px;font-weight:600;font-size:15px;background:var(--card);transition:.25s;cursor:default}
+  .chip:hover{border-color:var(--lime);color:var(--lime);transform:translateY(-3px) rotate(-1deg)}
+  .skill-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:28px}
+  .skill-col{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+  .skill-col h3{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--violet);margin-bottom:14px;font-family:'JetBrains Mono',monospace}
+  .skill-col li{list-style:none;padding:7px 0;color:var(--dim);border-bottom:1px dashed var(--line);font-size:15px}
+  .skill-col li:last-child{border-bottom:none}
+
+  /* ---------- Works ---------- */
+  .works{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+  .work{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px;transition:.3s;position:relative;overflow:hidden}
+  .work::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(200,245,66,.07));opacity:0;transition:.3s}
+  .work:hover{transform:translateY(-6px);border-color:var(--lime)}
+  .work:hover::before{opacity:1}
+  .work .w-ico{font-size:30px}
+  .work h3{font-family:'Archivo',sans-serif;font-weight:800;font-size:21px}
+  .work p{color:var(--dim);font-size:14.5px;line-height:1.6;flex:1}
+  .work .w-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--violet)}
+  .work .w-link{font-weight:700;color:var(--lime);font-size:14px}
+
+  /* ---------- Links ---------- */
+  .link-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .links-sub{font-family:'JetBrains Mono',monospace;color:var(--violet);font-size:13px;letter-spacing:.25em;text-transform:uppercase;margin:30px 0 14px}
+  .links-sub:first-of-type{margin-top:0}
+  .lbtn.wide{grid-column:1/-1}
+  @media(max-width:480px){.lbtn{padding:13px 14px;gap:9px}.lbtn .li svg{width:22px;height:22px}.lbtn small{font-size:11px}}
+  .lbtn{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px;font-weight:600;transition:.25s}
+  .lbtn:hover{border-color:var(--pink);transform:translateY(-3px)}
+  .lbtn .li{display:flex;align-items:center}
+  .lbtn .li svg{width:27px;height:27px;display:block}
+  .lbtn small{display:block;color:var(--dim);font-weight:400;font-size:12px}
+
+  /* ---------- Popular reels ---------- */
+  .reelwrap{overflow:hidden;cursor:grab;touch-action:pan-y;-webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
+  .reelwrap.dragging{cursor:grabbing}
+  .reeltrack{display:flex;gap:16px;width:max-content;will-change:transform}
+  .reeltrack img{-webkit-user-drag:none;user-select:none}
+  .rcard{position:relative;width:216px;aspect-ratio:9/16;flex:none;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--card);transition:transform .3s,border-color .3s}
+  .rcard:hover{transform:translateY(-6px);border-color:var(--lime)}
+  .rcard img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.22,1,.36,1)}
+  .rcard:hover img{transform:scale(1.06)}
+  .rcard .play{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;background:rgba(4,5,12,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.25)}
+  .rcard .play svg{width:13px;height:13px;fill:#fff;margin-left:2px}
+  .rcard .cap{position:absolute;left:0;right:0;bottom:0;padding:40px 14px 13px;background:linear-gradient(180deg,transparent,rgba(2,3,8,.9) 55%);color:#fff}
+  .rcard .cap b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:14.5px;font-weight:600;line-height:1.35}
+  .rcard .meta{display:flex;align-items:center;gap:6px;margin-top:7px;font-size:12px;color:#c9cede;font-family:'JetBrains Mono',monospace}
+  .rcard .meta svg{width:12px;height:12px;fill:var(--pink);flex:none}
+
+  /* ---------- Contact / footer ---------- */
+  .big-cta{text-align:center;padding-bottom:30px}
+  .big-cta h2{font-size:clamp(40px,9vw,110px)}
+  .contact-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+  .contact-row .btn{display:inline-flex;align-items:center;gap:9px}
+  .contact-row .btn svg{width:19px;height:19px;display:block}
+  .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;border:2px solid var(--ink);transition:.25s}
+  .icon-btn svg{width:25px;height:25px;display:block}
+  .icon-btn:hover{transform:translateY(-3px);background:var(--ink)}
+  .anon-row{margin-top:16px}
+  footer{border-top:1px solid var(--line);padding:26px clamp(18px,6vw,72px);display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;color:var(--dim);font-size:13px;max-width:1280px;margin:0 auto}
+  footer .views-row{display:flex;align-items:center;gap:7px;color:var(--dim)}
+  footer .views-row svg{width:18px;height:18px;display:block}
+  footer .views-row .vc-num{font-size:13.5px;font-weight:500;letter-spacing:.03em}
+
+  /* Theme toggle + light (day) theme */
+  .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:var(--card,#12121a);color:var(--ink);cursor:pointer;transition:.25s;padding:0;flex:none}
+  .theme-toggle:hover{border-color:var(--lime);color:var(--lime)}
+  .theme-toggle svg{width:19px;height:19px;display:block}
+  .theme-toggle .ic-sun{display:none}
+  html[data-theme="light"] .theme-toggle .ic-sun{display:block}
+  html[data-theme="light"] .theme-toggle .ic-moon{display:none}
+  .hdr-right{display:flex;align-items:center;gap:16px}
+  .theme-toggle.home-fab{position:fixed;top:76px;right:clamp(18px,4vw,48px);z-index:51;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+  html[data-theme="light"]{--bg:#f7f6f1;--bg2:#efeee7;--ink:#17171d;--dim:#5f5f6a;--line:#ddd9cd;--card:#ffffff;--lime:#79a400;--violet:#6a54e8;--pink:#e84fc0}
+</style>
+<script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="l-word">connecting to deon</div>
+  <div class="l-pct"><span id="pct">0</span><em>%</em></div>
+  <div class="l-bar"><div class="l-fill" id="fill"></div></div>
+</div>
+
+<!-- Nav -->
+<nav>
+  <a class="logo" href="#home">DEON<span>.</span></a>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+<button class="theme-toggle home-fab" type="button" aria-label="Switch dark / light theme"><svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+
+<!-- Hero -->
+<header id="home">
+  <div class="hero-text">
+  <div class="hello">hello there 👋</div>
+  <div class="hero-top">
+  <h1>
+    <span class="row"><span>Deepak</span></span>
+    <span class="row"><span><svg class="deon-svg" viewBox="-8 0 643 188" role="img" aria-label="Deon"><defs><linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0066ff" stop-opacity="0"/><stop offset=".42" stop-color="#0090ff" stop-opacity=".55"/><stop offset=".5" stop-color="#eaf8ff" stop-opacity="1"/><stop offset=".58" stop-color="#0090ff" stop-opacity=".55"/><stop offset="1" stop-color="#0066ff" stop-opacity="0"/></linearGradient><mask id="deonOutlineMask" maskUnits="userSpaceOnUse" x="-20" y="-20" width="690" height="230"><text x="0" y="154" font-size="200" letter-spacing="-2" fill="none" stroke="#fff" stroke-width="7">DEON</text></mask></defs><text class="base" x="0" y="154" font-size="200" letter-spacing="-2">DEON</text><g mask="url(#deonOutlineMask)"><g class="beam-move"><rect x="0" y="-12" width="250" height="212" fill="url(#beamGrad)"/></g></g></svg></span></span>
+    <span class="row"><span>Here<i class="dot">.</i></span></span>
+  </h1>
+  </div>
+  <p class="hero-sub">Hi! My name is <b>Deepak Deon</b> and I'm <span id="rot-article">a</span>
+  <span class="rotator" id="rotator">Digital creator</span>
+  Welcome to my portfolio website.</p>
+  <div class="hero-cta">
+    <a class="btn solid" href="#links">All my links ↓</a>
+    <a class="btn ghost" href="#contact">Reach me out</a>
+  </div>
+  </div>
+  <div class="scroll-hint">scroll</div>
+</header>
+
+<!-- Marquee -->
+
+<!-- About -->
+<section id="about">
+  <div class="sec-tag reveal">// a little about myself</div>
+  <h2 class="reveal">About <em>Me</em></h2>
+  <div class="about-grid">
+    <p class="about-txt reveal">
+      I'm a <span class="hl-l">tech enthusiast</span> and <span class="hl-v">content creator</span> from
+      <b>Kochi, Kerala</b> and helping people with my limited knowledge is something I truly love.
+      <br/><br/>
+      My journey began years ago, writing tech posts for a large Facebook community called
+      <span class="hl-p">Android Community</span>. Today, I share tech content as reels on Instagram, and I run
+      a community on Telegram called <b>DeonWrites</b>.
+      <br/><br/>
+      I love taking <span class="hl-l">photos and videos</span> of the moments I never want to forget.
+      And when a photo isn't enough, I write it down. That's the root of my
+      <span class="hl-v">short stories and memoirs</span>!
+    </p>
+    <div class="stats reveal">
+      <div class="stat"><div class="num" data-count="56" data-suffix="K+">56K+</div><div class="lbl">Instagram followers</div></div>
+      <div class="stat"><div class="num" data-count="15" data-suffix="K+">15K+</div><div class="lbl">@DeonWrites subscribers</div></div>
+      <div class="stat"><div class="num" data-count="17" data-suffix="">17</div><div class="lbl">Android apps built</div></div>
+      <div class="stat"><div class="num" data-count="273" data-suffix="">273</div><div class="lbl">Stories &amp; tech posts</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Popular Reels -->
+<section id="reels">
+  <div class="sec-tag reveal">// most loved on instagram</div>
+  <h2 class="reveal">My Popular <em>Reels</em></h2>
+  <div class="reelwrap reveal"><div class="reeltrack" id="reeltrack">
+    <a class="rcard" href="https://www.instagram.com/reel/C4fuEIXPA3p/" target="_blank" rel="noopener">
+      <img src="assets/reels/C4fuEIXPA3p.jpg" alt="Malayalam handwritten text on Instagram stories and reels" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>How to add Malayalam handwritten text on Instagram stories &amp; reels</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>221.5K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/C9FQuuvO8Dx/" target="_blank" rel="noopener">
+      <img src="assets/reels/C9FQuuvO8Dx.jpg" alt="Music composition using Suno AI" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Music composition using Suno AI</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>131.3K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/C7JegXOvkmK/" target="_blank" rel="noopener">
+      <img src="assets/reels/C7JegXOvkmK.jpg" alt="Customised notebooks from Classmate by ITC" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Customised notebooks from Classmate by ITC</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>114.9K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DdgEYzQNYDp/" target="_blank" rel="noopener">
+      <img src="assets/reels/DdgEYzQNYDp.jpg" alt="Let's steal the vibe" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Let's steal the vibe 😉</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>110.9K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DLZHUG-yGgL/" target="_blank" rel="noopener">
+      <img src="assets/reels/DLZHUG-yGgL.jpg" alt="WhatsApp View Once saving using Userbot" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>WhatsApp View Once saving using Userbot — Part 1</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>96.7K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/CvjtMtsMzAW/" target="_blank" rel="noopener">
+      <img src="assets/reels/CvjtMtsMzAW.jpg" alt="Configure an NFC tag or NFC sticker" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Configure an NFC tag / NFC sticker</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>70.1K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/CwFcZqFNPjF/" target="_blank" rel="noopener">
+      <img src="assets/reels/CwFcZqFNPjF.jpg" alt="Expense calculator" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Expense calculator 💰</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>51.5K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DZpRkQPSRYU/" target="_blank" rel="noopener">
+      <img src="assets/reels/DZpRkQPSRYU.jpg" alt="Telegram restricted in India — use a proxy" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Telegram restricted in India? Use a proxy to get access</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>40.1K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/C7_x2Cjvsr-/" target="_blank" rel="noopener">
+      <img src="assets/reels/C7_x2Cjvsr-.jpg" alt="Turn off these Facebook settings immediately" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Turn off these Facebook settings immediately!</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>30.9K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DCWSVVtymG3/" target="_blank" rel="noopener">
+      <img src="assets/reels/DCWSVVtymG3.jpg" alt="Restore deleted WhatsApp chats" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Restore deleted WhatsApp chats from backup</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>27.4K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/Db7sZBNNJFh/" target="_blank" rel="noopener">
+      <img src="assets/reels/Db7sZBNNJFh.jpg" alt="Damn crazy website to watch series, movies and animes" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Damn crazy website to watch series, movies &amp; animes</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>14.4K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DBT_c8iuBCO/" target="_blank" rel="noopener">
+      <img src="assets/reels/DBT_c8iuBCO.jpg" alt="Pending follow requests on Instagram" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>See your pending follow requests on Instagram</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>14.2K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DDuGUKxNZyi/" target="_blank" rel="noopener">
+      <img src="assets/reels/DDuGUKxNZyi.jpg" alt="ഇന്നൊരു ഉടായിപ്പ് പരിചയപ്പെടാം" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>ഇന്നൊരു ഉടായിപ്പ് പരിചയപ്പെടാം!</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>10.3K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DW57NS9Es_p/" target="_blank" rel="noopener">
+      <img src="assets/reels/DW57NS9Es_p.jpg" alt="Google Pay Pocket Money UPI Circle explainer" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Google Pay Pocket Money (UPI Circle) isn't a scam — don't worry</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>7.2K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DebL82Bta4L/" target="_blank" rel="noopener">
+      <img src="assets/reels/DebL82Bta4L.jpg" alt="Free alternatives to Microsoft and Adobe paid software" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Free alternatives to Microsoft &amp; Adobe's paid software</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>5.0K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/Db47yPjSUYM/" target="_blank" rel="noopener">
+      <img src="assets/reels/Db47yPjSUYM.jpg" alt="ChatGPT new voice update — Part 2" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>ChatGPT's new voice update feels like a real person — Part 2</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>4.5K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DYmEpV2yx0r/" target="_blank" rel="noopener">
+      <img src="assets/reels/DYmEpV2yx0r.jpg" alt="Find people who do not follow you back" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>Find the people you follow who don't follow you back</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>3.1K likes</span></span>
+    </a>
+    <a class="rcard" href="https://www.instagram.com/reel/DZZ6O98yWUb/" target="_blank" rel="noopener">
+      <img src="assets/reels/DZZ6O98yWUb.jpg" alt="List and cancel auto pays linked to your number" loading="lazy" />
+      <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="cap"><b>List &amp; cancel all auto-pays linked to your number</b><span class="meta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>2.8K likes</span></span>
+    </a>
+  </div></div>
+</section>
+
+<!-- Links -->
+<section id="links">
+  <div class="sec-tag reveal">// find me everywhere</div>
+  <h2 class="reveal">All My <em>Links</em></h2>
+  <div class="links-sub">// Articles</div>
+  <div class="link-grid">
+    <a class="lbtn wide reveal" href="android/"><span class="li"><svg fill="#3DDC84" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Android</title><path d="M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084-.1494-1.7526-3.021-2.0215-3.4864a1.1451 1.1451 0 0 0-.1406-.1914c-.3312-.364-.9054-.4859-1.379-.203-.475.282-.7136.9361-.3886 1.5019 1.9466 3.3696-.0966-.2158 1.9473 3.3593.0172.031-.4946.2642-1.3926 1.0177C2.8987 12.176.452 14.772 0 18.9902h24c-.119-1.1108-.3686-2.099-.7461-3.0683-.7438-1.9118-1.8435-3.2928-2.7402-4.1836a12.1048 12.1048 0 0 0-2.1309-1.6875c.6594-1.122 1.312-2.2559 1.9649-3.3848.2077-.3615.1886-.7956-.0079-1.1191a1.1001 1.1001 0 0 0-.8515-.5332c-.5225-.0536-.9392.3128-1.0488.5449zm-.0391 8.461c.3944.5926.324 1.3306-.1563 1.6503-.4799.3197-1.188.0985-1.582-.4941-.3944-.5927-.324-1.3307.1563-1.6504.4727-.315 1.1812-.1086 1.582.4941zM7.207 13.5273c.4803.3197.5506 1.0577.1563 1.6504-.394.5926-1.1038.8138-1.584.4941-.48-.3197-.5503-1.0577-.1563-1.6504.4008-.6021 1.1087-.8106 1.584-.4941z"/></svg></span><span>Android / Tech<small>articles &amp; guides</small></span></a>
+    <a class="lbtn wide reveal" href="telegram/"><span class="li"><svg fill="#26A5E4" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Telegram</title><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span><span>Posts about Telegram<small>33 articles</small></span></a>
+    <a class="lbtn wide reveal" href="memories/"><span class="li"><svg fill="none" stroke="#8b7bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Memories</title><path d="M12 5v16"/><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"/></svg></span><span>Memories<small>42 stories &amp; writings</small></span></a>
+  </div>
+  <div class="links-sub">// Connect</div>
+  <div class="link-grid">
+    <a class="lbtn reveal" href="https://instagram.com/deepak.deon" target="_blank" rel="noopener"><span class="li"><svg fill="#FF0069" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></span><span>Instagram<small>@deepak.deon</small></span></a>
+    <a class="lbtn reveal" href="https://facebook.com/iDeeepak" target="_blank" rel="noopener"><span class="li"><svg fill="#0866FF" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></span><span>Facebook<small>@iDeeepak</small></span></a>
+    <a class="lbtn reveal" href="https://www.youtube.com/@deepak-deon" target="_blank" rel="noopener"><span class="li"><svg fill="#FF0000" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>YouTube</title><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span><span>YouTube<small>Deepak Deon</small></span></a>
+    <a class="lbtn reveal" href="https://t.me/DeonWrites" target="_blank" rel="noopener"><span class="li"><svg fill="#26A5E4" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Telegram</title><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span><span>Telegram<small>@DeonWrites</small></span></a>
+    <a class="lbtn reveal" href="https://twitter.com/iDeeepak" target="_blank" rel="noopener"><span class="li"><svg fill="#ffffff" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>X</title><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg></span><span>Twitter / X<small>@iDeeepak</small></span></a>
+    <a class="lbtn reveal" href="https://open.spotify.com/user/31oocahzy76wkoagz7qx5pqhyorm" target="_blank" rel="noopener"><span class="li"><svg fill="#1ED760" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Spotify</title><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></span><span>Spotify<small>my playlists</small></span></a>
+    <a class="lbtn reveal" href="https://snapchat.com/add/deepak.deon" target="_blank" rel="noopener"><span class="li"><svg fill="#FFFC00" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Snapchat</title><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12 1.033-.301.165-.088.344-.104.464-.104.182 0 .359.029.509.09.45.149.734.479.734.838.015.449-.39.839-1.213 1.168-.089.029-.209.075-.344.119-.45.135-1.139.36-1.333.81-.09.224-.061.524.12.868l.015.015c.06.136 1.526 3.475 4.791 4.014.255.044.435.27.42.509 0 .075-.015.149-.045.225-.24.569-1.273.988-3.146 1.271-.059.091-.12.375-.164.57-.029.179-.074.36-.134.553-.076.271-.27.405-.555.405h-.03c-.135 0-.313-.031-.538-.074-.36-.075-.765-.135-1.273-.135-.3 0-.599.015-.913.074-.6.104-1.123.464-1.723.884-.853.599-1.826 1.288-3.294 1.288-.06 0-.119-.015-.18-.015h-.149c-1.468 0-2.427-.675-3.279-1.288-.599-.42-1.107-.779-1.707-.884-.314-.045-.629-.074-.928-.074-.54 0-.958.089-1.272.149-.211.043-.391.074-.54.074-.374 0-.523-.224-.583-.42-.061-.192-.09-.389-.135-.567-.046-.181-.105-.494-.166-.57-1.918-.222-2.95-.642-3.189-1.226-.031-.063-.052-.15-.055-.225-.015-.243.165-.465.42-.509 3.264-.54 4.73-3.879 4.791-4.02l.016-.029c.18-.345.224-.645.119-.869-.195-.434-.884-.658-1.332-.809-.121-.029-.24-.074-.346-.119-1.107-.435-1.257-.93-1.197-1.273.09-.479.674-.793 1.168-.793.146 0 .27.029.383.074.42.194.789.3 1.104.3.234 0 .384-.06.465-.105l-.046-.569c-.098-1.626-.225-3.651.307-4.837C7.392 1.077 10.739.807 11.727.807l.419-.015h.06z"/></svg></span><span>Snapchat<small>@deepak.deon</small></span></a>
+    <a class="lbtn reveal" href="https://github.com/d30n" target="_blank" rel="noopener"><span class="li"><svg fill="#ffffff" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span><span>GitHub<small>@d30n</small></span></a>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="big-cta">
+  <div class="sec-tag reveal">// got something in mind?</div>
+  <h2 class="reveal">Reach Me <em>Out!</em></h2>
+    <div class="contact-row reveal">
+    <a class="icon-btn" href="https://wa.me/919995376638?text=Hi%20Deon%20%F0%9F%91%8B%F0%9F%8F%BB" target="_blank" rel="noopener" aria-label="WhatsApp"><svg fill="#25D366" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>WhatsApp</title><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+    <a class="icon-btn" href="mailto:deepakdeon@yahoo.com" aria-label="Email"><svg fill="#EA4335" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Gmail</title><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg></a>
+    <a class="icon-btn" href="https://t.me/Deonnn" target="_blank" rel="noopener" aria-label="Telegram"><svg fill="#26A5E4" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Telegram</title><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+  </div>
+  <div class="contact-row anon-row reveal">
+    <a class="btn ghost" href="https://forms.gle/ByYMNTRxcHeC2mDz5" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> Anonymous Message</a>
+  </div>
+</section>
+
+<footer>
+  <span class="views-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="vc-num">27,500</span></span>
+  <span>© 2026 Deepak Deon</span>
+</footer>
+<script>
+(function(){
+  var el=document.querySelector('footer .vc-num'); if(!el) return;
+  var KEY='home';
+  var done=false; try{ done=!!sessionStorage.getItem('vc-'+KEY); }catch(e){}
+  fetch('https://abacus.jasoncameron.dev/'+(done?'get':'hit')+'/deepakdeon-site/'+KEY)
+    .then(function(r){ return r.json(); })
+    .then(function(d){ if(d && typeof d.value==='number'){ el.textContent=(27500+d.value).toLocaleString('en-US'); if(!done){ try{ sessionStorage.setItem('vc-'+KEY,'1'); }catch(e){} } } })
+    .catch(function(){});
+})();
+</script>
+
+<script>
+  // Loader: count 0 -> 100 like the reference site, then slide away
+  (function(){
+    var pct = document.getElementById('pct'), fill = document.getElementById('fill'),
+        loader = document.getElementById('loader'), n = 0;
+    var iv = setInterval(function(){
+      n += Math.floor(Math.random()*9) + 3;
+      if (n >= 100) { n = 100; clearInterval(iv);
+        setTimeout(function(){ loader.classList.add('done');
+          setTimeout(function(){ loader.style.display = 'none'; }, 850);
+        }, 250);
+      }
+      pct.textContent = n; fill.style.width = n + '%';
+    }, 70);
+  })();
+
+  // Rotating role words in the hero
+  (function(){
+    var words = ['a Digital creator', 'a Blogger', 'a Tweep', 'a Tech enthusiast', 'a Content creator', 'a Story writer', 'a Lyricist', 'a Photographer', 'a Cinematographer', 'a Video editor', 'a Graphic designer', 'a UI designer', 'a Web designer', 'an App developer', 'a Bot developer', 'a Web developer'];
+    var el = document.getElementById('rotator'), art = document.getElementById('rot-article'), i = 0;
+    setInterval(function(){
+      el.style.opacity = '0';
+      setTimeout(function(){ i = (i+1) % words.length; var w = words[i], sp = w.indexOf(' '); art.textContent = w.slice(0, sp); el.textContent = w.slice(sp+1); el.style.opacity = '1'; }, 280);
+    }, 2600);
+    el.style.transition = 'opacity .28s ease';
+  })();
+
+  // Scroll reveal
+  (function(){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el, i){ el.style.transitionDelay = (i % 4) * 70 + 'ms'; io.observe(el); });
+  })();
+</script>
+<script>
+document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListener('click',function(){var h=document.documentElement;if(h.getAttribute('data-theme')==='light'){h.removeAttribute('data-theme');try{localStorage.setItem('dd-theme','dark')}catch(e){}}else{h.setAttribute('data-theme','light');try{localStorage.setItem('dd-theme','light')}catch(e){}}})});
+</script>
+<script>
+  // Animated stat counters (easeOutExpo, run once when the stats scroll into view)
+  (function(){
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var box = document.querySelector('.stats'); if (!box) return;
+    var done = false;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting || done) return;
+        done = true; io.disconnect();
+        document.querySelectorAll('.stat .num[data-count]').forEach(function(el){
+          var target = +el.dataset.count, suf = el.dataset.suffix || '', t0 = null, DUR = 1500;
+          function step(ts){
+            if (!t0) t0 = ts;
+            var p = Math.min((ts - t0) / DUR, 1);
+            var ease = 1 - Math.pow(2, -10 * p);
+            el.textContent = Math.round(target * ease) + suf;
+            if (p < 1) requestAnimationFrame(step); else el.textContent = target + suf;
+          }
+          requestAnimationFrame(step);
+        });
+      });
+    }, { threshold: 0.35 });
+    io.observe(box);
+  })();
+</script>
+<script>
+  // Reels marquee: auto-slide + drag with flick momentum (smooth glide), seamless loop
+  (function(){
+    var wrap = document.querySelector('.reelwrap'),
+        track = document.getElementById('reeltrack');
+    if (!wrap || !track) return;
+    track.innerHTML += track.innerHTML; // duplicate the set so the loop wraps seamlessly
+    track.querySelectorAll('img').forEach(function(im){ im.draggable = false; });
+    var half = 0, off = 0, SPEED = 0.6; // auto-slide px per frame
+    var dragging = false, hovering = false, startX = 0, startOff = 0, moved = 0, lastDragEnd = 0;
+    var vel = 0, samples = [], lastT = 0; // fling velocity, px per ms
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function measure(){ half = track.scrollWidth / 2; }
+    function wrapOff(){
+      if (half <= 0) return;
+      while (off <= -half) off += half;
+      while (off > 0) off -= half;
+    }
+    function render(){ track.style.transform = 'translateX(' + off + 'px)'; }
+    function frame(now){
+      if (!lastT) lastT = now;
+      var dt = Math.min(now - lastT, 50); lastT = now;
+      if (!dragging) {
+        if (Math.abs(vel) > 0.02) {
+          // momentum glide: travel with the flick velocity, friction eases it out
+          off += vel * dt;
+          vel *= Math.pow(0.95, dt / 16.7);
+          if (Math.abs(vel) <= 0.02) vel = 0;
+          wrapOff(); render();
+        } else if (!hovering && !reduced && Date.now() - lastDragEnd > 800) {
+          off -= SPEED * (dt / 16.7); wrapOff(); render();
+        }
+      }
+      requestAnimationFrame(frame);
+    }
+    wrap.addEventListener('pointerdown', function(e){
+      dragging = true; vel = 0; samples = []; moved = 0; startX = e.clientX; startOff = off;
+      wrap.classList.add('dragging');
+      try { wrap.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    wrap.addEventListener('pointermove', function(e){
+      if (!dragging) return;
+      var dx = e.clientX - startX;
+      if (Math.abs(dx) > moved) moved = Math.abs(dx);
+      off = startOff + dx; wrapOff(); render();
+      var t = performance.now();
+      samples.push({ x: e.clientX, t: t });
+      while (samples.length > 2 && t - samples[0].t > 120) samples.shift();
+    });
+    function endDrag(){
+      if (!dragging) return;
+      dragging = false; lastDragEnd = Date.now();
+      wrap.classList.remove('dragging');
+      // flick velocity from the last ~120ms of the drag
+      if (samples.length > 1) {
+        var a = samples[0], b = samples[samples.length - 1], span = b.t - a.t;
+        if (span > 0) {
+          vel = (b.x - a.x) / span;
+          if (vel > 2.5) vel = 2.5;
+          if (vel < -2.5) vel = -2.5;
+          if (Math.abs(vel) < 0.15) vel = 0;
+        }
+      }
+      samples = [];
+    }
+    wrap.addEventListener('pointerup', endDrag);
+    wrap.addEventListener('pointercancel', endDrag);
+    // a real drag must not turn into a click on a reel
+    wrap.addEventListener('click', function(e){
+      if (moved > 8) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+    wrap.addEventListener('mouseenter', function(){ hovering = true; });
+    wrap.addEventListener('mouseleave', function(){ hovering = false; });
+    measure(); render();
+    window.addEventListener('load', measure);
+    window.addEventListener('resize', measure);
+    requestAnimationFrame(frame);
+  })();
 </script>
 </body>
 </html>
