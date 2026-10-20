@@ -55,15 +55,6 @@
   h1 .deon-svg text{font-family:'Archivo',sans-serif;font-weight:900;-webkit-text-stroke:0}
   h1 .deon-svg .base{fill:none;stroke:var(--ink);stroke-width:2.4}
   h1 .deon-svg .beam-move{animation:beam-sweep 3.4s linear infinite;filter:drop-shadow(0 0 10px rgba(0,150,255,.9)) drop-shadow(0 0 22px rgba(0,110,255,.6))}
-  .laser-line{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2);padding:clamp(24px,4vw,38px) clamp(14px,4vw,48px)}
-  .laser-line svg{display:block;width:min(1180px,100%);height:auto;margin:0 auto;overflow:visible}
-  .laser-line .l2-ghost text{fill:none;stroke:var(--ink);stroke-width:1.6}
-  .laser-line .l2-ghost{opacity:.13}
-  .laser-line .l2-glow{fill:none;stroke:#2f7bff;stroke-width:5;opacity:.5;filter:blur(5px)}
-  .laser-line .l2-core{fill:none;stroke:#eaf8ff;stroke-width:1.8;filter:drop-shadow(0 0 6px rgba(0,140,255,.95)) drop-shadow(0 0 16px rgba(0,110,255,.55))}
-  .laser-line .draw-anim{stroke-dasharray:640;stroke-dashoffset:640;animation:drawLine 8s linear infinite;animation-fill-mode:backwards}
-  @keyframes drawLine{0%{stroke-dashoffset:640;opacity:1}38%{stroke-dashoffset:0;opacity:1}80%{stroke-dashoffset:0;opacity:1}93%{stroke-dashoffset:0;opacity:0}100%{stroke-dashoffset:640;opacity:0}}
-  @media (prefers-reduced-motion: reduce){.laser-line .draw-anim{animation:none;opacity:0}}
   @keyframes beam-sweep{0%{transform:translateX(-280px)}58%{transform:translateX(680px)}100%{transform:translateX(680px)}}
   @media (prefers-reduced-motion: reduce){h1 .deon-svg .beam-move{animation:none}}
   @keyframes rise{to{transform:translateY(0)}}
@@ -202,14 +193,6 @@
 </header>
 
 <!-- Marquee -->
-<div class="laser-line">
-  <svg viewBox="0 0 1200 196" role="img" aria-label="If you are reading this, you have officially spent more time on my marquee than most people spend on my reels.">
-    <g class="l2-ghost" font-family="'Archivo',sans-serif" font-weight="900"><text x="600" y="52" text-anchor="middle" font-size="47" letter-spacing="0" textLength="1176" lengthAdjust="spacingAndGlyphs">If you are reading this, you have officially</text><text x="600" y="108" text-anchor="middle" font-size="47" letter-spacing="0" textLength="1090" lengthAdjust="spacingAndGlyphs">spent more time on my marquee than most</text><text x="600" y="164" text-anchor="middle" font-size="47" letter-spacing="0" textLength="690" lengthAdjust="spacingAndGlyphs">people spend on my reels.</text></g>
-    <g font-family="'Archivo',sans-serif" font-weight="900"><text class="l2-glow draw-anim" style="animation-delay:0s" x="600" y="52" text-anchor="middle" font-size="47" letter-spacing="0" textLength="1176" lengthAdjust="spacingAndGlyphs">If you are reading this, you have officially</text><text class="l2-core draw-anim" style="animation-delay:0s" x="600" y="52" text-anchor="middle" font-size="47" letter-spacing="0" textLength="1176" lengthAdjust="spacingAndGlyphs">If you are reading this, you have officially</text></g>
-    <g font-family="'Archivo',sans-serif" font-weight="900"><text class="l2-glow draw-anim" style="animation-delay:1.4s" x="600" y="108" text-anchor="middle" font-size="47" letter-spacing="0" textLength="1090" lengthAdjust="spacingAndGlyphs">spent more time on my marquee than most</text><text class="l2-core draw-anim" style="animation-delay:1.4s" x="600" y="108" text-anchor="middle" font-size="47" letter-spacing="0" textLength="1090" lengthAdjust="spacingAndGlyphs">spent more time on my marquee than most</text></g>
-    <g font-family="'Archivo',sans-serif" font-weight="900"><text class="l2-glow draw-anim" style="animation-delay:2.8s" x="600" y="164" text-anchor="middle" font-size="47" letter-spacing="0" textLength="690" lengthAdjust="spacingAndGlyphs">people spend on my reels.</text><text class="l2-core draw-anim" style="animation-delay:2.8s" x="600" y="164" text-anchor="middle" font-size="47" letter-spacing="0" textLength="690" lengthAdjust="spacingAndGlyphs">people spend on my reels.</text></g>
-  </svg>
-</div>
 
 <!-- About -->
 <section id="about">
