@@ -62,6 +62,8 @@
   html[data-theme="light"]{--bg:#f7f6f1;--bg2:#efeee7;--ink:#17171d;--dim:#5f5f6a;--line:#ddd9cd;--card:#ffffff;--lime:#79a400;--violet:#6a54e8;--pink:#e84fc0}
   html[data-theme="light"] .post{color:#2a2822}
   html[data-theme="light"] .post blockquote{color:#55503f}
+
+  .pub-date{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-top:4px}
 </style>
 <script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
 </head>
@@ -73,6 +75,7 @@
   </header>
   <div class="sec-tag">// Articles</div>
   <h1 class="title">Add wait and 2 sec pause</h1>
+  <div class="pub-date">August 18, 2022</div>
   <article class="post">
 <figure><img src="../../assets/img/664ba9100bb41a982c977.jpg"/><figcaption></figcaption></figure><p>ഫോണിൽ നമ്പർ ഡയൽ ചെയ്യുന്നതിനിടെ <strong>add wait, 2 sec pause</strong> എന്നിങ്ങനെ 2 ഓപ്‌ഷനുകൾ ശ്രദ്ധിച്ചിട്ടില്ലേ...</p><p><br/>എന്തിനാണ് ഇത് എന്നറിയാമോ?</p><p><br/>Customer care പോലുള്ള IVR (interactive voice response) കോളുകൾ വിളിക്കുമ്പോൾ,<br/>മലയാളത്തിനായി 1 അമർത്തുക.<br/>For English, press 2.<br/>കംപ്ലയിന്റ് രജിസ്റ്റർ ചെയ്യാൻ 1 അമർത്തുക.<br/>എക്സിക്യൂട്ടീവുമായി സംസാരിക്കാൻ 2 അമർത്തുക.<br/>എന്നൊക്കെ കേൾക്കാറില്ലേ...</p><p><br/>കോളിനിടക്ക് ഇങ്ങനെ ഓരോ നമ്പറുകൾ അമർത്തുന്നതിന് പകരം automatic ആയി ഈ നമ്പറുകൾ enter ആവുന്ന രീതിയിൽ ക്രമികരിക്കാൻ സഹായിക്കുന്ന ഓപ്‌ഷനുകളാണ് add wait (;) ഉം add 2 sec pause (,) ഉം.</p><p><br/>ഉദാഹരണത്തിന്,<br/>198 ലേക്ക് വിളിച്ച് മലയാളം സെലക്ട് ചെയ്ത് എക്‌സിക്യൂട്ടീവുമായി സംസാരിക്കാൻ യഥാക്രമം 1, 2 എന്നീ നമ്പറുകൾ ആണ് അമർത്തേണ്ടത് എന്ന് കരുതുക.</p><p><br/>ഇത് automate ചെയ്യാൻ,<br/>198 (add 2 sec pause) 1 (add 2 sec pause) 2 എന്ന് കൊടുക്കാം.<br/>198,1,2 ഇത് ഡയൽ ചെയ്താൽ മതി.</p><p><br/>ഇനി, ചില IVR calls ൽ menu മുഴുവനും കേൾക്കാതെ ഓപ്ഷൻ സെലക്ട് ചെയ്യാൻ കഴിയാറില്ല. ആ സാഹചര്യങ്ങളിൽ add wait ഉപയോഗിക്കാം.</p><p><br/>ഇതേ നമ്പറിൽ add wait ഉപയോഗിച്ചാൽ...<br/>198;1;2<br/>സ്‌ക്രീനിൽ 1 enter ചെയ്യട്ടെ, 2 enter ചെയ്യട്ടെ എന്ന് ചോദിക്കും, മെനു കേൾക്കുന്നത് അനുസരിച്ച് നമുക്കത് enter ചെയ്യാം.</p><p><br/>IVR മെനു പരിചയം ഇല്ലാത്ത ഒരാൾക്ക് എളുപ്പത്തിൽ ഉദ്ദേശിക്കുന്ന ഓപ്‌ഷനിലേക്ക് lead ചെയ്യുന്ന രീതിയിൽ ഡയൽ ചെയ്യാനുള്ള നമ്പർ നമുക്ക് കൊടുക്കുകയും ചെയ്യാം. 😇</p><p><br/><a href="https://t.me/DeonWrites" rel="noopener" target="_blank">@DeonWrites</a></p><p><br/>💬 <a href="https://t.me/DeonWrites/838" rel="noopener" target="_blank">Add a comment to this post</a><br/></p><hr/><p>Read more:<br/>• <a href="../../android/">Android love ❤️</a></p><hr/>
   </article>

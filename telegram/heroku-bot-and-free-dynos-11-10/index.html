@@ -62,6 +62,8 @@
   html[data-theme="light"]{--bg:#f7f6f1;--bg2:#efeee7;--ink:#17171d;--dim:#5f5f6a;--line:#ddd9cd;--card:#ffffff;--lime:#79a400;--violet:#6a54e8;--pink:#e84fc0}
   html[data-theme="light"] .post{color:#2a2822}
   html[data-theme="light"] .post blockquote{color:#55503f}
+
+  .pub-date{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-top:4px}
 </style>
 <script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
 </head>
@@ -73,6 +75,7 @@
   </header>
   <div class="sec-tag">// Articles</div>
   <h1 class="title">Heroku bot and free dynos</h1>
+  <div class="pub-date">November 10, 2021</div>
   <article class="post">
 <figure><img src="../../assets/img/b728058a7a6b8c3b48c00.jpg"/><figcaption></figcaption></figure><p><br/>Heroku അക്കൗണ്ടിലെ <a href="https://t.me/DeonWrites/612?comment=12180" rel="noopener" target="_blank">free dynos</a> 550hrs / month ആണെന്ന് അറിയാമല്ലോ...<br/>അതായത് 550/24 = ഏകദേശം 23 ദിവസം.</p><p><br/>അതുകൊണ്ട് തന്നെ userbot ഉൾപ്പെടെയുള്ളവ പലർക്കും മാസത്തിലെ അവസാനത്തെ ആഴ്ച ഉപയോഗിക്കാൻ കഴിയാറില്ല.<br/>(ചിലർ ഒക്കെ Heroku app ownership change ചെയ്ത് run ചെയ്യിക്കാറുണ്ട്.)</p><p><br/>Bots use ചെയ്യാത്ത സമയത്ത് Heroku worker turn off ചെയ്ത് dynos save ചെയ്യാൻ കഴിയുമെന്ന് നമുക്ക് അറിയാം. പക്ഷേ എപ്പോളും Heroku login ചെയ്ത് ഇത് toggle ചെയ്യുന്നത് ബുദ്ധിമുട്ടാണ് അല്ലേ...</p><p><br/>എന്നാൽ ഈ കാര്യം manual ആയോ automatic ആയോ ഒരു Telegram Heroku Bot ന്റെ സഹായത്തോടെ remotely ചെയ്യാൻ കഴിയും.</p><p><br/>For example: <a href="https://t.me/HK_heroku_BOT" rel="noopener" target="_blank">@HK_heroku_BOT</a></p><p><br/>ആദ്യം തന്നെ bot open ചെയ്ത് Heroku അക്കൗണ്ട് authorize ചെയ്യുക.</p><figure><img src="../../assets/img/e5d321cd960f413dfb42b.jpg"/><figcaption>Authorisation </figcaption></figure><p><strong>Authorization token</strong> copy ചെയ്തെടുത്ത് bot ൽ paste ചെയ്താൽ bot &amp; heroku account connect ആവും.<br/></p><p>ശേഷം ബോട്ടിൽ വരുന്ന ബട്ടൺ മെനുവിൽ നിന്നും schedule ഓപ്ഷൻ എടുത്ത് അതിൽ start time ഉം end time ഉം കൊടുത്താൽ daily ആ സമയത്ത് heroku worker automatically off/on ആയിക്കോളും.</p><p></p><figure><img src="../../assets/img/a205a7d85591e342df5ae.jpg"/><figcaption>Schedule</figcaption></figure><p>Time UTC ൽ ആണ് കൊടുക്കേണ്ടത്. സ്ക്രീന്ഷോട്ടിൽ Start time 2:30 (12a.m IST) ഉം End time 18:30 (8a.m IST) ഉം ആണ് ഞാൻ കൊടുത്തിരിക്കുന്നത്.<br/></p><p>So, per day 8 മണിക്കൂർ save ആവുന്നുണ്ട്.<br/>After 23 days, 23 × 8 = 184 hrs<br/>Which is enough for 7 days month end ig.<br/></p><p>Meths yeppedi mwonuse 🤣🤙<br/></p><p>മാത്രമല്ല, ഈ ബോട്ട് വഴി worker toggle ചെയ്യാനും, collaborator add ചെയ്യാനും transfer ചെയ്യാനും, logs check ചെയ്യാനും, environment vars manage ചെയ്യാനും ഒക്കെ കഴിയും. (ഒന്നിലധികം heroku accounts ഉള്ളവർക്ക് എല്ലാത്തിലും ഒരു common collaborator add ചെയ്തിട്ട് ആ account വഴി അതിലെ എല്ലാ bots ഉം manage ചെയ്യാം.)</p><p></p><figure><img src="../../assets/img/5fcc4262d5be4b52b2dc7.jpg"/><figcaption>Main menu</figcaption></figure><p>- <a href="https://t.me/DeonWrites" rel="noopener" target="_blank">@DeonWrites</a> -</p><p>• <a href="../../telegram/">ടെലഗ്രാമിനെക്കുറിച്ച് കൂടുതൽ വായിക്കാം...</a></p><hr/><p>💬 <a href="https://t.me/DeonWrites/612" rel="noopener" target="_blank">Add a comment to this post</a> <br/></p>
   </article>
