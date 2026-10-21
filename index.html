@@ -548,10 +548,13 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
 <script>
   // Section read counts - AUTO-UPDATE: totals = frozen Telegraph base
   // (baked below) + live Abacus counters, fetched fresh on every page load.
-  // Counts can only grow, so the number shown never goes down: fetches run
-  // in small batches, failures are retried, and each total is floored at
-  // the baked number and at the highest total this browser has shown.
-  // Count-up: 2.5s, easeOutQuint (fast start, very slow finish, then static).
+  // The count-up starts the moment a button scrolls into view - it aims at
+  // the baked number first, and if the live total lands mid-animation it
+  // smoothly becomes the target (2.5s, easeOutQuint: fast start, very slow
+  // finish, then static). Counts can only grow, so the number shown never
+  // goes down: fetches run in small batches, failures are retried, and each
+  // total is floored at the baked number and the highest total this
+  // browser has shown before.
   (function(){
     var BASE = {"android": 187777, "memories": 15298, "telegram": 201311}, KEYS = {"android": ["android-adguard-dns-10-02", "android-google-photos-free-backup-05-25", "android-google-camera-05-07", "android-choose-a-reason-before-calls-05-07", "android-google-sound-search-05-07", "android-is-watching-porn-is-illegal-in-india-10-16", "android-is-it-safe-to-use-mobile-phone-when-lighting-05-07", "android-how-to-fix-storage-full-problem-in-android-05-07", "android-macrodroid---android-customisation-tool-05-07", "android-instagram-paid-subscription-feature-in-india-01-28", "android-mobile-data-has-expired-05-07", "android-make-money-from-facebook-01-25", "android-search-nearby-people---instagram-05-07", "android-whatsapp-userbot-08-28", "android-spotify-vs-resso-vs-youtube-music-05-07", "android-why-poweramp-is-my-favourite-music-player-05-07", "android-the-size-difference-in-apks-01-18", "android-what-are-telegram-userbots-11-06", "android-what-is-android-custom-rom-05-07", "android-why-spotify-is-the-best-05-07", "android-textnow-number-for-telegram-and-whatsapp-10-20"], "memories": ["memories-ente-school-05-12", "memories-first-school-05-07", "memories-love-05-07-5", "memories-food-allergy-01-10", "memories-flowers-of-paris-05-07", "memories-joe-leena-aju-05-07", "memories-kochi-is-a-feeling-05-07", "memories-cricket-nosta-05-07", "memories-idavazhiyile-moorkhan-05-07", "memories-mission-pluto---part-1-05-07", "memories-mission-pluto---part-2-05-07", "memories-nayinte-makkal-05-07", "memories-my-3-favourite-swords-05-07", "memories-ninnilekk-05-22", "memories-ormmayile-perakka-mangakal-05-07", "memories-school-nosta-05-07", "memories-september-05-07", "memories-telegram-and-me-05-13", "memories-thumbachedi-05-07"], "telegram": ["telegram-deonwrites-12-16", "telegram-heroku-bot-and-free-dynos-11-10", "telegram-status-feature-11-11", "telegram-is-telegram-complicated-01-16-2", "telegram-status-tab-in-telegram-05-20", "telegram-po-kozhi-05-22", "telegram-telegram-and-telegram-x-07-09", "telegram-telegram-proxy-05-25", "telegram-telegram-ban-05-23", "telegram-telegram-premium-06-20", "telegram-telegram-stickers-for-whatsapp-08-03", "telegram-telegram-vc-streaming-bot-10-25", "telegram-whatsapp-vs-telegram-08-23", "telegram-whatsapp-and-telegram-04-30", "telegram-virustotal-online-antivirus-scan-10-28", "telegram-why-telegram-x-10-28"]};
     var API = 'https://abacus.jasoncameron.dev/get/deepakdeon-site/';
@@ -569,25 +572,34 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
       var sec = sectionOf(el);
       if (sec) BAKED[sec] = parseInt(el.textContent.replace(/[^0-9]/g, ''), 10) || 0;
     });
-    var liveTotals = null, pending = [];
-    function animate(el, target){
+    var liveTotals = null;
+    function targetOf(sec){
+      return (liveTotals && liveTotals[sec]) ? liveTotals[sec] : (BAKED[sec] || 0);
+    }
+    function run(el){
+      var sec = sectionOf(el); if (!sec) return;
+      if (reduced) {
+        el.textContent = targetOf(sec).toLocaleString('en-US');
+        el.dataset.countState = 'done';
+        return;
+      }
       var DUR = 2500, t0 = null;
       function step(ts){
         if (!t0) t0 = ts;
         var p = Math.min((ts - t0) / DUR, 1);
         var ease = 1 - Math.pow(1 - p, 5);
-        el.textContent = Math.round(target * ease).toLocaleString('en-US');
+        el.textContent = Math.round(targetOf(sec) * ease).toLocaleString('en-US');
         if (p < 1) requestAnimationFrame(step);
+        else el.dataset.countState = 'done';
       }
       requestAnimationFrame(step);
     }
-    function run(el){
-      var sec = sectionOf(el);
-      var target = (liveTotals && sec && liveTotals[sec]) ? liveTotals[sec] : (BAKED[sec] || 0);
-      if (reduced) { el.textContent = target.toLocaleString('en-US'); return; }
-      animate(el, target);
-    }
-    function flush(){ pending.splice(0).forEach(run); }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { run(e.target); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.4 });
+    els.forEach(function(el){ io.observe(el); });
     function fetchKey(key, sec, tries){
       return fetch(API + key).then(function(r){ return r.ok ? r.json() : null; })
         .then(function(j){
@@ -623,15 +635,14 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
       } catch (e) {
         Object.keys(liveTotals).forEach(function(sec){ liveTotals[sec] = Math.max(liveTotals[sec], BAKED[sec] || 0); });
       }
-      flush();
-    }).catch(function(){ flush(); });
-    setTimeout(flush, 6000);
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) { pending.push(e.target); if (liveTotals) flush(); io.unobserve(e.target); }
+      // buttons whose animation already finished: settle on the live total
+      els.forEach(function(el){
+        if (el.dataset.countState === 'done') {
+          var sec = sectionOf(el);
+          if (sec) el.textContent = targetOf(sec).toLocaleString('en-US');
+        }
       });
-    }, { threshold: 0.4 });
-    els.forEach(function(el){ io.observe(el); });
+    }).catch(function(){});
   })();
 </script>
 </body>
