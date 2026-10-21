@@ -547,7 +547,8 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
 </script>
 <script>
   // Count-up for the section read counts: counts up once when the buttons
-  // scroll into view and lands exactly on the total (~3.5s, easeOutExpo).
+  // scroll into view and lands exactly on the total (~3.5s, easeOutCubic —
+  // steady pace between numbers, gentle landing).
   (function(){
     var els = document.querySelectorAll('.lreads b');
     if (!els.length) return;
@@ -559,7 +560,7 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
       function step(ts){
         if (!t0) t0 = ts;
         var p = Math.min((ts - t0) / DUR, 1);
-        var ease = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+        var ease = 1 - Math.pow(1 - p, 3);
         el.textContent = Math.round(target * ease).toLocaleString('en-US');
         if (p < 1) requestAnimationFrame(step);
       }
