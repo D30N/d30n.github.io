@@ -547,7 +547,7 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
 </script>
 <script>
   // Count-up for the section read counts: counts up once when the buttons
-  // scroll into view and lands exactly on the total (~3.5s, easeOutQuint —
+  // scroll into view and lands exactly on the total (~2.5s, easeOutQuint —
   // fast start, very slow through the final numbers, then static).
   (function(){
     var els = document.querySelectorAll('.lreads b');
@@ -556,7 +556,7 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
     function run(el){
       var target = parseInt(el.textContent.replace(/[^0-9]/g, ''), 10);
       if (!target) return;
-      var DUR = 3500, t0 = null;
+      var DUR = 2500, t0 = null;
       function step(ts){
         if (!t0) t0 = ts;
         var p = Math.min((ts - t0) / DUR, 1);
