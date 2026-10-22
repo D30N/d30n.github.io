@@ -180,12 +180,6 @@
   "k": "Netflix subscription"
  },
  {
-  "t": "ഒരാൾ വിളിക്കുമ്പോൾ മാത്രം Not Reachable ആക്കാം!",
-  "s": "Android / Tech",
-  "u": "android/not-reachable-trick-10-22/",
-  "k": "ഒരാൾ വിളിക്കുമ്പോൾ മാത്രം Not Reachable ആക്കാം!"
- },
- {
   "t": "Google Pay ൽ payments stuck ആവുന്നത് (payment processing) ഒഴിവാക്കാം.",
   "s": "Android / Tech",
   "u": "android/payment-stuck-in-google-pay-03-01/",
@@ -802,5 +796,11 @@
   "s": "Memories",
   "u": "memories/vaikathashtami-05-07/",
   "k": "വൈക്കത്തഷ്ടമി"
+ },
+ {
+  "t": "ഒരാൾ വിളിക്കുമ്പോൾ മാത്രം Not Reachable ആക്കാം!",
+  "s": "Reels",
+  "u": "reels/not-reachable-trick-10-22/",
+  "k": "ഒരാൾ വിളിക്കുമ്പോൾ മാത്രം Not Reachable ആക്കാം!"
  }
 ]

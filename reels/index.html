@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reels — Deepak Deon</title>
+<meta name="description" content="Reels by Deepak Deon">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0f; --bg2:#101018; --ink:#f2f0ea; --dim:#9a97a8;
+    --lime:#c8f542; --violet:#8b7bff; --pink:#ff7ad9; --line:#26262f;
+    --card:#12121a;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--lime);color:#0a0a0f}
+  .wrap{max-width:880px;margin:0 auto;padding:0 clamp(18px,5vw,40px)}
+  header{display:flex;justify-content:space-between;align-items:center;padding:26px 0 8px}
+  .logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;letter-spacing:.06em}
+  .logo span{color:var(--lime)}
+  .home-link{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);transition:.25s}
+  .home-link:hover{color:var(--lime)}
+  .sec-tag{font-family:'JetBrains Mono',monospace;color:var(--violet);font-size:13px;letter-spacing:.25em;text-transform:uppercase;margin:44px 0 12px}
+  h1{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(36px,7.5vw,68px);line-height:1;margin-bottom:14px}
+  h1 em{font-style:normal;color:var(--lime)}
+  .count{color:var(--dim);font-size:16px;margin-bottom:36px}
+  .art{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 18px;margin-bottom:10px;transition:.25s;animation:up .6s cubic-bezier(.22,1,.36,1) both}
+  .art:hover{border-color:var(--pink);transform:translateY(-3px)}
+  .art .no{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dim);min-width:26px}
+  .art .ttl{flex:1;font-weight:600;font-size:16.5px;line-height:1.45}
+  .art .arr{color:var(--dim);font-size:17px;transition:.25s}
+  .art:hover .arr{color:var(--lime)}
+  @keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+  .disclaimer{margin-top:46px;border-top:1px solid var(--line);padding-top:32px}
+  .disclaimer .disc-txt{font-size:19px;line-height:1.75;margin-bottom:22px}
+  .disclaimer figure img{width:100%;height:auto;border-radius:16px;display:block}
+  .disclaimer figcaption{color:var(--dim);font-size:15px;text-align:center;margin-top:14px;line-height:1.6}
+  footer{border-top:1px solid var(--line);padding:26px clamp(18px,6vw,72px);display:flex;justify-content:center;text-align:center;color:var(--dim);font-size:13px;max-width:1280px;margin:44px auto 0}
+
+
+  /* Theme toggle + light (day) theme */
+  .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:var(--card,#12121a);color:var(--ink);cursor:pointer;transition:.25s;padding:0;flex:none}
+  .theme-toggle:hover{border-color:var(--lime);color:var(--lime)}
+  .theme-toggle svg{width:19px;height:19px;display:block}
+  .theme-toggle .ic-sun{display:none}
+  html[data-theme="light"] .theme-toggle .ic-sun{display:block}
+  html[data-theme="light"] .theme-toggle .ic-moon{display:none}
+  .hdr-right{display:flex;align-items:center;gap:16px}
+  html[data-theme="light"]{--bg:#f7f6f1;--bg2:#efeee7;--ink:#17171d;--dim:#5f5f6a;--line:#ddd9cd;--card:#ffffff;--lime:#79a400;--violet:#6a54e8;--pink:#e84fc0}
+</style>
+<script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta name="theme-color" content="#0a0a0f" />
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+<meta name="robots" content="noindex" />
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="../">DEON<span>.</span></a>
+    <span class="hdr-right"><a class="home-link" href="../">&larr; Home</a><button class="theme-toggle" type="button" aria-label="Switch dark / light theme"><svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button></span>
+  </header>
+  <div class="sec-tag">// Articles</div>
+  <h1>Read my <em>Reels</em></h1>
+  <p class="count">1 article</p>
+  <main>
+    <a class="art" style="animation-delay:35ms" href="not-reachable-trick-10-22/"><span class="no">01</span><span class="ttl">ഒരാൾ വിളിക്കുമ്പോൾ മാത്രം Not Reachable ആക്കാം!</span><span class="arr">&#8599;</span></a>
+  </main>
+  <div class="disclaimer">
+    <p class="disc-txt"><strong>Disclaimer:</strong> പോസ്റ്റിലെ തെറ്റുകൾ ചൂണ്ടിക്കാണിച്ചാൽ തിരുത്താൻ തയ്യാറാണ്.</p>
+    <figure>
+      <img src="../assets/img/6520c0331e2d95f4db837.jpg" alt="">
+      <figcaption>&quot;എനിക്ക് എഴുതാൻ അല്ലേ അറിയൂ, വായിക്കാൻ അറിയില്ലല്ലോ..&quot;</figcaption>
+    </figure>
+  </div>
+
+</div>
+<footer><span>&copy; 2026 Deepak Deon</span></footer>
+<script>
+document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListener('click',function(){var h=document.documentElement;if(h.getAttribute('data-theme')==='light'){h.removeAttribute('data-theme');try{localStorage.setItem('dd-theme','dark')}catch(e){}}else{h.setAttribute('data-theme','light');try{localStorage.setItem('dd-theme','light')}catch(e){}}})});
+</script>
+<script data-goatcounter="https://deepakdeon.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});}</script>
+</body>
+</html>
