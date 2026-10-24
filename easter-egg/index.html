@@ -48,6 +48,8 @@ h1{font-size:clamp(2rem,8vw,3.5rem);margin:32px 0 12px;color:#c8f542}
 @keyframes countPop{from{transform:scale(.7);opacity:.3}to{transform:scale(1);opacity:1}}
 .confetti{animation:confettiBurst 1s ease-out forwards}
 @keyframes confettiBurst{to{transform:translate(var(--dx),var(--dy)) rotate(var(--rot));opacity:0}}
+.shake{animation:shakeAnim .45s ease}
+@keyframes shakeAnim{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
 </style>
 </head>
 <body>
@@ -187,7 +189,7 @@ function pick(i, btn) {
   locked = true;
   stopTimer();
   recordTime();
-  if (navigator.vibrate) navigator.vibrate(50);
+  if (navigator.vibrate) navigator.vibrate([60, 60, 60]);
   const q = QUIZ[idx];
   reveal(q.answer, i);
   if (i === q.answer) {
@@ -199,6 +201,10 @@ function pick(i, btn) {
   } else {
     fb.textContent = 'Wrong!';
     fb.className = 'feedback no';
+    quizEl.classList.remove('shake');
+    void quizEl.offsetWidth;
+    quizEl.classList.add('shake');
+    setTimeout(() => quizEl.classList.remove('shake'), 500);
   }
   next();
 }
