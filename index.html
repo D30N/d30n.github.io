@@ -760,13 +760,14 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});}</script>
 <script>
-(function(){var row=document.getElementById('deonRow');if(!row)return;var timer=null,held=false;
+(function(){var row=document.getElementById('deonRow');if(!row)return;var timer=null,held=false,navTimer=null,navigated=false;
 function clearHold(){if(timer){clearTimeout(timer);timer=null;}}
 function buzz(){try{if(navigator.vibrate){navigator.vibrate([25,50,25,50,25,50,25,50,25,50,25,50]);}}catch(e){}}
 function stopBuzz(){try{if(navigator.vibrate){navigator.vibrate(0);}}catch(e){}}
-function endHold(){clearHold();if(held){held=false;row.classList.remove('holding');stopBuzz();}}
-row.addEventListener('pointerdown',function(){held=false;clearHold();timer=setTimeout(function(){held=true;row.classList.add('holding');buzz();},350);});
-row.addEventListener('pointerup',function(){var wasHeld=held;endHold();if(!wasHeld){row.classList.remove('tap-glow');void row.offsetWidth;row.classList.add('tap-glow');}});
+function goEgg(){if(!navigated){navigated=true;window.location.href='easter-egg/';}}
+function endHold(){clearHold();if(navTimer){clearTimeout(navTimer);navTimer=null;}if(held){held=false;row.classList.remove('holding');stopBuzz();}}
+row.addEventListener('pointerdown',function(){navigated=false;held=false;clearHold();timer=setTimeout(function(){held=true;row.classList.add('holding');buzz();navTimer=setTimeout(goEgg,650);},350);});
+row.addEventListener('pointerup',function(){var wasHeld=held;endHold();if(wasHeld){goEgg();}else{row.classList.remove('tap-glow');void row.offsetWidth;row.classList.add('tap-glow');}});
 var tapSvg=row.querySelector('svg');if(tapSvg){tapSvg.addEventListener('animationend',function(e){if(e.animationName==='tapGlow'){row.classList.remove('tap-glow');}});}
 row.addEventListener('pointercancel',function(){endHold();});
 row.addEventListener('pointerleave',function(){endHold();});

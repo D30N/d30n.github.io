@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Easter Egg</title>
+<script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<style>
+:root{--bg:#0a0a0f;--ink:#f2f0ea}
+[data-theme="light"]{--bg:#f7f6f1;--ink:#17171d}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
+h1{font-size:clamp(2rem,8vw,3.5rem);margin:0 0 12px}
+p{font-size:clamp(1rem,4vw,1.3rem);margin:0;opacity:.85}
+.back{margin-top:36px;font-size:.95rem}
+.back a{color:#4da6ff;text-decoration:underline}
+</style>
+</head>
+<body>
+<main>
+<h1>Congratulations!</h1>
+<p>You found a hidden page</p>
+<p class="back"><a href="/">← Back to home</a></p>
+</main>
+</body>
+</html>
