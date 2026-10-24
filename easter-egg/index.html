@@ -39,6 +39,10 @@ h1{font-size:clamp(2rem,8vw,3.5rem);margin:32px 0 12px;color:#c8f542}
 .result .big{font-size:3rem;font-weight:700;margin:8px 0}
 .result p{color:var(--dim)}
 .btn{background:#4da6ff;border:0;color:#fff;border-radius:12px;padding:13px 26px;font-size:1rem;font-family:inherit;cursor:pointer;margin-top:16px}
+#startBtn{background:#1faa53;animation:startGlow 1.8s ease-in-out infinite}
+@keyframes startGlow{0%,100%{box-shadow:0 0 0 0 rgba(31,170,83,.5)}50%{box-shadow:0 0 24px 6px rgba(31,170,83,.5)}}
+.countpop{animation:countPop .3s ease}
+@keyframes countPop{from{transform:scale(.7);opacity:.3}to{transform:scale(1);opacity:1}}
 </style>
 </head>
 <body>
@@ -48,6 +52,7 @@ h1{font-size:clamp(2rem,8vw,3.5rem);margin:32px 0 12px;color:#c8f542}
 <h2 class="set-title">Mollywood funny part 01</h2>
 <section class="quiz" id="quiz">
 <div id="startScreen" style="text-align:center;padding:24px 0"><button class="btn" id="startBtn" style="margin-top:0">Start Quiz</button></div>
+<div id="countdown" style="display:none;text-align:center;padding:24px 0;font-size:3rem;font-weight:700"></div>
 <div id="game" style="display:none">
 <div class="progress"><span id="prog">ചോദ്യം 1 / 31</span><span id="score">സ്കോർ: 0</span></div>
 <div class="bar"><i id="barfill"></i></div>
@@ -175,9 +180,27 @@ function showResult() {
   quizEl.innerHTML = '<div class="result"><p>ക്വിസ് കഴിഞ്ഞു!</p><div class="big">' + score + ' / ' + QUIZ.length + '</div><p>' + msg + '</p><button class="btn" onclick="location.reload()">വീണ്ടും കളിക്കുക</button></div>';
 }
 document.getElementById('startBtn').onclick = () => {
+  const cd = document.getElementById('countdown');
   document.getElementById('startScreen').style.display = 'none';
-  document.getElementById('game').style.display = 'block';
-  render();
+  cd.style.display = 'block';
+  const steps = ['Ready?', '5', '4', '3', '2', '1', 'Go!'];
+  let si = 0;
+  const showStep = () => {
+    cd.textContent = steps[si];
+    cd.classList.remove('countpop');
+    void cd.offsetWidth;
+    cd.classList.add('countpop');
+    const last = si === steps.length - 1;
+    const wait = last ? 800 : 1000;
+    si++;
+    if (si < steps.length) setTimeout(showStep, wait);
+    else setTimeout(() => {
+      cd.style.display = 'none';
+      document.getElementById('game').style.display = 'block';
+      render();
+    }, wait);
+  };
+  showStep();
 };
 </script>
 </body>
