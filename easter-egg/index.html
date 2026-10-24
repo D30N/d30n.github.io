@@ -38,6 +38,10 @@ h1{font-size:clamp(2rem,8vw,3.5rem);margin:32px 0 12px;color:#c8f542}
 .result{text-align:center}
 .result .big{font-size:3rem;font-weight:700;margin:8px 0}
 .result p{color:var(--dim)}
+.result p.m-red{color:#e53935}
+.result p.m-yellow{color:#eab308}
+.result p.m-green{color:#1faa53}
+.times-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px 10px;margin:18px auto 0;max-width:420px;font-size:.85rem;color:var(--dim);text-align:left}
 .btn{background:#4da6ff;border:0;color:#fff;border-radius:12px;padding:13px 26px;font-size:1rem;font-family:inherit;cursor:pointer;margin-top:16px}
 #startBtn{background:#1faa53;animation:startGlow 1.8s ease-in-out infinite}
 @keyframes startGlow{0%,100%{box-shadow:0 0 0 0 rgba(31,170,83,.5)}50%{box-shadow:0 0 24px 6px rgba(31,170,83,.5)}}
@@ -73,7 +77,8 @@ const QUIZ = shuffle(QUESTIONS.map(q => {
   shuffle(opts);
   return { q: q.q, options: opts.map(o => o.text), answer: opts.findIndex(o => o.correct) };
 }));
-let idx = 0, score = 0, locked = false, timerId = null, timeLeft = 15;
+let idx = 0, score = 0, locked = false, timerId = null, timeLeft = 15, qStart = 0;
+const times = [];
 const qtext = document.getElementById('qtext');
 const optsEl = document.getElementById('opts');
 const prog = document.getElementById('prog');
@@ -112,6 +117,7 @@ function startTimer() {
 function render() {
   const q = QUIZ[idx];
   locked = false;
+  qStart = Date.now();
   fb.textContent = '';
   fb.className = 'feedback';
   prog.textContent = 'Question ' + (idx + 1) + ' / ' + QUIZ.length;
@@ -144,10 +150,12 @@ function next() {
     else showResult();
   }, 1500);
 }
+function recordTime() { times.push(Math.min(15, Math.max(0, Math.round((Date.now() - qStart) / 1000)))); }
 function pick(i) {
   if (locked) return;
   locked = true;
   stopTimer();
+  recordTime();
   const q = QUIZ[idx];
   reveal(q.answer, i);
   if (i === q.answer) {
@@ -164,6 +172,7 @@ function pick(i) {
 function onTimeout() {
   if (locked) return;
   locked = true;
+  recordTime();
   const q = QUIZ[idx];
   reveal(q.answer, -1);
   fb.textContent = "Time's up!";
@@ -174,10 +183,14 @@ function showResult() {
   stopTimer();
   barfill.style.width = '100%';
   let msg = 'Better luck next time!';
-  if (score === QUIZ.length) msg = 'Outstanding!';
-  else if (score >= 22) msg = 'Excellent!';
-  else if (score >= 12) msg = 'Good!';
-  quizEl.innerHTML = '<div class="result"><p>Game Over</p><div class="big">' + score + ' / ' + QUIZ.length + '</div><p>' + msg + '</p><button class="btn" onclick="location.reload()">Play Again</button></div>';
+  let msgCls = 'm-red';
+  if (score === QUIZ.length) { msg = 'Outstanding!'; msgCls = 'm-green'; }
+  else if (score >= 22) { msg = 'Excellent!'; msgCls = 'm-green'; }
+  else if (score >= 12) { msg = 'Good!'; msgCls = 'm-yellow'; }
+  const total = times.reduce((a, b) => a + b, 0);
+  const totalText = total >= 60 ? Math.floor(total / 60) + 'm ' + (total % 60) + 's' : total + 's';
+  const grid = times.map((s, i) => '<span>Q' + (i + 1) + ': ' + s + 's</span>').join('');
+  quizEl.innerHTML = '<div class="result"><p>Game Over</p><div class="big">' + score + ' / ' + QUIZ.length + '</div><p class="' + msgCls + '">' + msg + '</p><p>Total time: ' + totalText + '</p><div class="times-grid">' + grid + '</div><button class="btn" onclick="location.reload()">Play Again</button></div>';
 }
 document.getElementById('startBtn').onclick = () => {
   const cd = document.getElementById('countdown');
