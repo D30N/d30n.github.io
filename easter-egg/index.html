@@ -41,7 +41,6 @@ h1{font-size:clamp(2rem,8vw,3.5rem);margin:32px 0 12px;color:#c8f542}
 .result p.m-red{color:#e53935}
 .result p.m-yellow{color:#eab308}
 .result p.m-green{color:#1faa53}
-.times-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px 10px;margin:18px auto 0;max-width:420px;font-size:.85rem;color:var(--dim);text-align:left}
 .btn{background:#4da6ff;border:0;color:#fff;border-radius:12px;padding:13px 26px;font-size:1rem;font-family:inherit;cursor:pointer;margin-top:16px}
 #startBtn{background:#1faa53;animation:startGlow 1.8s ease-in-out infinite}
 @keyframes startGlow{0%,100%{box-shadow:0 0 0 0 rgba(31,170,83,.5)}50%{box-shadow:0 0 24px 6px rgba(31,170,83,.5)}}
@@ -189,8 +188,7 @@ function showResult() {
   else if (score >= 12) { msg = 'Good!'; msgCls = 'm-yellow'; }
   const total = times.reduce((a, b) => a + b, 0);
   const totalText = total >= 60 ? Math.floor(total / 60) + 'm ' + (total % 60) + 's' : total + 's';
-  const grid = times.map((s, i) => '<span>Q' + (i + 1) + ': ' + s + 's</span>').join('');
-  quizEl.innerHTML = '<div class="result"><p>Game Over</p><div class="big">' + score + ' / ' + QUIZ.length + '</div><p class="' + msgCls + '">' + msg + '</p><p>Total time: ' + totalText + '</p><div class="times-grid">' + grid + '</div><button class="btn" onclick="location.reload()">Play Again</button></div>';
+  quizEl.innerHTML = '<div class="result"><p>Game Over</p><div class="big">' + score + ' / ' + QUIZ.length + '</div><p class="' + msgCls + '">' + msg + '</p><p>Total time: ' + totalText + '</p><button class="btn" onclick="location.reload()">Play Again</button></div>';
 }
 document.getElementById('startBtn').onclick = () => {
   const cd = document.getElementById('countdown');
