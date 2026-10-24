@@ -308,8 +308,7 @@
 <section id="reels">
   <div class="sec-tag reveal">// most loved on instagram</div>
   <h2 class="reveal">My Popular <em>Reels</em></h2>
-  <div class="reveal" style="margin:2px 0 20px"><button class="btn ghost" id="srch-reels" type="button" style="font-family:inherit;cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" style="width:15px;height:15px;vertical-align:-2px;margin-right:7px"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Search my reels</button></div>
-  <div id="reel-search" style="display:none;max-width:640px;margin:0 0 20px"><div class="srch" style="margin:0"><span class="srch-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><input id="reel-in" type="search" placeholder="Search my reels" autocomplete="off" /><div id="reel-out"></div></div></div>
+  <div id="reel-search" style="max-width:640px;margin:0 0 20px"><div class="srch" style="margin:0"><span class="srch-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><input id="reel-in" type="search" placeholder="Search my reels" autocomplete="off" /><div id="reel-out"></div></div></div>
   <div class="reelwrap reveal"><div class="reeltrack" id="reeltrack">
     <a class="rcard" href="https://www.instagram.com/reel/C4fuEIXPA3p/" target="_blank" rel="noopener">
       <img src="assets/reels/C4fuEIXPA3p.jpg" alt="Malayalam handwritten text on Instagram stories and reels" loading="lazy" />
@@ -728,8 +727,8 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
 </script>
 <script>
 (function(){
-  var btn=document.getElementById('srch-reels'), box=document.getElementById('reel-search'), inp=document.getElementById('reel-in'), out=document.getElementById('reel-out'), data=null;
-  if(!btn||!box||!inp||!out)return;
+  var box=document.getElementById('reel-search'), inp=document.getElementById('reel-in'), out=document.getElementById('reel-out'), data=null;
+  if(!box||!inp||!out)return;
   fetch('assets/reels-search.json').then(function(r){return r.json()}).then(function(d){data=d;}).catch(function(){});
   function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
   function render(){
@@ -740,10 +739,9 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
     out.style.display='block';
     if(hits.length>4){var rows=out.querySelectorAll('a'),hh=0;for(var r=0;r<3;r++)hh+=rows[r].offsetHeight;hh+=Math.round(rows[3].offsetHeight/2);out.style.maxHeight=hh+'px';}else{out.style.maxHeight='';}
   }
-  btn.addEventListener('click',function(){var open=box.style.display==='none';box.style.display=open?'block':'none';if(open){setTimeout(function(){inp.focus({preventScroll:true});},50);}});
   inp.addEventListener('input',render);
   inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var f=out.querySelector('a');if(f)window.open(f.href,'_blank');}if(e.key==='Escape'){inp.value='';render();inp.blur();}});
-  document.addEventListener('click',function(e){if(!e.target.closest('#reel-search')&&e.target!==btn){out.style.display='none';}});
+  document.addEventListener('click',function(e){if(!e.target.closest('#reel-search')){out.style.display='none';}});
 })();
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});}</script>
