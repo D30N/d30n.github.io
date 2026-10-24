@@ -22,11 +22,9 @@ h1{font-size:clamp(2rem,8vw,3.5rem);margin:32px 0 12px}
 .bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:8px}
 .bar i{display:block;height:100%;background:#4da6ff;width:0;transition:width .4s ease}
 .timer{display:flex;justify-content:space-between;font-size:.9rem;margin-bottom:6px}
-.timer b{font-size:1.1rem}
-.timer b.low{color:#e53935}
+.timer b{font-size:1.1rem;transition:color 1.5s ease}
 .tbar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:20px}
-.tbar i{display:block;height:100%;background:#4da6ff;width:100%;transition:width 1s linear}
-.tbar i.low{background:#e53935}
+.tbar i{display:block;height:100%;background:#1faa53;width:100%;transition:width 1s linear,background-color 1.5s ease}
 .q{font-size:1.25rem;line-height:1.5;margin:0 0 18px}
 .opt{display:block;width:100%;text-align:left;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin:0 0 10px;font-size:1rem;font-family:inherit;cursor:pointer;transition:background .25s ease,transform .15s ease}
 .opt:active{transform:scale(.99)}
@@ -72,18 +70,28 @@ const tbarfill = document.getElementById('tbarfill');
 const fb = document.getElementById('fb');
 const quizEl = document.getElementById('quiz');
 function stopTimer() { if (timerId) { clearInterval(timerId); timerId = null; } }
+function stageColor(pct) {
+  if (pct >= 70) return '#1faa53';
+  if (pct >= 40) return '#eab308';
+  if (pct >= 10) return '#f97316';
+  return '#e53935';
+}
+function paintTimer() {
+  const c = stageColor(timeLeft / 15 * 100);
+  tsec.style.color = c;
+  tbarfill.style.backgroundColor = c;
+}
 function startTimer() {
   stopTimer();
   timeLeft = 15;
   tsec.textContent = '15s';
-  tsec.className = '';
   tbarfill.style.width = '100%';
-  tbarfill.className = '';
+  paintTimer();
   timerId = setInterval(() => {
     timeLeft--;
     tsec.textContent = timeLeft + 's';
     tbarfill.style.width = (timeLeft / 15 * 100) + '%';
-    if (timeLeft <= 5) { tsec.className = 'low'; tbarfill.className = 'low'; }
+    paintTimer();
     if (timeLeft <= 0) { stopTimer(); onTimeout(); }
   }, 1000);
 }
