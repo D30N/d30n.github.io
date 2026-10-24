@@ -189,7 +189,6 @@ function pick(i, btn) {
   locked = true;
   stopTimer();
   recordTime();
-  if (navigator.vibrate) navigator.vibrate([60, 60, 60]);
   const q = QUIZ[idx];
   reveal(q.answer, i);
   if (i === q.answer) {
@@ -198,6 +197,7 @@ function pick(i, btn) {
     fb.textContent = 'Correct!';
     fb.className = 'feedback ok';
     burst(btn);
+    if (navigator.vibrate) navigator.vibrate(50);
   } else {
     fb.textContent = 'Wrong!';
     fb.className = 'feedback no';
@@ -205,6 +205,7 @@ function pick(i, btn) {
     void quizEl.offsetWidth;
     quizEl.classList.add('shake');
     setTimeout(() => quizEl.classList.remove('shake'), 500);
+    if (navigator.vibrate) navigator.vibrate([60, 60, 60]);
   }
   next();
 }
