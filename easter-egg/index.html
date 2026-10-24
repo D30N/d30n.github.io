@@ -1,26 +1,117 @@
 <!doctype html>
-<html lang="en">
+<html lang="ml">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Easter Egg</title>
 <script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
 <style>
-:root{--bg:#0a0a0f;--ink:#f2f0ea}
-[data-theme="light"]{--bg:#f7f6f1;--ink:#17171d}
-html,body{height:100%;margin:0}
-body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
-h1{font-size:clamp(2rem,8vw,3.5rem);margin:0 0 12px}
-p{font-size:clamp(1rem,4vw,1.3rem);margin:0;opacity:.85}
-.back{margin-top:36px;font-size:.95rem}
+:root{--bg:#0a0a0f;--ink:#f2f0ea;--dim:#a7a7b3;--card:#15151f;--line:#262633}
+[data-theme="light"]{--bg:#f7f6f1;--ink:#17171d;--dim:#5f5f6a;--card:#ffffff;--line:#ddd9cd}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;padding:24px 16px 48px}
+main{max-width:640px;margin:0 auto;text-align:center}
+h1{font-size:clamp(2rem,8vw,3.5rem);margin:32px 0 12px}
+.sub{font-size:clamp(1rem,4vw,1.3rem);margin:0;opacity:.85}
+.back{margin-top:16px;font-size:.95rem}
 .back a{color:#4da6ff;text-decoration:underline}
+.quiz{margin-top:44px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.progress{display:flex;justify-content:space-between;font-size:.9rem;color:var(--dim);margin-bottom:10px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:20px}
+.bar i{display:block;height:100%;background:#4da6ff;width:0;transition:width .4s ease}
+.q{font-size:1.25rem;line-height:1.5;margin:0 0 18px}
+.opt{display:block;width:100%;text-align:left;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:13px 16px;margin:0 0 10px;font-size:1rem;font-family:inherit;cursor:pointer;transition:background .25s ease,transform .15s ease}
+.opt:active{transform:scale(.99)}
+.opt:disabled{cursor:default;opacity:1}
+.opt.correct{background:#1faa53;border-color:#1faa53;color:#fff}
+.opt.wrong{background:#e53935;border-color:#e53935;color:#fff}
+.opt.dim{opacity:.55}
+.feedback{min-height:24px;font-weight:700;margin-top:6px}
+.feedback.ok{color:#1faa53}
+.feedback.no{color:#e53935}
+.result{text-align:center}
+.result .big{font-size:3rem;font-weight:700;margin:8px 0}
+.result p{color:var(--dim)}
+.btn{background:#4da6ff;border:0;color:#fff;border-radius:12px;padding:13px 26px;font-size:1rem;font-family:inherit;cursor:pointer;margin-top:16px}
 </style>
 </head>
 <body>
 <main>
 <h1>Congratulations!</h1>
-<p>You found a hidden page</p>
+<p class="sub">You found a hidden page</p>
 <p class="back"><a href="/">← Back to home</a></p>
+<section class="quiz" id="quiz">
+<div class="progress"><span id="prog">ചോദ്യം 1 / 10</span><span id="score">സ്കോർ: 0</span></div>
+<div class="bar"><i id="barfill"></i></div>
+<p class="q" id="qtext"></p>
+<div id="opts"></div>
+<div class="feedback" id="fb"></div>
+</section>
 </main>
+<script>
+const QUESTIONS = [{"q": "മലയാളത്തിലെ ആദ്യത്തെ Dolby Stereo സിനിമ?", "options": ["യോദ്ധാ", "കാലാപാനി", "വർണ്ണപ്പകിട്ട്", "മണിച്ചിത്രത്താഴ്"], "answer": 1}, {"q": "മലയാളത്തിലെ ആദ്യത്തെ ഫിലിം സ്റ്റുഡിയോ?", "options": ["നവോദയ", "ചിത്രലേഖ", "ഉദയ", "മെറിലാൻഡ്"], "answer": 2}, {"q": "ഏറ്റവും അധികം സിനിമകളിൽ അഭിനയിച്ച മലയാള നടൻ?", "options": ["പ്രേം നസീർ", "മമ്മൂട്ടി", "ജഗതി ശ്രീകുമാർ", "മോഹൻലാൽ"], "answer": 2}, {"q": "മികച്ച നടിക്കുള്ള ദേശീയ അവാർഡ് നേടിയ ഏറ്റവും പ്രായം കുറഞ്ഞ മലയാള നടി?", "options": ["ഉർവശി", "ശോഭന", "പാർവ്വതി", "മോനിഷ"], "answer": 3}, {"q": "ഏതെങ്കിലും ഒരു വിഭാഗത്തിൽ ഏറ്റവും കൂടുതൽ സംസ്ഥാന സിനിമാ അവാർഡുകൾ നേടിയ വ്യക്തി?", "options": ["മോഹൻ ലാൽ", "പ്രേം നസീർ", "കെ ജെ യേശുദാസ്", "പദ്മരാജൻ"], "answer": 2}, {"q": "തുടർച്ചായി 11 തവണ ഒരു വിഭാഗത്തിൽ സംസ്ഥാന സിനിമാ അവാർഡ് നേടിയ വ്യക്തി?", "options": ["കെ ജെ യേശുദാസ്", "മോഹൻലാൽ", "കെ എസ് ചിത്ര", "മമ്മൂട്ടി"], "answer": 2}, {"q": "2013 ൽ പുറത്തിറങ്ങിയ സെല്ലുലോയ്ഡ് എന്ന ചിത്രത്തിൽ ജെ സി ഡാനിയേലിനെ അവതരിപ്പിച്ചത്?", "options": ["ഇന്ദ്രജിത്ത്", "നിവിൻ പോളി", "ദുൽഖർ സൽമാൻ", "പൃഥ്വിരാജ്"], "answer": 3}, {"q": "മലയാള സിനിമയിലെ ആദ്യത്തെ നടി എന്ന് അറിയപ്പെടുന്നത്?", "options": ["അടൂർ ഭവാനി", "ജയഭാരതി", "പി. കെ. റോസി", "ഷീല"], "answer": 2}, {"q": "2015 ൽ പുറത്തിറങ്ങിയ 'ചാർളി' എന്ന മലയാളസിനിമ സംവിധാനം ചെയ്തത്?", "options": ["അൻവർ റഷീദ്", "മാർട്ടിൻ പ്രക്കാട്ട്", "റോഷൻ ആൻഡ്രൂസ്", "എബ്രിഡ് ഷൈൻ"], "answer": 1}, {"q": "മികച്ച വിദേശ ഭാഷാ ചിത്രത്തിനുള്ള ഓസ്കാർ നോമിനേഷൻ നേടിയ ആദ്യ മലയാള ചിത്രം?", "options": ["മതിലുകൾ", "ചെമ്മീൻ", "ഗുരു", "കാലാപാനി"], "answer": 2}];
+let idx = 0, score = 0, locked = false;
+const qtext = document.getElementById('qtext');
+const optsEl = document.getElementById('opts');
+const prog = document.getElementById('prog');
+const scoreEl = document.getElementById('score');
+const barfill = document.getElementById('barfill');
+const fb = document.getElementById('fb');
+const quizEl = document.getElementById('quiz');
+function render() {
+  const q = QUESTIONS[idx];
+  locked = false;
+  fb.textContent = '';
+  fb.className = 'feedback';
+  prog.textContent = 'ചോദ്യം ' + (idx + 1) + ' / ' + QUESTIONS.length;
+  scoreEl.textContent = 'സ്കോർ: ' + score;
+  barfill.style.width = (idx / QUESTIONS.length * 100) + '%';
+  qtext.textContent = q.q;
+  optsEl.innerHTML = '';
+  q.options.forEach((op, i) => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.textContent = String.fromCharCode(65 + i) + '. ' + op;
+    b.onclick = () => pick(i, b);
+    optsEl.appendChild(b);
+  });
+}
+function pick(i, btn) {
+  if (locked) return;
+  locked = true;
+  const q = QUESTIONS[idx];
+  const btns = optsEl.querySelectorAll('.opt');
+  btns.forEach((b, j) => {
+    b.disabled = true;
+    if (j === q.answer) b.classList.add('correct');
+    else if (j === i) b.classList.add('wrong');
+    else b.classList.add('dim');
+  });
+  if (i === q.answer) {
+    score++;
+    scoreEl.textContent = 'സ്കോർ: ' + score;
+    fb.textContent = 'ശരിയുത്തരം!';
+    fb.className = 'feedback ok';
+  } else {
+    fb.textContent = 'തെറ്റുത്തരം — ശരിയുത്തരം പച്ചയിൽ കാണാം';
+    fb.className = 'feedback no';
+  }
+  setTimeout(() => {
+    idx++;
+    if (idx < QUESTIONS.length) render();
+    else showResult();
+  }, 1500);
+}
+function showResult() {
+  barfill.style.width = '100%';
+  let msg = 'വീണ്ടും ശ്രമിക്കൂ!';
+  if (score === QUESTIONS.length) msg = 'Perfect! എല്ലാം ശരി!';
+  else if (score >= 7) msg = 'മികച്ചത്!';
+  else if (score >= 4) msg = 'നല്ല ശ്രമം!';
+  quizEl.innerHTML = '<div class="result"><p>ക്വിസ് കഴിഞ്ഞു!</p><div class="big">' + score + ' / ' + QUESTIONS.length + '</div><p>' + msg + '</p><button class="btn" onclick="location.reload()">വീണ്ടും കളിക്കുക</button></div>';
+}
+render();
+</script>
 </body>
 </html>
