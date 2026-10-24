@@ -761,8 +761,8 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
 <script>
 (function(){var row=document.getElementById('deonRow');if(!row)return;var timer=null,held=false;
 function clearHold(){if(timer){clearTimeout(timer);timer=null;}}
-function buzz(){try{if(navigator.vibrate){navigator.vibrate([25,50,25,50,25,50,25,50,25,50,25,50]);}}}catch(e){}}
-function stopBuzz(){try{if(navigator.vibrate){navigator.vibrate(0);}}}catch(e){}}
+function buzz(){try{if(navigator.vibrate){navigator.vibrate([25,50,25,50,25,50,25,50,25,50,25,50]);}}catch(e){}}
+function stopBuzz(){try{if(navigator.vibrate){navigator.vibrate(0);}}catch(e){}}
 row.addEventListener('pointerdown',function(){held=false;clearHold();timer=setTimeout(function(){held=true;row.classList.add('holding');buzz();},350);});
 row.addEventListener('pointerup',function(){clearHold();if(held){held=false;row.classList.remove('holding');stopBuzz();}else{row.classList.toggle('glow-on');}});
 row.addEventListener('pointercancel',function(){clearHold();if(held){held=false;row.classList.remove('holding');stopBuzz();}});
