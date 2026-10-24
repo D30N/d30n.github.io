@@ -212,13 +212,19 @@
 .srch-ic{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:19px;height:19px;color:var(--lime);pointer-events:none}
 .srch-ic svg{width:100%;height:100%;display:block}
 .srch input:focus{border-color:var(--lime)}
-#srch-mode{display:none;margin-top:10px;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;border:1px solid var(--lime);background:transparent;color:var(--lime);font-size:12.5px;font-family:inherit;cursor:pointer}
+
 #srch-out{position:absolute;left:0;right:0;top:calc(100% + 6px);background:linear-gradient(rgba(200,245,66,.05),rgba(200,245,66,.05)),var(--card);border:1px solid var(--line);border-radius:14px;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;box-shadow:0 18px 40px rgba(0,0,0,.45);z-index:60;display:none}
 #srch-out a{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;color:var(--ink);font-size:14.5px;line-height:1.4;border-top:1px solid var(--line)}
 #srch-out a:first-child{border-top:none}
 #srch-out a:hover{background:var(--bg2)}
 #srch-out .stag{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);white-space:nowrap;padding-top:2px}
 #srch-out .none{padding:14px 16px;color:var(--dim);font-size:14px}
+#reel-out{position:absolute;left:0;right:0;top:calc(100% + 6px);background:linear-gradient(rgba(200,245,66,.05),rgba(200,245,66,.05)),var(--card);border:1px solid var(--line);border-radius:14px;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;box-shadow:0 18px 40px rgba(0,0,0,.45);z-index:60;display:none}
+#reel-out a{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;color:var(--ink);font-size:14.5px;line-height:1.4;border-top:1px solid var(--line)}
+#reel-out a:first-child{border-top:none}
+#reel-out a:hover{background:var(--bg2)}
+#reel-out .stag{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);white-space:nowrap;padding-top:2px}
+#reel-out .none{padding:14px 16px;color:var(--dim);font-size:14px}
 </style>
 <link rel="manifest" href="/manifest.webmanifest" />
 <meta name="theme-color" content="#0a0a0f" />
@@ -303,6 +309,7 @@
   <div class="sec-tag reveal">// most loved on instagram</div>
   <h2 class="reveal">My Popular <em>Reels</em></h2>
   <div class="reveal" style="margin:2px 0 20px"><button class="btn ghost" id="srch-reels" type="button" style="font-family:inherit;cursor:pointer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" style="width:15px;height:15px;vertical-align:-2px;margin-right:7px"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Search my reels</button></div>
+  <div id="reel-search" style="display:none;max-width:640px;margin:0 0 20px"><div class="srch" style="margin:0"><span class="srch-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><input id="reel-in" type="search" placeholder="Search my reels" autocomplete="off" /><div id="reel-out"></div></div></div>
   <div class="reelwrap reveal"><div class="reeltrack" id="reeltrack">
     <a class="rcard" href="https://www.instagram.com/reel/C4fuEIXPA3p/" target="_blank" rel="noopener">
       <img src="assets/reels/C4fuEIXPA3p.jpg" alt="Malayalam handwritten text on Instagram stories and reels" loading="lazy" />
@@ -402,7 +409,7 @@
   <div class="sec-tag reveal">// find me everywhere</div>
   <h2 class="reveal">All My <em>Links</em></h2>
   <div class="links-sub">// Articles</div>
-  <div class="srch reveal"><span class="srch-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><input id="srch-in" type="search" placeholder="Search articles" autocomplete="off" /><div id="srch-out"></div><button id="srch-mode" type="button">Reels only ✕</button></div>
+  <div class="srch reveal"><span class="srch-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><input id="srch-in" type="search" placeholder="Search articles" autocomplete="off" /><div id="srch-out"></div></div>
   <div class="link-grid">
     <a class="lbtn wide reveal" href="android/"><span class="li"><svg fill="#3DDC84" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Android</title><path d="M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084-.1494-1.7526-3.021-2.0215-3.4864a1.1451 1.1451 0 0 0-.1406-.1914c-.3312-.364-.9054-.4859-1.379-.203-.475.282-.7136.9361-.3886 1.5019 1.9466 3.3696-.0966-.2158 1.9473 3.3593.0172.031-.4946.2642-1.3926 1.0177C2.8987 12.176.452 14.772 0 18.9902h24c-.119-1.1108-.3686-2.099-.7461-3.0683-.7438-1.9118-1.8435-3.2928-2.7402-4.1836a12.1048 12.1048 0 0 0-2.1309-1.6875c.6594-1.122 1.312-2.2559 1.9649-3.3848.2077-.3615.1886-.7956-.0079-1.1191a1.1001 1.1001 0 0 0-.8515-.5332c-.5225-.0536-.9392.3128-1.0488.5449zm-.0391 8.461c.3944.5926.324 1.3306-.1563 1.6503-.4799.3197-1.188.0985-1.582-.4941-.3944-.5927-.324-1.3307.1563-1.6504.4727-.315 1.1812-.1086 1.582.4941zM7.207 13.5273c.4803.3197.5506 1.0577.1563 1.6504-.394.5926-1.1038.8138-1.584.4941-.48-.3197-.5503-1.0577-.1563-1.6504.4008-.6021 1.1087-.8106 1.584-.4941z"/></svg></span><span>Android / Tech<small>articles &amp; guides</small></span><span class="lreads"><b>187,884</b><small>reads</small></span></a>
     <a class="lbtn wide reveal" href="telegram/"><span class="li"><svg fill="#26A5E4" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Telegram</title><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span><span>Posts about Telegram<small>33 articles</small></span><span class="lreads"><b>201,359</b><small>reads</small></span></a>
@@ -699,16 +706,14 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
 <script>
 (function(){
   var inp=document.getElementById('srch-in'), out=document.getElementById('srch-out'), data=null;
-  var reelsOnly=false, modeBtn=document.getElementById('srch-mode');
   if(!inp||!out)return;
   fetch('assets/search.json').then(function(r){return r.json()}).then(function(d){data=d;}).catch(function(){});
   function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
   function render(){
     var q=inp.value.trim().toLowerCase();
     if(!q||!data){out.style.display='none';out.innerHTML='';return;}
-    var pool=reelsOnly?data.filter(function(x){return x.s==='Reels';}):data;
-    var hits=pool.filter(function(x){return (x.t+' '+(x.k||'')+' '+x.u).toLowerCase().indexOf(q)>-1||x.s.toLowerCase().indexOf(q)>-1;}).slice(0,30);
-    out.innerHTML=hits.length?hits.map(function(x){return '<a href="'+x.u+'"><span>'+esc(x.t)+'</span><span class="stag">'+esc(x.s)+'</span></a>';}).join(''):'<div class="none">'+(reelsOnly?'No reels found':'No articles found')+'</div>';
+    var hits=data.filter(function(x){return (x.t+' '+(x.k||'')+' '+x.u).toLowerCase().indexOf(q)>-1||x.s.toLowerCase().indexOf(q)>-1;}).slice(0,30);
+    out.innerHTML=hits.length?hits.map(function(x){return '<a href="'+x.u+'"><span>'+esc(x.t)+'</span><span class="stag">'+esc(x.s)+'</span></a>';}).join(''):'<div class="none">No articles found</div>';
     out.style.display='block';
     if(hits.length>4){var rows=out.querySelectorAll('a'),hh=0;for(var r=0;r<3;r++)hh+=rows[r].offsetHeight;hh+=Math.round(rows[3].offsetHeight/2);out.style.maxHeight=hh+'px';}else{out.style.maxHeight='';}
   }
@@ -717,11 +722,28 @@ document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListene
     if(e.key==='Enter'){var f=out.querySelector('a');if(f)location.href=f.href;}
     if(e.key==='Escape'){inp.value='';render();inp.blur();}
   });
-  var reelsBtn=document.getElementById('srch-reels');
-  if(reelsBtn){reelsBtn.addEventListener('click',function(){reelsOnly=true;inp.placeholder='Search my reels';if(modeBtn)modeBtn.style.display='inline-flex';var y=inp.getBoundingClientRect().top+window.pageYOffset-96;window.scrollTo({top:y,behavior:'smooth'});setTimeout(function(){inp.focus({preventScroll:true});},450);});}
-  if(modeBtn){modeBtn.addEventListener('click',function(){reelsOnly=false;inp.placeholder='Search articles';modeBtn.style.display='none';render();inp.focus({preventScroll:true});});}
   document.addEventListener('click',function(e){if(!e.target.closest('.srch')){out.style.display='none';}});
   inp.addEventListener('focus',function(){render();});
+})();
+</script>
+<script>
+(function(){
+  var btn=document.getElementById('srch-reels'), box=document.getElementById('reel-search'), inp=document.getElementById('reel-in'), out=document.getElementById('reel-out'), data=null;
+  if(!btn||!box||!inp||!out)return;
+  fetch('assets/reels-search.json').then(function(r){return r.json()}).then(function(d){data=d;}).catch(function(){});
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  function render(){
+    var q=inp.value.trim().toLowerCase();
+    if(!q||!data){out.style.display='none';out.innerHTML='';return;}
+    var hits=data.filter(function(x){return (x.t+' '+(x.k||'')+' '+x.u).toLowerCase().indexOf(q)>-1;}).slice(0,30);
+    out.innerHTML=hits.length?hits.map(function(x){return '<a href="'+x.u+'" target="_blank" rel="noopener"><span>'+esc(x.t)+'</span><span class="stag">Instagram</span></a>';}).join(''):'<div class="none">No reels found</div>';
+    out.style.display='block';
+    if(hits.length>4){var rows=out.querySelectorAll('a'),hh=0;for(var r=0;r<3;r++)hh+=rows[r].offsetHeight;hh+=Math.round(rows[3].offsetHeight/2);out.style.maxHeight=hh+'px';}else{out.style.maxHeight='';}
+  }
+  btn.addEventListener('click',function(){var open=box.style.display==='none';box.style.display=open?'block':'none';if(open){setTimeout(function(){inp.focus({preventScroll:true});},50);}});
+  inp.addEventListener('input',render);
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){var f=out.querySelector('a');if(f)window.open(f.href,'_blank');}if(e.key==='Escape'){inp.value='';render();inp.blur();}});
+  document.addEventListener('click',function(e){if(!e.target.closest('#reel-search')&&e.target!==btn){out.style.display='none';}});
 })();
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})});}</script>
