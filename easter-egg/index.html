@@ -46,6 +46,8 @@ h1{font-size:clamp(2rem,8vw,3.5rem);margin:32px 0 12px;color:#c8f542}
 @keyframes startGlow{0%,100%{box-shadow:0 0 0 0 rgba(31,170,83,.5)}50%{box-shadow:0 0 24px 6px rgba(31,170,83,.5)}}
 .countpop{animation:countPop .3s ease}
 @keyframes countPop{from{transform:scale(.7);opacity:.3}to{transform:scale(1);opacity:1}}
+.confetti{animation:confettiBurst 1s ease-out forwards}
+@keyframes confettiBurst{to{transform:translate(var(--dx),var(--dy)) rotate(var(--rot));opacity:0}}
 </style>
 </head>
 <body>
@@ -140,7 +142,7 @@ function render() {
     const b = document.createElement('button');
     b.className = 'opt';
     b.textContent = String.fromCharCode(65 + i) + '. ' + op;
-    b.onclick = () => pick(i);
+    b.onclick = () => pick(i, b);
     optsEl.appendChild(b);
   });
   startTimer();
@@ -162,11 +164,30 @@ function next() {
   }, 1500);
 }
 function recordTime() { times.push(Math.min(15, Math.max(0, Math.round((Date.now() - qStart) / 1000)))); }
-function pick(i) {
+function burst(el) {
+  const r = el.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  const colors = ['#1faa53', '#c8f542', '#eab308', '#4da6ff', '#e84fc0', '#ffffff'];
+  for (let k = 0; k < 40; k++) {
+    const s = document.createElement('span');
+    const size = 6 + Math.random() * 6;
+    s.style.cssText = 'position:fixed;left:' + cx + 'px;top:' + cy + 'px;width:' + size + 'px;height:' + size + 'px;background:' + colors[k % colors.length] + ';border-radius:' + (Math.random() > 0.5 ? '50%' : '2px') + ';pointer-events:none;z-index:9999;';
+    const ang = Math.random() * Math.PI * 2;
+    const dist = 60 + Math.random() * 120;
+    s.style.setProperty('--dx', Math.cos(ang) * dist + 'px');
+    s.style.setProperty('--dy', (Math.sin(ang) * dist - 60) + 'px');
+    s.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+    s.className = 'confetti';
+    document.body.appendChild(s);
+    s.addEventListener('animationend', () => s.remove());
+  }
+}
+function pick(i, btn) {
   if (locked) return;
   locked = true;
   stopTimer();
   recordTime();
+  if (navigator.vibrate) navigator.vibrate(50);
   const q = QUIZ[idx];
   reveal(q.answer, i);
   if (i === q.answer) {
@@ -174,6 +195,7 @@ function pick(i) {
     scoreEl.textContent = 'Score: ' + score;
     fb.textContent = 'Correct!';
     fb.className = 'feedback ok';
+    burst(btn);
   } else {
     fb.textContent = 'Wrong!';
     fb.className = 'feedback no';
