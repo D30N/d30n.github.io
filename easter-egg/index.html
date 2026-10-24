@@ -173,11 +173,11 @@ function onTimeout() {
 function showResult() {
   stopTimer();
   barfill.style.width = '100%';
-  let msg = 'വീണ്ടും ശ്രമിക്കൂ!';
-  if (score === QUIZ.length) msg = 'Perfect! എല്ലാം ശരി!';
-  else if (score >= 22) msg = 'മികച്ചത്!';
-  else if (score >= 12) msg = 'നല്ല ശ്രമം!';
-  quizEl.innerHTML = '<div class="result"><p>ക്വിസ് കഴിഞ്ഞു!</p><div class="big">' + score + ' / ' + QUIZ.length + '</div><p>' + msg + '</p><button class="btn" onclick="location.reload()">വീണ്ടും കളിക്കുക</button></div>';
+  let msg = 'Better luck next time!';
+  if (score === QUIZ.length) msg = 'Outstanding!';
+  else if (score >= 22) msg = 'Excellent!';
+  else if (score >= 12) msg = 'Good!';
+  quizEl.innerHTML = '<div class="result"><p>Game Over</p><div class="big">' + score + ' / ' + QUIZ.length + '</div><p>' + msg + '</p><button class="btn" onclick="location.reload()">Play Again</button></div>';
 }
 document.getElementById('startBtn').onclick = () => {
   const cd = document.getElementById('countdown');
