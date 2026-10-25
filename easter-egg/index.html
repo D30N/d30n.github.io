@@ -50,6 +50,8 @@ h1{font-size:clamp(2rem,8vw,3.5rem);margin:32px 0 12px;color:#c8f542}
 @keyframes shakeAnim{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
 .catpill{background:rgba(0,102,255,.12);border:1.5px solid rgba(0,102,255,.55);color:#1a7aff;border-radius:999px;padding:6px 16px;font-size:.85rem;font-family:inherit;cursor:pointer}
 .catpill.on{background:#0066ff;color:#fff;border-color:#0066ff}
+.pill-pop{animation:pillPop .3s ease}
+@keyframes pillPop{0%{transform:scale(1)}40%{transform:scale(.88)}100%{transform:scale(1)}}
 </style>
 </head>
 <body>
@@ -128,6 +130,9 @@ pickSet();
 document.querySelectorAll('.catpill').forEach(b => {
   if (b.dataset.cat === cat) b.classList.add('on');
   b.onclick = () => {
+    b.classList.remove('pill-pop');
+    void b.offsetWidth;
+    b.classList.add('pill-pop');
     cat = b.dataset.cat;
     try { localStorage.setItem('dd-quizcat', cat); } catch (e) {}
     document.querySelectorAll('.catpill').forEach(x => x.classList.toggle('on', x === b));
