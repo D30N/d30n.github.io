@@ -17,7 +17,7 @@ h1{font-size:clamp(2rem,8vw,3.5rem);margin:32px 0 12px;color:#c8f542}
 .back{margin-top:24px;font-size:.95rem}
 .back a{color:#4da6ff;text-decoration:underline}
 .set-title{margin-top:24px;font-size:clamp(1.3rem,5vw,1.8rem)}
-.quiz{margin-top:16px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;transition:box-shadow 1.5s ease}
+.quiz{margin-top:16px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
 .progress{display:flex;justify-content:space-between;font-size:.9rem;color:var(--dim);margin-bottom:10px}
 .timer{display:flex;justify-content:space-between;font-size:.9rem;margin-bottom:6px}
 .timer b{font-size:1.1rem;transition:color 1.5s ease}
@@ -107,12 +107,10 @@ function stageColor(pct) {
   if (pct >= 10) return '#f97316';
   return '#e53935';
 }
-function tintOf(c) { const n = parseInt(c.slice(1), 16); return 'rgba(' + ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',.18)'; }
 function paintTimer() {
   const c = stageColor(timeLeft / 15 * 100);
   tsec.style.color = c;
   tbarfill.style.backgroundColor = c;
-  quizEl.style.boxShadow = 'inset 0 0 0 200px ' + tintOf(c);
 }
 function startTimer() {
   stopTimer();
@@ -219,7 +217,6 @@ function onTimeout() {
 }
 function showResult() {
   stopTimer();
-  quizEl.style.boxShadow = '';
   let msg = 'Better luck next time!';
   let msgCls = 'm-red';
   if (score === QUIZ.length) { msg = 'Outstanding!'; msgCls = 'm-green'; }
