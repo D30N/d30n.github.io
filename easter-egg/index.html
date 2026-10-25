@@ -50,8 +50,6 @@ h1{font-size:clamp(2rem,8vw,3.5rem);margin:32px 0 12px;color:#c8f542}
 @keyframes shakeAnim{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
 .catpill{background:rgba(0,102,255,.12);border:1.5px solid rgba(0,102,255,.55);color:#1a7aff;border-radius:999px;padding:6px 16px;font-size:.85rem;font-family:inherit;cursor:pointer}
 .catpill.on{background:#0066ff;color:#fff;border-color:#0066ff}
-.blur-in{animation:blurReveal 1s ease forwards}
-@keyframes blurReveal{from{filter:blur(8px);opacity:.4}to{filter:blur(0);opacity:1}}
 </style>
 </head>
 <body>
@@ -170,7 +168,10 @@ function startTimer() {
   stopTimer();
   timeLeft = 15;
   tsec.textContent = '15s';
+  tbarfill.style.transition = 'none';
   tbarfill.style.width = '100%';
+  void tbarfill.offsetWidth;
+  tbarfill.style.transition = '';
   paintTimer();
   timerId = setInterval(() => {
     timeLeft--;
@@ -189,13 +190,10 @@ function render() {
   prog.textContent = 'Question ' + (idx + 1) + ' / ' + QUIZ.length;
   scoreEl.textContent = 'Score: ' + score;
   qtext.textContent = q.q;
-  qtext.classList.remove('blur-in');
-  void qtext.offsetWidth;
-  qtext.classList.add('blur-in');
   optsEl.innerHTML = '';
   q.options.forEach((op, i) => {
     const b = document.createElement('button');
-    b.className = 'opt blur-in';
+    b.className = 'opt';
     b.textContent = String.fromCharCode(65 + i) + '. ' + op;
     b.onclick = () => pick(i, b);
     optsEl.appendChild(b);
