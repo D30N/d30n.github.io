@@ -195,7 +195,7 @@ function render() {
   optsEl.innerHTML = '';
   q.options.forEach((op, i) => {
     const b = document.createElement('button');
-    b.className = 'opt';
+    b.className = 'opt blur-in';
     b.textContent = String.fromCharCode(65 + i) + '. ' + op;
     b.onclick = () => pick(i, b);
     optsEl.appendChild(b);
