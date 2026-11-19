@@ -35,15 +35,34 @@
   a{color:inherit;text-decoration:none}
   .mono{font-family:'JetBrains Mono',monospace}
 
-  /* ---------- Loader ---------- */
-  #loader{position:fixed;inset:0;background:var(--bg);z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:transform .8s cubic-bezier(.76,0,.24,1)}
+  /* ---------- Intro (olivierlarose-style) ---------- */
+  #loader{position:fixed;inset:0;background:var(--bg);z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:transform .8s cubic-bezier(.76,0,.24,1);cursor:pointer}
   #loader.done{transform:translateY(-100%)}
   html.seen-loader #loader{display:none!important}
-  #loader .l-word{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(13px,2.2vw,18px);letter-spacing:.32em;text-transform:uppercase;color:var(--dim)}
-  #loader .l-pct{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(64px,14vw,140px);line-height:1;color:var(--ink)}
-  #loader .l-pct em{font-style:normal;color:var(--lime)}
-  #loader .l-bar{width:min(320px,70vw);height:3px;background:var(--line);border-radius:99px;overflow:hidden}
-  #loader .l-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--lime),var(--violet))}
+  #loader .i-name{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;line-height:1;font-size:clamp(34px,9vw,86px);letter-spacing:.02em;color:var(--ink);text-align:center;padding:0 12px}
+  #loader .i-ch{display:inline-block;opacity:0;animation:iIn .55s linear forwards}
+  #loader .i-ch:nth-child(1){animation-delay:.03s}
+  #loader .i-ch:nth-child(2){animation-delay:.09s}
+  #loader .i-ch:nth-child(3){animation-delay:.15s}
+  #loader .i-ch:nth-child(4){animation-delay:.21s}
+  #loader .i-ch:nth-child(5){animation-delay:.27s}
+  #loader .i-ch:nth-child(6){animation-delay:.33s}
+  #loader .i-ch:nth-child(7){animation-delay:.39s}
+  #loader .i-ch:nth-child(8){animation-delay:.45s}
+  #loader .i-ch:nth-child(9){animation-delay:.51s}
+  #loader .i-ch:nth-child(10){animation-delay:.57s}
+  #loader .i-ch:nth-child(11){animation-delay:.63s}
+  @keyframes iIn{0%{opacity:0;transform:translateY(.32em)}25%{opacity:1}40%{opacity:.1}55%{opacity:1;transform:translateY(.08em)}70%{opacity:.25}100%{opacity:1;transform:none}}
+  #loader .i-pixels{display:flex;gap:7px}
+  #loader .i-pixels i{width:9px;height:9px;background:var(--lime);opacity:0;animation:iPix .8s steps(1,end) forwards}
+  #loader .i-pixels i:nth-child(2){background:var(--violet);animation-delay:.12s}
+  #loader .i-pixels i:nth-child(3){background:var(--pink);animation-delay:.24s}
+  #loader .i-pixels i:nth-child(4){background:var(--ink);animation-delay:.36s}
+  #loader .i-pixels i:nth-child(5){background:var(--lime);animation-delay:.48s}
+  @keyframes iPix{0%{opacity:0}20%{opacity:1}40%{opacity:0}60%{opacity:1}100%{opacity:0}}
+  #loader .i-role{font-family:'JetBrains Mono',monospace;font-size:clamp(11px,2vw,14px);letter-spacing:.34em;text-transform:uppercase;color:var(--dim);opacity:0;animation:iRole .6s ease 1.05s forwards;text-align:center;padding:0 12px}
+  @keyframes iRole{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){#loader .i-ch,#loader .i-role{animation-duration:.01s;animation-delay:0s}#loader .i-pixels{display:none}}
 
   /* ---------- Nav ---------- */
   nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px clamp(18px,4vw,48px);background:var(--bg);color:var(--ink)}
@@ -265,11 +284,11 @@
 </head>
 <body>
 
-<!-- Loader -->
+<!-- Intro -->
 <div id="loader">
-  <div class="l-word">connecting to deon</div>
-  <div class="l-pct"><span id="pct">0</span><em>%</em></div>
-  <div class="l-bar"><div class="l-fill" id="fill"></div></div>
+  <div class="i-name"><span class="i-ch">D</span><span class="i-ch">E</span><span class="i-ch">E</span><span class="i-ch">P</span><span class="i-ch">A</span><span class="i-ch">K</span><span class="i-ch">&nbsp;</span><span class="i-ch">D</span><span class="i-ch">E</span><span class="i-ch">O</span><span class="i-ch">N</span></div>
+  <div class="i-pixels"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="i-role">Content Creator &amp; Developer</div>
 </div>
 
 <!-- Nav -->
@@ -527,20 +546,15 @@
 </script>
 
 <script>
-  // Loader: count 0 -> 100 like the reference site, then slide away
+  // Intro: name letters flicker in (olivierlarose-style), then slide away. Click skips.
   (function(){
-    var pct = document.getElementById('pct'), fill = document.getElementById('fill'),
-        loader = document.getElementById('loader'), n = 0;
+    var loader = document.getElementById('loader');
     try{ if(sessionStorage.getItem('dd-loader-seen')){ loader.style.display = 'none'; return; } sessionStorage.setItem('dd-loader-seen', '1'); }catch(e){}
-    var iv = setInterval(function(){
-      n += Math.floor(Math.random()*9) + 3;
-      if (n >= 100) { n = 100; clearInterval(iv);
-        setTimeout(function(){ loader.classList.add('done');
-          setTimeout(function(){ loader.style.display = 'none'; }, 850);
-        }, 250);
-      }
-      pct.textContent = n; fill.style.width = n + '%';
-    }, 70);
+    var done = false;
+    function finish(){ if (done) return; done = true; loader.classList.add('done');
+      setTimeout(function(){ loader.style.display = 'none'; }, 850); }
+    setTimeout(finish, 2000);
+    loader.addEventListener('click', finish);
   })();
 
   // Rotating role words in the hero
