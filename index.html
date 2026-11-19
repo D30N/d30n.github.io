@@ -35,17 +35,15 @@
   a{color:inherit;text-decoration:none}
   .mono{font-family:'JetBrains Mono',monospace}
 
-  /* ---------- Hero intro (olivierlarose-style flicker) ---------- */
-  @keyframes heroIn{0%{opacity:0;transform:translateY(.3em)}20%{opacity:1}35%{opacity:.1}50%{opacity:1;transform:translateY(.06em)}65%{opacity:.3}100%{opacity:1;transform:none}}
-  h1 .row .h-ch{display:inline-block;opacity:0;animation:heroIn .55s linear forwards}
-  .hero-pixels{display:flex;gap:7px;margin-top:20px;justify-content:center}
-  .hero-pixels i{width:9px;height:9px;background:var(--lime);opacity:0;animation:heroPix .9s steps(1,end) 1.15s forwards}
-  .hero-pixels i:nth-child(2){background:var(--violet);animation-delay:1.27s}
-  .hero-pixels i:nth-child(3){background:var(--pink);animation-delay:1.39s}
-  .hero-pixels i:nth-child(4){background:var(--ink);animation-delay:1.51s}
-  .hero-pixels i:nth-child(5){background:var(--lime);animation-delay:1.63s}
-  @keyframes heroPix{0%{opacity:0}20%{opacity:1}40%{opacity:0}60%{opacity:1}100%{opacity:0}}
-  @media (prefers-reduced-motion: reduce){h1 .row .h-ch{animation-duration:.01s;animation-delay:0s!important}.hero-pixels{display:none}}
+  /* ---------- Loader ---------- */
+  #loader{position:fixed;inset:0;background:var(--bg);z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:transform .8s cubic-bezier(.76,0,.24,1)}
+  #loader.done{transform:translateY(-100%)}
+  html.seen-loader #loader{display:none!important}
+  #loader .l-word{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(13px,2.2vw,18px);letter-spacing:.32em;text-transform:uppercase;color:var(--dim)}
+  #loader .l-pct{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(64px,14vw,140px);line-height:1;color:var(--ink)}
+  #loader .l-pct em{font-style:normal;color:var(--lime)}
+  #loader .l-bar{width:min(320px,70vw);height:3px;background:var(--line);border-radius:99px;overflow:hidden}
+  #loader .l-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--lime),var(--violet))}
 
   /* ---------- Nav ---------- */
   nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px clamp(18px,4vw,48px);background:var(--bg);color:var(--ink)}
@@ -60,19 +58,19 @@
   header{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:110px clamp(18px,6vw,72px) 40px;position:relative}
   @media(min-width:1024px){header{padding-top:76px}}
 
-  .hero-text{text-align:center}
   .hello{font-family:'JetBrains Mono',monospace;color:var(--lime);font-size:clamp(14px,2vw,18px);letter-spacing:.15em;margin-bottom:14px}
   h1{font-family:'Archivo',sans-serif;font-weight:900;line-height:.94;text-transform:uppercase;font-size:clamp(52px,12.5vw,112px);letter-spacing:-.01em}
   h1 .row{display:block;overflow:hidden}
-  h1 .row>span{display:inline-block}
-  h1 .row:nth-child(2)>span{opacity:0;animation:heroIn .6s linear .47s forwards;color:transparent;-webkit-text-stroke:2px var(--ink)}
+  h1 .row span{display:inline-block;transform:translateY(110%);animation:rise 1s cubic-bezier(.22,1,.36,1) forwards}
+  h1 .row:nth-child(2) span{animation-delay:.12s;color:transparent;-webkit-text-stroke:2px var(--ink)}
+  h1 .row:nth-child(3) span{animation-delay:.24s}
   h1 .dot{color:var(--lime);-webkit-text-stroke:0}
-  h1 .row:nth-child(1)>span{animation:rgbShift 60s linear infinite}
-  h1 .row:nth-child(3)>span{animation:rgbShift 60s linear infinite}
+  h1 .row:nth-child(1) span{animation:rise 1s cubic-bezier(.22,1,.36,1) forwards, rgbShift 60s linear infinite}
+  h1 .row:nth-child(3) span{animation:rise 1s cubic-bezier(.22,1,.36,1) .24s forwards, rgbShift 60s linear infinite}
   @keyframes rgbShift{0%{color:#b5f0a8}33%{color:#a5c8ff}66%{color:#ffadad}100%{color:#b5f0a8}}
   @keyframes rgbShiftD{0%{color:#4da34d}33%{color:#4d7dd1}66%{color:#e05252}100%{color:#4da34d}}
-  html[data-theme="light"] h1 .row:nth-child(1)>span, html[data-theme="light"] h1 .row:nth-child(3)>span{animation-name:rgbShiftD}
-  @media (prefers-reduced-motion: reduce){h1 .row:nth-child(1)>span, h1 .row:nth-child(3)>span{animation:none}h1 .row:nth-child(2)>span{animation-duration:.01s;animation-delay:0s}}
+  html[data-theme="light"] h1 .row:nth-child(1) span, html[data-theme="light"] h1 .row:nth-child(3) span{animation-name:rise, rgbShiftD}
+  @media (prefers-reduced-motion: reduce){h1 .row:nth-child(1) span, h1 .row:nth-child(3) span{animation:rise 1s cubic-bezier(.22,1,.36,1) forwards}}
   h1 .deon-svg{display:block;height:.94em;width:auto;overflow:visible;margin-left:-.04em}
   h1 .deon-svg text{font-family:'Archivo',sans-serif;font-weight:900;-webkit-text-stroke:0}
   h1 .deon-svg .base{fill:none;stroke:var(--ink);stroke-width:2.4}
@@ -80,10 +78,10 @@
   @keyframes beam-sweep{0%{transform:translateX(-280px)}58%{transform:translateX(680px)}100%{transform:translateX(680px)}}
   @media (prefers-reduced-motion: reduce){h1 .deon-svg .beam-move{animation:none}}
   @keyframes rise{to{transform:translateY(0)}}
-  .hero-sub{margin-top:26px;margin-left:auto;margin-right:auto;font-size:clamp(17px,2.6vw,26px);color:var(--dim);max-width:640px;line-height:1.5}
+  .hero-sub{margin-top:26px;font-size:clamp(17px,2.6vw,26px);color:var(--dim);max-width:640px;line-height:1.5}
   .hero-sub b{color:var(--ink)}
-  .rotator{display:block;width:max-content;max-width:100%;color:var(--lime);font-weight:700;border-bottom:3px solid var(--violet);font-size:1.3em;line-height:1.25;margin:2px auto 8px}
-  .hero-cta{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;justify-content:space-between}
+  .rotator{display:block;width:max-content;max-width:100%;color:var(--lime);font-weight:700;border-bottom:3px solid var(--violet);font-size:1.3em;line-height:1.25;margin:2px 0 8px}
+  .hero-cta{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
   .btn{display:inline-block;padding:14px 28px;border-radius:99px;font-weight:700;font-size:15px;border:2px solid var(--ink);transition:.25s}
   .btn.solid{background:transparent;border-color:var(--lime);color:var(--ink)}
   .btn:hover{transform:translateY(-3px)}
@@ -251,6 +249,7 @@
 <meta name="theme-color" content="#0a0a0f" />
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
 <meta name="robots" content="noindex" />
+<script>try{ if(sessionStorage.getItem('dd-loader-seen')) document.documentElement.classList.add('seen-loader'); }catch(e){}</script>
 <link rel="alternate" type="application/rss+xml" title="Deepak Deon - Articles" href="/feed.xml">
 <script type="application/ld+json" data-dd="schema">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "Deepak Deon", "url": "https://deepakdeon.in/"}, {"@type": "Person", "name": "Deepak Deon", "alternateName": "Deon", "url": "https://deepakdeon.in/", "image": "https://deepakdeon.in/assets/og-image-v3.jpg", "jobTitle": "Content Creator & Developer", "description": "Deepak Deon is a content creator and Android developer from Kochi, Kerala, India, creating tech content, stories and reels in Malayalam and English.", "address": {"@type": "PostalAddress", "addressLocality": "Kochi", "addressRegion": "Kerala", "addressCountry": "IN"}, "knowsLanguage": ["Malayalam", "English"], "sameAs": ["https://www.instagram.com/deepak.deon", "https://www.youtube.com/@deepak-deon", "https://t.me/DeonWrites", "https://www.facebook.com/100001236831671", "https://github.com/deepakdeon", "https://github.com/D30N", "https://www.buymeacoffee.com/deepakdeon"], "@id": "https://deepakdeon.in/#person", "disambiguatingDescription": "Tech content creator and Android developer from Kochi, Kerala, India. Not the Malayalam film director of the same name."}]}</script>
 <style>
@@ -265,6 +264,13 @@
 </style>
 </head>
 <body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="l-word">connecting to deon</div>
+  <div class="l-pct"><span id="pct">0</span><em>%</em></div>
+  <div class="l-bar"><div class="l-fill" id="fill"></div></div>
+</div>
 
 <!-- Nav -->
 <nav>
@@ -283,11 +289,10 @@
   <div class="hello">hello there 👋</div>
   <div class="hero-top">
   <h1>
-    <span class="row"><span><span class="h-ch" style="animation-delay:.05s">D</span><span class="h-ch" style="animation-delay:.11s">e</span><span class="h-ch" style="animation-delay:.17s">e</span><span class="h-ch" style="animation-delay:.23s">p</span><span class="h-ch" style="animation-delay:.29s">a</span><span class="h-ch" style="animation-delay:.35s">k</span></span></span>
+    <span class="row"><span>Deepak</span></span>
     <span class="row deon-row" id="deonRow"><span><svg class="deon-svg" viewBox="-8 0 643 188" role="img" aria-label="Deon"><defs><linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0066ff" stop-opacity="0"/><stop offset=".42" stop-color="#0090ff" stop-opacity=".55"/><stop offset=".5" stop-color="#eaf8ff" stop-opacity="1"/><stop offset=".58" stop-color="#0090ff" stop-opacity=".55"/><stop offset="1" stop-color="#0066ff" stop-opacity="0"/></linearGradient><mask id="deonOutlineMask" maskUnits="userSpaceOnUse" x="-20" y="-20" width="690" height="230"><text x="0" y="154" font-size="200" letter-spacing="-2" fill="none" stroke="#fff" stroke-width="7">DEON</text></mask></defs><text class="base" x="0" y="154" font-size="200" letter-spacing="-2">DEON</text><g mask="url(#deonOutlineMask)"><g class="beam-move"><rect x="0" y="-12" width="250" height="212" fill="url(#beamGrad)"/></g></g></svg></span></span>
-    <span class="row"><span><span class="h-ch" style="animation-delay:.83s">H</span><span class="h-ch" style="animation-delay:.89s">e</span><span class="h-ch" style="animation-delay:.95s">r</span><span class="h-ch" style="animation-delay:1.01s">e</span><i class="dot h-ch" style="animation-delay:1.07s">.</i></span></span>
+    <span class="row"><span>Here<i class="dot">.</i></span></span>
   </h1>
-  <div class="hero-pixels" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   </div>
   <p class="hero-sub">Hi! My name is <b>Deepak Deon</b> and I'm <span id="rot-article">a</span>
   <span class="rotator" id="rotator">Digital creator</span>
@@ -522,6 +527,22 @@
 </script>
 
 <script>
+  // Loader: count 0 -> 100 like the reference site, then slide away
+  (function(){
+    var pct = document.getElementById('pct'), fill = document.getElementById('fill'),
+        loader = document.getElementById('loader'), n = 0;
+    try{ if(sessionStorage.getItem('dd-loader-seen')){ loader.style.display = 'none'; return; } sessionStorage.setItem('dd-loader-seen', '1'); }catch(e){}
+    var iv = setInterval(function(){
+      n += Math.floor(Math.random()*9) + 3;
+      if (n >= 100) { n = 100; clearInterval(iv);
+        setTimeout(function(){ loader.classList.add('done');
+          setTimeout(function(){ loader.style.display = 'none'; }, 850);
+        }, 250);
+      }
+      pct.textContent = n; fill.style.width = n + '%';
+    }, 70);
+  })();
+
   // Rotating role words in the hero
   (function(){
     var words = ['a Digital creator', 'a Blogger', 'a Tweep', 'a Tech enthusiast', 'a Content creator', 'a Story writer', 'a Lyricist', 'a Photographer', 'a Cinematographer', 'a Video editor', 'a Graphic designer', 'a UI designer', 'a Web designer', 'an App developer', 'a Bot developer', 'a Web developer'];
@@ -531,30 +552,6 @@
       setTimeout(function(){ i = (i+1) % words.length; var w = words[i], sp = w.indexOf(' '); art.textContent = w.slice(0, sp); el.textContent = w.slice(sp+1); el.style.opacity = '1'; }, 280);
     }, 2600);
     el.style.transition = 'opacity .28s ease';
-  })();
-
-  // Hero intro: the two CTA buttons start together in the centre, then split to the two sides
-  (function(){
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var cta = document.querySelector('.hero-cta');
-    if (!cta) return;
-    var btns = cta.querySelectorAll('.btn');
-    if (btns.length !== 2) return;
-    var ctaRect = cta.getBoundingClientRect();
-    var r0 = btns[0].getBoundingClientRect(), r1 = btns[1].getBoundingClientRect();
-    var gap = 14, groupW = r0.width + gap + r1.width;
-    var startX = ctaRect.left + (ctaRect.width - groupW) / 2;
-    var dx0 = startX - r0.left, dx1 = (startX + r0.width + gap) - r1.left;
-    btns[0].style.transition = 'none'; btns[1].style.transition = 'none';
-    btns[0].style.transform = 'translateX(' + dx0 + 'px)';
-    btns[1].style.transform = 'translateX(' + dx1 + 'px)';
-    void cta.offsetWidth;
-    setTimeout(function(){
-      btns[0].style.transition = 'transform .9s cubic-bezier(.22,1,.36,1)';
-      btns[1].style.transition = 'transform .9s cubic-bezier(.22,1,.36,1)';
-      btns[0].style.transform = ''; btns[1].style.transform = '';
-      setTimeout(function(){ btns[0].style.transition = ''; btns[1].style.transition = ''; }, 1000);
-    }, 1500);
   })();
 
   // Scroll reveal
