@@ -35,34 +35,17 @@
   a{color:inherit;text-decoration:none}
   .mono{font-family:'JetBrains Mono',monospace}
 
-  /* ---------- Intro (olivierlarose-style) ---------- */
-  #loader{position:fixed;inset:0;background:var(--bg);z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:transform .8s cubic-bezier(.76,0,.24,1);cursor:pointer}
-  #loader.done{transform:translateY(-100%)}
-  html.seen-loader #loader{display:none!important}
-  #loader .i-name{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;line-height:1;font-size:clamp(34px,9vw,86px);letter-spacing:.02em;color:var(--ink);text-align:center;padding:0 12px}
-  #loader .i-ch{display:inline-block;opacity:0;animation:iIn .55s linear forwards}
-  #loader .i-ch:nth-child(1){animation-delay:.03s}
-  #loader .i-ch:nth-child(2){animation-delay:.09s}
-  #loader .i-ch:nth-child(3){animation-delay:.15s}
-  #loader .i-ch:nth-child(4){animation-delay:.21s}
-  #loader .i-ch:nth-child(5){animation-delay:.27s}
-  #loader .i-ch:nth-child(6){animation-delay:.33s}
-  #loader .i-ch:nth-child(7){animation-delay:.39s}
-  #loader .i-ch:nth-child(8){animation-delay:.45s}
-  #loader .i-ch:nth-child(9){animation-delay:.51s}
-  #loader .i-ch:nth-child(10){animation-delay:.57s}
-  #loader .i-ch:nth-child(11){animation-delay:.63s}
-  @keyframes iIn{0%{opacity:0;transform:translateY(.32em)}25%{opacity:1}40%{opacity:.1}55%{opacity:1;transform:translateY(.08em)}70%{opacity:.25}100%{opacity:1;transform:none}}
-  #loader .i-pixels{display:flex;gap:7px}
-  #loader .i-pixels i{width:9px;height:9px;background:var(--lime);opacity:0;animation:iPix .8s steps(1,end) forwards}
-  #loader .i-pixels i:nth-child(2){background:var(--violet);animation-delay:.12s}
-  #loader .i-pixels i:nth-child(3){background:var(--pink);animation-delay:.24s}
-  #loader .i-pixels i:nth-child(4){background:var(--ink);animation-delay:.36s}
-  #loader .i-pixels i:nth-child(5){background:var(--lime);animation-delay:.48s}
-  @keyframes iPix{0%{opacity:0}20%{opacity:1}40%{opacity:0}60%{opacity:1}100%{opacity:0}}
-  #loader .i-role{font-family:'JetBrains Mono',monospace;font-size:clamp(11px,2vw,14px);letter-spacing:.34em;text-transform:uppercase;color:var(--dim);opacity:0;animation:iRole .6s ease 1.05s forwards;text-align:center;padding:0 12px}
-  @keyframes iRole{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  @media (prefers-reduced-motion: reduce){#loader .i-ch,#loader .i-role{animation-duration:.01s;animation-delay:0s}#loader .i-pixels{display:none}}
+  /* ---------- Hero intro (olivierlarose-style flicker) ---------- */
+  @keyframes heroIn{0%{opacity:0;transform:translateY(.3em)}20%{opacity:1}35%{opacity:.1}50%{opacity:1;transform:translateY(.06em)}65%{opacity:.3}100%{opacity:1;transform:none}}
+  h1 .row span.h-ch{display:inline-block;opacity:0;animation:heroIn .55s linear forwards}
+  .hero-pixels{display:flex;gap:7px;margin-top:20px}
+  .hero-pixels i{width:9px;height:9px;background:var(--lime);opacity:0;animation:heroPix .9s steps(1,end) 1.15s forwards}
+  .hero-pixels i:nth-child(2){background:var(--violet);animation-delay:1.27s}
+  .hero-pixels i:nth-child(3){background:var(--pink);animation-delay:1.39s}
+  .hero-pixels i:nth-child(4){background:var(--ink);animation-delay:1.51s}
+  .hero-pixels i:nth-child(5){background:var(--lime);animation-delay:1.63s}
+  @keyframes heroPix{0%{opacity:0}20%{opacity:1}40%{opacity:0}60%{opacity:1}100%{opacity:0}}
+  @media (prefers-reduced-motion: reduce){h1 .row span.h-ch{animation-duration:.01s;animation-delay:0s!important}.hero-pixels{display:none}}
 
   /* ---------- Nav ---------- */
   nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px clamp(18px,4vw,48px);background:var(--bg);color:var(--ink)}
@@ -80,16 +63,15 @@
   .hello{font-family:'JetBrains Mono',monospace;color:var(--lime);font-size:clamp(14px,2vw,18px);letter-spacing:.15em;margin-bottom:14px}
   h1{font-family:'Archivo',sans-serif;font-weight:900;line-height:.94;text-transform:uppercase;font-size:clamp(52px,12.5vw,112px);letter-spacing:-.01em}
   h1 .row{display:block;overflow:hidden}
-  h1 .row span{display:inline-block;transform:translateY(110%);animation:rise 1s cubic-bezier(.22,1,.36,1) forwards}
-  h1 .row:nth-child(2) span{animation-delay:.12s;color:transparent;-webkit-text-stroke:2px var(--ink)}
-  h1 .row:nth-child(3) span{animation-delay:.24s}
+  h1 .row>span{display:inline-block}
+  h1 .row:nth-child(2)>span{opacity:0;animation:heroIn .6s linear .47s forwards;color:transparent;-webkit-text-stroke:2px var(--ink)}
   h1 .dot{color:var(--lime);-webkit-text-stroke:0}
-  h1 .row:nth-child(1) span{animation:rise 1s cubic-bezier(.22,1,.36,1) forwards, rgbShift 60s linear infinite}
-  h1 .row:nth-child(3) span{animation:rise 1s cubic-bezier(.22,1,.36,1) .24s forwards, rgbShift 60s linear infinite}
+  h1 .row:nth-child(1)>span{animation:rgbShift 60s linear infinite}
+  h1 .row:nth-child(3)>span{animation:rgbShift 60s linear infinite}
   @keyframes rgbShift{0%{color:#b5f0a8}33%{color:#a5c8ff}66%{color:#ffadad}100%{color:#b5f0a8}}
   @keyframes rgbShiftD{0%{color:#4da34d}33%{color:#4d7dd1}66%{color:#e05252}100%{color:#4da34d}}
-  html[data-theme="light"] h1 .row:nth-child(1) span, html[data-theme="light"] h1 .row:nth-child(3) span{animation-name:rise, rgbShiftD}
-  @media (prefers-reduced-motion: reduce){h1 .row:nth-child(1) span, h1 .row:nth-child(3) span{animation:rise 1s cubic-bezier(.22,1,.36,1) forwards}}
+  html[data-theme="light"] h1 .row:nth-child(1)>span, html[data-theme="light"] h1 .row:nth-child(3)>span{animation-name:rgbShiftD}
+  @media (prefers-reduced-motion: reduce){h1 .row:nth-child(1)>span, h1 .row:nth-child(3)>span{animation:none}h1 .row:nth-child(2)>span{animation-duration:.01s;animation-delay:0s}}
   h1 .deon-svg{display:block;height:.94em;width:auto;overflow:visible;margin-left:-.04em}
   h1 .deon-svg text{font-family:'Archivo',sans-serif;font-weight:900;-webkit-text-stroke:0}
   h1 .deon-svg .base{fill:none;stroke:var(--ink);stroke-width:2.4}
@@ -268,7 +250,6 @@
 <meta name="theme-color" content="#0a0a0f" />
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
 <meta name="robots" content="noindex" />
-<script>try{ if(sessionStorage.getItem('dd-loader-seen')) document.documentElement.classList.add('seen-loader'); }catch(e){}</script>
 <link rel="alternate" type="application/rss+xml" title="Deepak Deon - Articles" href="/feed.xml">
 <script type="application/ld+json" data-dd="schema">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "name": "Deepak Deon", "url": "https://deepakdeon.in/"}, {"@type": "Person", "name": "Deepak Deon", "alternateName": "Deon", "url": "https://deepakdeon.in/", "image": "https://deepakdeon.in/assets/og-image-v3.jpg", "jobTitle": "Content Creator & Developer", "description": "Deepak Deon is a content creator and Android developer from Kochi, Kerala, India, creating tech content, stories and reels in Malayalam and English.", "address": {"@type": "PostalAddress", "addressLocality": "Kochi", "addressRegion": "Kerala", "addressCountry": "IN"}, "knowsLanguage": ["Malayalam", "English"], "sameAs": ["https://www.instagram.com/deepak.deon", "https://www.youtube.com/@deepak-deon", "https://t.me/DeonWrites", "https://www.facebook.com/100001236831671", "https://github.com/deepakdeon", "https://github.com/D30N", "https://www.buymeacoffee.com/deepakdeon"], "@id": "https://deepakdeon.in/#person", "disambiguatingDescription": "Tech content creator and Android developer from Kochi, Kerala, India. Not the Malayalam film director of the same name."}]}</script>
 <style>
@@ -283,13 +264,6 @@
 </style>
 </head>
 <body>
-
-<!-- Intro -->
-<div id="loader">
-  <div class="i-name"><span class="i-ch">D</span><span class="i-ch">E</span><span class="i-ch">E</span><span class="i-ch">P</span><span class="i-ch">A</span><span class="i-ch">K</span><span class="i-ch">&nbsp;</span><span class="i-ch">D</span><span class="i-ch">E</span><span class="i-ch">O</span><span class="i-ch">N</span></div>
-  <div class="i-pixels"><i></i><i></i><i></i><i></i><i></i></div>
-  <div class="i-role">Content Creator &amp; Developer</div>
-</div>
 
 <!-- Nav -->
 <nav>
@@ -308,10 +282,11 @@
   <div class="hello">hello there 👋</div>
   <div class="hero-top">
   <h1>
-    <span class="row"><span>Deepak</span></span>
+    <span class="row"><span><span class="h-ch" style="animation-delay:.05s">D</span><span class="h-ch" style="animation-delay:.11s">e</span><span class="h-ch" style="animation-delay:.17s">e</span><span class="h-ch" style="animation-delay:.23s">p</span><span class="h-ch" style="animation-delay:.29s">a</span><span class="h-ch" style="animation-delay:.35s">k</span></span></span>
     <span class="row deon-row" id="deonRow"><span><svg class="deon-svg" viewBox="-8 0 643 188" role="img" aria-label="Deon"><defs><linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0066ff" stop-opacity="0"/><stop offset=".42" stop-color="#0090ff" stop-opacity=".55"/><stop offset=".5" stop-color="#eaf8ff" stop-opacity="1"/><stop offset=".58" stop-color="#0090ff" stop-opacity=".55"/><stop offset="1" stop-color="#0066ff" stop-opacity="0"/></linearGradient><mask id="deonOutlineMask" maskUnits="userSpaceOnUse" x="-20" y="-20" width="690" height="230"><text x="0" y="154" font-size="200" letter-spacing="-2" fill="none" stroke="#fff" stroke-width="7">DEON</text></mask></defs><text class="base" x="0" y="154" font-size="200" letter-spacing="-2">DEON</text><g mask="url(#deonOutlineMask)"><g class="beam-move"><rect x="0" y="-12" width="250" height="212" fill="url(#beamGrad)"/></g></g></svg></span></span>
-    <span class="row"><span>Here<i class="dot">.</i></span></span>
+    <span class="row"><span><span class="h-ch" style="animation-delay:.83s">H</span><span class="h-ch" style="animation-delay:.89s">e</span><span class="h-ch" style="animation-delay:.95s">r</span><span class="h-ch" style="animation-delay:1.01s">e</span><i class="dot h-ch" style="animation-delay:1.07s">.</i></span></span>
   </h1>
+  <div class="hero-pixels" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   </div>
   <p class="hero-sub">Hi! My name is <b>Deepak Deon</b> and I'm <span id="rot-article">a</span>
   <span class="rotator" id="rotator">Digital creator</span>
@@ -546,17 +521,6 @@
 </script>
 
 <script>
-  // Intro: name letters flicker in (olivierlarose-style), then slide away. Click skips.
-  (function(){
-    var loader = document.getElementById('loader');
-    try{ if(sessionStorage.getItem('dd-loader-seen')){ loader.style.display = 'none'; return; } sessionStorage.setItem('dd-loader-seen', '1'); }catch(e){}
-    var done = false;
-    function finish(){ if (done) return; done = true; loader.classList.add('done');
-      setTimeout(function(){ loader.style.display = 'none'; }, 850); }
-    setTimeout(finish, 2000);
-    loader.addEventListener('click', finish);
-  })();
-
   // Rotating role words in the hero
   (function(){
     var words = ['a Digital creator', 'a Blogger', 'a Tweep', 'a Tech enthusiast', 'a Content creator', 'a Story writer', 'a Lyricist', 'a Photographer', 'a Cinematographer', 'a Video editor', 'a Graphic designer', 'a UI designer', 'a Web designer', 'an App developer', 'a Bot developer', 'a Web developer'];
