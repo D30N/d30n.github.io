@@ -171,7 +171,6 @@
   .big-cta h2{font-size:clamp(40px,9vw,110px)}
   .contact-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:10px}
   .contact-row .btn{display:inline-flex;align-items:center;gap:9px}
-  #installBtn{font-family:inherit;cursor:pointer;background:transparent}
   .contact-row .btn svg{width:19px;height:19px;display:block}
   .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;border:2px solid var(--ink);transition:.25s}
 .rlist{max-width:430px;margin:0 auto;text-align:left}
@@ -190,6 +189,15 @@
   footer .views-row .vc-num{font-size:13.5px;font-weight:500;letter-spacing:.03em}
   footer .presence{font-size:13px;color:#4ade80}
   footer .psep{color:var(--dim);margin-right:7px}
+  .install-pop{position:fixed;left:12px;right:12px;bottom:12px;z-index:120;max-width:430px;margin:0 auto;display:flex;align-items:center;gap:12px;background:var(--card,#12121a);border:1px solid var(--line);border-radius:16px;padding:12px 14px;box-shadow:0 12px 34px rgba(0,0,0,.5);animation:ipUp .35s ease}
+  .install-pop[hidden]{display:none}
+  @keyframes ipUp{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
+  .install-pop img{width:44px;height:44px;border-radius:10px;flex:none}
+  .install-pop .ip-text{flex:1;line-height:1.35}
+  .install-pop .ip-text b{display:block;font-size:14.5px;color:var(--ink)}
+  .install-pop .ip-text span{font-size:12.5px;color:var(--dim)}
+  .install-pop .ip-go{flex:none;background:var(--lime);color:#0a0a0f;border:0;border-radius:99px;padding:9px 18px;font-family:inherit;font-weight:700;font-size:13.5px;cursor:pointer}
+  .install-pop .ip-no{flex:none;background:transparent;border:0;color:var(--dim);font-family:inherit;font-size:13px;cursor:pointer;padding:6px 2px}
   footer .pdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22e065;box-shadow:0 0 8px 2px rgba(34,224,101,.75);margin-right:7px;vertical-align:middle;animation:pdotPulse 1.6s ease-in-out infinite}
   @keyframes pdotPulse{0%,100%{box-shadow:0 0 5px 1px rgba(34,224,101,.55)}50%{box-shadow:0 0 12px 4px rgba(34,224,101,.95)}}
   .coffee-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:flex-end;justify-content:center;z-index:50}
@@ -294,7 +302,6 @@
   <div class="hero-cta">
     <a class="btn solid" href="#links">All my works ↓</a>
     <a class="btn ghost" href="/new/">What's New?</a>
-    <button class="btn ghost" id="installBtn" type="button" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Install App</button>
   </div>
   </div>
   <div class="scroll-hint">scroll</div>
@@ -844,23 +851,34 @@ row.addEventListener('contextmenu',function(e){e.preventDefault();});
   } catch (e) { /* presence is optional */ }
 })();
 </script>
+<div class="install-pop" id="installPop" hidden>
+  <img src="/assets/icons/icon-192.png" alt="">
+  <div class="ip-text"><b>Install the Deepak Deon app</b><span>Add it to your home screen for quick access</span></div>
+  <button class="ip-go" id="installGo" type="button">Install</button>
+  <button class="ip-no" id="installNo" type="button">Not now</button>
+</div>
 <script>
-/* ---------- Install App button (PWA): appears only when the browser offers install ---------- */
+/* ---------- Install suggestion pop-up: Chrome only, first visit only ---------- */
 (function(){
-  var btn = document.getElementById('installBtn');
-  if(!btn) return;
+  var KEY = 'dd-install-pop-done';
+  try{ if(localStorage.getItem(KEY)) return; }catch(e){}
+  if(window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) return;
+  var pop = document.getElementById('installPop');
+  if(!pop) return;
   var deferred = null;
+  function done(){ try{ localStorage.setItem(KEY, '1'); }catch(e){} pop.hidden = true; }
   window.addEventListener('beforeinstallprompt', function(e){
     e.preventDefault();
     deferred = e;
-    btn.hidden = false;
+    pop.hidden = false;
   });
-  btn.addEventListener('click', function(){
-    if(!deferred) return;
+  document.getElementById('installGo').addEventListener('click', function(){
+    if(!deferred){ done(); return; }
     deferred.prompt();
-    deferred.userChoice.then(function(){ deferred = null; btn.hidden = true; });
+    deferred.userChoice.then(function(){ deferred = null; done(); });
   });
-  window.addEventListener('appinstalled', function(){ deferred = null; btn.hidden = true; });
+  document.getElementById('installNo').addEventListener('click', done);
+  window.addEventListener('appinstalled', done);
 })();
 </script>
 </body>
