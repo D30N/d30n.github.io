@@ -187,6 +187,9 @@
   footer .views-row{display:flex;align-items:center;gap:7px;color:var(--dim)}
   footer .views-row svg{width:18px;height:18px;display:block}
   footer .views-row .vc-num{font-size:13.5px;font-weight:500;letter-spacing:.03em}
+  footer .presence{font-size:13px;color:#4ade80}
+  footer .pdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#22e065;box-shadow:0 0 8px 2px rgba(34,224,101,.75);margin-right:7px;vertical-align:middle;animation:pdotPulse 1.6s ease-in-out infinite}
+  @keyframes pdotPulse{0%,100%{box-shadow:0 0 5px 1px rgba(34,224,101,.55)}50%{box-shadow:0 0 12px 4px rgba(34,224,101,.95)}}
   .coffee-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:flex-end;justify-content:center;z-index:50}
   .coffee-overlay.open{display:flex}
   .coffee-overlay,.coffee-overlay a,.coffee-overlay button,.rrow{-webkit-tap-highlight-color:transparent}
@@ -502,6 +505,7 @@
 <footer>
   <span class="views-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="vc-num">50,000</span></span>
   <span>© 2026 Deepak Deon</span>
+  <span class="presence" id="presence"></span>
 </footer>
 <script>
 (function(){
@@ -812,5 +816,31 @@ row.addEventListener('contextmenu',function(e){e.preventDefault();});
   </div>
 </div>
 <script>function hideCoffee(){var o=document.getElementById('coffeeOv');if(o)o.classList.remove('open')}window.addEventListener('scroll',hideCoffee,{passive:true});window.addEventListener('wheel',hideCoffee,{passive:true});window.addEventListener('touchmove',hideCoffee,{passive:true});</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+/* ---------- live presence: glowing dot + "X online" (footer) ---------- */
+(function () {
+  try {
+    if (typeof window === "undefined" || typeof window.supabase === "undefined") return;
+    var el = document.getElementById("presence");
+    if (!el) return;
+    var client = window.supabase.createClient("https://aetidsjdgskpjwqhfufc.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFldGlkc2pkZ3NrcGp3cWhmdWZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQxNTQ2MjEsImV4cCI6MjEwOTczMDYyMX0.JBCF2b_4drnWpZuYQQ83tDBdh0EniZUGYGmmPy_RhzE");
+    var myId = Math.random().toString(36).slice(2) + Date.now().toString(36);
+    var channel = client.channel("deepakdeon-presence", { config: { presence: { key: myId } } });
+    function updateCount() {
+      var state = channel.presenceState();
+      var n = 0;
+      for (var k in state) n += state[k].length;
+      el.innerHTML = n > 0 ? '<span class="pdot"></span>' + n + " online" : "";
+    }
+    channel.on("presence", { event: "sync" }, updateCount)
+      .on("presence", { event: "join" }, updateCount)
+      .on("presence", { event: "leave" }, updateCount)
+      .subscribe(function (status) {
+        if (status === "SUBSCRIBED") channel.track({ online_at: new Date().toISOString() });
+      });
+  } catch (e) { /* presence is optional */ }
+})();
+</script>
 </body>
 </html>
