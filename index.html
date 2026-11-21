@@ -171,6 +171,7 @@
   .big-cta h2{font-size:clamp(40px,9vw,110px)}
   .contact-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:10px}
   .contact-row .btn{display:inline-flex;align-items:center;gap:9px}
+  #installBtn{font-family:inherit;cursor:pointer;background:transparent}
   .contact-row .btn svg{width:19px;height:19px;display:block}
   .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;border:2px solid var(--ink);transition:.25s}
 .rlist{max-width:430px;margin:0 auto;text-align:left}
@@ -293,6 +294,7 @@
   <div class="hero-cta">
     <a class="btn solid" href="#links">All my works ↓</a>
     <a class="btn ghost" href="/new/">What's New?</a>
+    <button class="btn ghost" id="installBtn" type="button" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Install App</button>
   </div>
   </div>
   <div class="scroll-hint">scroll</div>
@@ -840,6 +842,25 @@ row.addEventListener('contextmenu',function(e){e.preventDefault();});
         if (status === "SUBSCRIBED") channel.track({ online_at: new Date().toISOString() });
       });
   } catch (e) { /* presence is optional */ }
+})();
+</script>
+<script>
+/* ---------- Install App button (PWA): appears only when the browser offers install ---------- */
+(function(){
+  var btn = document.getElementById('installBtn');
+  if(!btn) return;
+  var deferred = null;
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault();
+    deferred = e;
+    btn.hidden = false;
+  });
+  btn.addEventListener('click', function(){
+    if(!deferred) return;
+    deferred.prompt();
+    deferred.userChoice.then(function(){ deferred = null; btn.hidden = true; });
+  });
+  window.addEventListener('appinstalled', function(){ deferred = null; btn.hidden = true; });
 })();
 </script>
 </body>
