@@ -338,7 +338,7 @@
         margin:0 0 6px;
         font-size:clamp(24px,3vw,30px);
         font-weight:800; letter-spacing:-.015em; line-height:1.05; color:#fff;
-        white-space:nowrap;
+        text-transform:none; white-space:nowrap;
       }
       .aw-head-text .aw-count{
         margin:0 0 6px;
@@ -543,24 +543,25 @@
         .aw-icon-box{ width:54px; height:54px; border-radius:15px; }
         .aw-icon-box svg{ width:30px; height:30px; }
         .aw-divider{ display:none; }
-        .aw-head-text h2{ font-size:27px; white-space:normal; }
+        .aw-head-text h2{ font-size:22px; white-space:nowrap; }
         .aw-head-text .aw-count{ font-size:19px; }
-        .aw-head-text .aw-sub{ font-size:13.5px; white-space:normal; line-height:1.35; }
+        .aw-head-text .aw-sub{ font-size:12px; white-space:nowrap; line-height:1.35; }
         .aw-spacer{ display:none; }
         .aw-right-stack{
           display:flex; flex-direction:column; align-items:center; gap:12px;
-          flex:0 0 auto; width:92px;
+          flex:0 0 auto; width:88px;
         }
-        .aw-deco-android{ width:92px; margin:0; opacity:.85; }
-        .aw-deco-browser{ width:96px; margin:0; opacity:.85; }
+        .aw-deco-android{ width:84px; margin:0; opacity:.85; }
+        .aw-deco-browser{ width:88px; margin:0; opacity:.85; }
         .aw-arrow-btn{ width:46px; height:36px; }
         .aw-arrow-btn svg{ width:20px; height:20px; }
         .aw-preview{ margin-top:18px; padding:14px 12px; border-radius:16px; }
-        .aw-app-row{ grid-template-columns:repeat(3,1fr); gap:10px; }
-        .aw-app-tile{ border-radius:18px; }
-        .aw-web-row{ grid-template-columns:1fr; gap:20px; }
-        .aw-tile-more-web{ min-height:64px; aspect-ratio:auto; }
-        .aw-web-label{ font-size:15px; }
+        .aw-app-row{ grid-template-columns:repeat(6,1fr); gap:8px; }
+        .aw-app-tile{ border-radius:12px; }
+        .aw-web-row{ grid-template-columns:1fr 1fr 1fr 52px; gap:8px; }
+        .aw-tile-more-web{ min-height:0; aspect-ratio:1/1; }
+        .aw-web-label{ font-size:11px; gap:4px; }
+        .aw-web-label svg{ width:12px; height:12px; }
       }
       @media (prefers-reduced-motion: reduce){
         .aw-app-tile, .aw-thumb, .aw-arrow-btn{ transition:none; }
