@@ -568,7 +568,315 @@
         .aw-app-tile, .aw-thumb, .aw-arrow-btn{ transition:none; }
         .aw-app-tile:hover, .aw-web-item:hover .aw-thumb, .aw-arrow-btn:hover{ transform:none; }
       }
-      </style>
+      
+/* Articles section showcase */
+#articles-showcase{
+--text:#f4f2ed;
+    --muted:#9a97a8;
+    --muted-2:#6f6c7e;
+    --violet:#8b7cf6;
+    --violet-bright:#c0b3ff;
+    --lime:#b8e62e;
+    --lime-soft:#c8f04a;
+    --cyan:#2fb9e8;
+    --pink:#f056c8;
+    --radius:24px;
+  font-family:"Plus Jakarta Sans", "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+
+  .ar-wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:8px 24px 8px;
+  }
+
+  /* ---------- Section header ---------- */
+  .ar-kicker{
+    font-size:clamp(15px,2vw,22px);
+    font-weight:500;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    color:var(--violet);
+    margin:0;
+    line-height:1.2;
+  }
+  .ar-kicker .ar-slashes{
+    color:var(--violet-bright);
+    font-weight:700;
+    letter-spacing:.18em;
+    text-shadow:0 0 14px rgba(167,139,250,.65);
+  }
+  .ar-subtitle{
+    margin:10px 0 0 2px;
+    font-size:clamp(13px,1.3vw,15px);
+    font-weight:500;
+    color:var(--muted);
+    letter-spacing:.01em;
+  }
+
+  /* ---------- Search bar ---------- */
+  .ar-search{
+    position:relative;
+    margin-top:28px;
+    height:72px;
+    border-radius:var(--radius);
+    border:2px solid rgba(139,124,246,.75);
+    background:linear-gradient(180deg,#15151f 0%, #10101a 100%);
+    box-shadow:
+      0 0 0 1px rgba(139,124,246,.12),
+      0 0 32px rgba(139,124,246,.28),
+      0 12px 28px rgba(0,0,0,.45),
+      inset 0 1px 0 rgba(255,255,255,.05);
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:0 26px;
+    transition:box-shadow .25s ease, border-color .25s ease;
+  }
+  .ar-search:focus-within{
+    border-color:rgba(167,139,250,.95);
+    box-shadow:
+      0 0 0 1px rgba(167,139,250,.2),
+      0 0 42px rgba(139,124,246,.42),
+      0 12px 28px rgba(0,0,0,.45),
+      inset 0 1px 0 rgba(255,255,255,.06);
+  }
+  .ar-search svg{flex:0 0 auto;width:24px;height:24px}
+  .ar-search input{
+    flex:1;
+    min-width:0;
+    background:transparent;
+    border:0;
+    outline:0;
+    color:var(--text);
+    font-family:inherit;
+    font-size:clamp(16px,1.8vw,20px);
+    font-weight:500;
+    letter-spacing:.01em;
+    min-height:36px;
+  }
+  .ar-search input::placeholder{color:#8b889b}
+  .ar-search .ar-count-chip{
+    flex:0 0 auto;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--violet-bright);
+    border:1px solid rgba(139,124,246,.35);
+    background:rgba(139,124,246,.10);
+    padding:6px 10px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+
+  /* ---------- Cards ---------- */
+  .ar-cards{
+    margin-top:32px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .ar-card{
+    --accent:#fff;
+    --accent-rgb:255,255,255;
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+    min-height:152px;
+    border-radius:var(--radius);
+    border:1px solid rgba(var(--accent-rgb),.22);
+    background:
+      radial-gradient(460px 190px at 88% 0%, rgba(var(--accent-rgb),.14), transparent 62%),
+      linear-gradient(135deg, rgba(var(--accent-rgb),.07) 0%, rgba(255,255,255,.015) 42%, rgba(0,0,0,.18) 100%),
+      #0e0e16;
+    box-shadow:
+      0 0 24px rgba(var(--accent-rgb),.10),
+      0 14px 30px rgba(0,0,0,.42),
+      inset 0 1px 0 rgba(255,255,255,.05);
+    display:flex;
+    align-items:center;
+    gap:24px;
+    padding:20px 28px;
+    text-decoration:none;
+    color:inherit;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .ar-card:hover, .ar-card:focus-visible{
+    transform:translateY(-2px);
+    border-color:rgba(var(--accent-rgb),.42);
+    box-shadow:
+      0 0 36px rgba(var(--accent-rgb),.20),
+      0 18px 36px rgba(0,0,0,.5),
+      inset 0 1px 0 rgba(255,255,255,.07);
+    outline:none;
+  }
+  .ar-card--lime{--accent:var(--lime);--accent-rgb:184,230,46}
+  .ar-card--cyan{--accent:var(--cyan);--accent-rgb:47,185,232}
+  .ar-card--pink{--accent:var(--pink);--accent-rgb:240,86,200}
+  .ar-card--violet{--accent:var(--violet);--accent-rgb:139,124,246}
+
+  .ar-icon-box{
+    flex:0 0 72px;
+    width:72px;height:72px;
+    border-radius:18px;
+    display:grid;place-items:center;
+    background:linear-gradient(160deg, rgba(var(--accent-rgb),.16), rgba(var(--accent-rgb),.05));
+    border:1px solid rgba(var(--accent-rgb),.28);
+    box-shadow:0 0 18px rgba(var(--accent-rgb),.18), inset 0 1px 0 rgba(255,255,255,.08);
+    position:relative;z-index:2;
+  }
+  .ar-icon-box svg{width:36px;height:36px;filter:drop-shadow(0 0 7px rgba(var(--accent-rgb),.55))}
+
+  .ar-card-main{flex:1 1 auto;min-width:0;position:relative;z-index:2}
+  .ar-card-title{
+    margin:0;
+    font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+    text-transform:none;
+    font-size:clamp(20px,2.4vw,27px);
+    font-weight:800;
+    letter-spacing:-.01em;
+    line-height:1.08;
+    color:var(--text);
+  }
+  .ar-card-count{
+    margin:6px 0 0;
+    font-size:clamp(14px,1.5vw,17px);
+    font-weight:800;
+    color:var(--accent);
+    line-height:1.2;
+  }
+  .ar-card-reads{
+    margin:8px 0 0;
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:13.5px;
+    font-weight:500;
+    color:var(--muted);
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.10);
+    padding:5px 12px;
+    border-radius:999px;
+    width:fit-content;
+  }
+  .ar-card-reads svg{flex:0 0 auto;opacity:.85;width:16px;height:16px}
+  .ar-card-reads .lreads b{color:#e6e3ee;font-weight:600}
+
+  /* decorative illustration */
+  .ar-art{
+    position:absolute;
+    right:72px;
+    top:50%;
+    transform:translateY(-46%);
+    width:210px;height:160px;
+    z-index:1;
+    pointer-events:none;
+    opacity:.92;
+    -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 98%), linear-gradient(90deg,transparent 0%,#000 14%,#000 88%,transparent 100%);
+    -webkit-mask-composite:source-in;
+            mask-image:linear-gradient(180deg,#000 55%,transparent 98%), linear-gradient(90deg,transparent 0%,#000 14%,#000 88%,transparent 100%);
+            mask-composite:intersect;
+  }
+  .ar-art svg{width:100%;height:100%;display:block;overflow:visible}
+
+  .ar-arrow{
+    flex:0 0 40px;
+    width:40px;height:40px;
+    border-radius:50%;
+    display:grid;place-items:center;
+    background:rgba(var(--accent-rgb),.14);
+    border:1.5px solid rgba(var(--accent-rgb),.55);
+    box-shadow:0 0 16px rgba(var(--accent-rgb),.30), inset 0 1px 0 rgba(255,255,255,.12);
+    position:relative;z-index:2;
+    transition:transform .25s ease, background .25s ease;
+  }
+  .ar-arrow svg{width:18px;height:18px}
+  .ar-card:hover .ar-arrow, .ar-card:focus-visible .ar-arrow{
+    transform:translateX(4px);
+    background:rgba(var(--accent-rgb),.24);
+  }
+
+  .ar-empty{
+    display:none;
+    margin-top:18px;
+    border:1px dashed rgba(139,124,246,.4);
+    border-radius:var(--radius);
+    padding:22px;
+    text-align:center;
+    color:var(--muted);
+    font-size:14px;
+    background:rgba(139,124,246,.05);
+  }
+  .ar-empty.show{display:block}
+  .ar-empty strong{color:var(--text)}
+
+  .ar-totals{
+    margin-top:26px;
+    display:flex;flex-wrap:wrap;gap:8px 20px;
+    color:var(--muted-2);
+    font-size:12.5px;font-weight:600;letter-spacing:.02em;
+  }
+  .ar-totals span b{color:#cfccd9;font-weight:700}
+
+  /* ---------- Tablet ---------- */
+  @media (max-width:1020px){
+    .ar-wrap{padding:8px 20px 8px}
+    .ar-card{gap:18px;padding:18px 22px}
+    .ar-art{right:60px;width:170px;height:135px;opacity:.75}
+    .ar-icon-box{flex-basis:64px;width:64px;height:64px;border-radius:16px}
+    .ar-search{height:64px;padding:0 22px}
+    .ar-search .ar-count-chip{display:none}
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width:640px){
+    .ar-wrap{padding:8px 14px 8px}
+    .ar-kicker{letter-spacing:.34em}
+    .ar-subtitle{margin-top:8px}
+    .ar-search{
+      margin-top:20px;
+      height:58px;
+      padding:0 18px;
+      gap:12px;
+      border-radius:20px;
+    }
+    .ar-search svg{width:20px;height:20px}
+    .ar-cards{margin-top:22px;gap:14px}
+    .ar-card{
+      min-height:168px;
+      border-radius:22px;
+      padding:18px 18px 20px;
+      gap:14px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+    .ar-icon-box{flex-basis:56px;width:56px;height:56px;border-radius:15px}
+    .ar-icon-box svg{width:28px;height:28px}
+    .ar-card-main{flex:1 1 auto;min-width:0}
+    .ar-card-title{font-size:20px}
+    .ar-card-count{font-size:14px;margin-top:5px}
+    .ar-card-reads{font-size:12.5px;padding:4px 10px}
+    .ar-art{
+      right:-18px;top:auto;bottom:-28px;
+      transform:none;
+      width:150px;height:120px;
+      opacity:.5;
+    }
+    .ar-arrow{
+      position:absolute;
+      right:16px;bottom:16px;top:auto;
+      width:36px;height:36px;flex-basis:36px;
+    }
+    .ar-totals{margin-top:20px}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .ar-card,.ar-arrow,.ar-search{transition:none}
+    .ar-card:hover{transform:none}
+    .ar-card:hover .ar-arrow{transform:none}
+  }
+  </style>
 <script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
 <style>
 .srch{position:relative;max-width:640px;margin:4px 0 20px;scroll-margin-top:96px}
@@ -987,14 +1295,202 @@
         });
       })();
   </script>
-  <div class="links-sub">// Articles</div>
-  <div class="srch reveal"><span class="srch-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span><input id="srch-in" type="search" placeholder="Search articles" autocomplete="off" /><div id="srch-out"></div></div>
-  <div class="link-grid">
-    <a class="lbtn wide reveal" href="android/"><span class="li"><svg fill="#3DDC84" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Android</title><path d="M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084-.1494-1.7526-3.021-2.0215-3.4864a1.1451 1.1451 0 0 0-.1406-.1914c-.3312-.364-.9054-.4859-1.379-.203-.475.282-.7136.9361-.3886 1.5019 1.9466 3.3696-.0966-.2158 1.9473 3.3593.0172.031-.4946.2642-1.3926 1.0177C2.8987 12.176.452 14.772 0 18.9902h24c-.119-1.1108-.3686-2.099-.7461-3.0683-.7438-1.9118-1.8435-3.2928-2.7402-4.1836a12.1048 12.1048 0 0 0-2.1309-1.6875c.6594-1.122 1.312-2.2559 1.9649-3.3848.2077-.3615.1886-.7956-.0079-1.1191a1.1001 1.1001 0 0 0-.8515-.5332c-.5225-.0536-.9392.3128-1.0488.5449zm-.0391 8.461c.3944.5926.324 1.3306-.1563 1.6503-.4799.3197-1.188.0985-1.582-.4941-.3944-.5927-.324-1.3307.1563-1.6504.4727-.315 1.1812-.1086 1.582.4941zM7.207 13.5273c.4803.3197.5506 1.0577.1563 1.6504-.394.5926-1.1038.8138-1.584.4941-.48-.3197-.5503-1.0577-.1563-1.6504.4008-.6021 1.1087-.8106 1.584-.4941z"/></svg></span><span>Android / Tech<small>51 articles &amp; guides</small></span><span class="lreads"><b>188,160</b><small>reads</small></span></a>
-    <a class="lbtn wide reveal" href="telegram/"><span class="li"><svg fill="#26A5E4" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Telegram</title><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span><span>Posts about Telegram<small>34 articles</small></span><span class="lreads"><b>201,476</b><small>reads</small></span></a>
-    <a class="lbtn wide reveal" href="reels/"><span class="li"><svg fill="none" stroke="#ff7ad9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Reels</title><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg></span><span>Read my Reels<small>59 articles</small></span><span class="lreads"><b>121</b><small>reads</small></span></a>
-    <a class="lbtn wide reveal" href="memories/"><span class="li"><svg fill="none" stroke="#8b7bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Memories</title><path d="M12 5v16"/><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"/></svg></span><span>Memories<small>45 stories &amp; writings</small></span><span class="lreads"><b>15,556</b><small>reads</small></span></a>
-  </div>
+<div id="articles-showcase">
+<div>
+      <div class="ar-kicker"><span class="ar-slashes">//</span>&nbsp; Articles</div>
+      <p class="ar-subtitle">Tech guides, app tips, stories and more.</p>
+    </div>
+
+    <div class="ar-search" role="search">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="10.8" cy="10.8" r="6.6" stroke="#b8e62e" stroke-width="2.4"/>
+        <path d="M15.8 15.8 20.6 20.6" stroke="#b8e62e" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <input id="srch-in" type="search" placeholder="Search articles..." aria-label="Search articles" autocomplete="off" /><div id="srch-out"></div>
+      <span class="ar-count-chip">189 articles</span>
+    </div>
+
+    <section class="ar-cards" id="cards" aria-label="Article categories">
+
+      <!-- CARD 1 — ANDROID / TECH -->
+      <a class="ar-card ar-card--lime" href="android/">
+        <div class="ar-icon-box" aria-hidden="true">
+          <svg width="54" height="54" viewBox="0 0 24 24" fill="none">
+            <path d="M8.3 5.1 6.6 2.7M15.7 5.1l1.7-2.4" stroke="#b8e62e" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M5.5 10.2a6.5 6.5 0 0 1 13 0v1.1h-13v-1.1Z" fill="#b8e62e"/>
+            <circle cx="9.3" cy="9.2" r="1" fill="#0e0e16"/>
+            <circle cx="14.7" cy="9.2" r="1" fill="#0e0e16"/>
+            <rect x="5.5" y="11.3" width="13" height="6.6" rx="1.6" fill="#b8e62e"/>
+            <rect x="2.9" y="11.3" width="2.1" height="6" rx="1.05" fill="#b8e62e"/>
+            <rect x="19" y="11.3" width="2.1" height="6" rx="1.05" fill="#b8e62e"/>
+            <rect x="7.9" y="17.9" width="2.4" height="3.9" rx="1.2" fill="#b8e62e"/>
+            <rect x="13.7" y="17.9" width="2.4" height="3.9" rx="1.2" fill="#b8e62e"/>
+          </svg>
+        </div>
+        <div class="ar-card-main">
+          <h2 class="ar-card-title">Android / Tech</h2>
+          <p class="ar-card-count">51 articles &amp; guides</p>
+          <p class="ar-card-reads">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12Z" stroke="#9a97a8" stroke-width="1.7"/><circle cx="12" cy="12" r="3" stroke="#9a97a8" stroke-width="1.7"/></svg>
+            <span class="lreads"><b>188,160</b> reads</span>
+          </p>
+        </div>
+        <div class="ar-art" aria-hidden="true">
+          <svg viewBox="0 0 300 230">
+            <defs>
+              <linearGradient id="gLime" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#d9f75e"/><stop offset=".55" stop-color="#a8d61f"/><stop offset="1" stop-color="#6f9c0d"/>
+              </linearGradient>
+              <radialGradient id="glowLime" cx=".5" cy=".45" r=".55">
+                <stop offset="0" stop-color="#b8e62e" stop-opacity=".4"/><stop offset="1" stop-color="#b8e62e" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="150" cy="115" rx="140" ry="105" fill="url(#glowLime)"/>
+            <g transform="translate(69 8) scale(6.75)">
+              <path d="M8.3 5.1 6.6 2.7M15.7 5.1l1.7-2.4" stroke="#c8f04a" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M5.5 10.2a6.5 6.5 0 0 1 13 0v1.1h-13v-1.1Z" fill="url(#gLime)"/>
+              <circle cx="9.3" cy="9.2" r="1" fill="#141a08"/>
+              <circle cx="14.7" cy="9.2" r="1" fill="#141a08"/>
+              <rect x="5.5" y="11.3" width="13" height="6.6" rx="1.6" fill="url(#gLime)"/>
+              <rect x="2.9" y="11.3" width="2.1" height="6" rx="1.05" fill="url(#gLime)"/>
+              <rect x="19" y="11.3" width="2.1" height="6" rx="1.05" fill="url(#gLime)"/>
+              <rect x="7.9" y="17.9" width="2.4" height="3.9" rx="1.2" fill="url(#gLime)"/>
+              <rect x="13.7" y="17.9" width="2.4" height="3.9" rx="1.2" fill="url(#gLime)"/>
+              <ellipse cx="9.5" cy="6.6" rx="3.4" ry="1.3" fill="#ffffff" opacity=".22"/>
+            </g>
+          </svg>
+        </div>
+        <span class="ar-arrow" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12h15M13.5 5.5 20 12l-6.5 6.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <!-- CARD 2 — TELEGRAM -->
+      <a class="ar-card ar-card--cyan" href="telegram/">
+        <div class="ar-icon-box" aria-hidden="true">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10.2" fill="#2fb9e8"/>
+            <path d="M17.9 6.4 6.9 10.7c-.75.3-.72 1.13.05 1.36l2.8.84 1.08 3.36c.24.72 1.12.86 1.6.26l1.7-2.06 3.3 2.43c.6.44 1.46.1 1.63-.63l1.62-8.9c.14-.8-.66-1.42-1.4-1.1l-.38.16Z" fill="#0d1520" transform="translate(-.6 .4) scale(.97)"/>
+          </svg>
+        </div>
+        <div class="ar-card-main">
+          <h2 class="ar-card-title">Posts about Telegram</h2>
+          <p class="ar-card-count">34 articles</p>
+          <p class="ar-card-reads">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12Z" stroke="#9a97a8" stroke-width="1.7"/><circle cx="12" cy="12" r="3" stroke="#9a97a8" stroke-width="1.7"/></svg>
+            <span class="lreads"><b>201,476</b> reads</span>
+          </p>
+        </div>
+        <div class="ar-art" aria-hidden="true">
+          <svg viewBox="0 0 300 230">
+            <defs>
+              <linearGradient id="gCyan" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#7dd8fb"/><stop offset=".55" stop-color="#2fb9e8"/><stop offset="1" stop-color="#1273a8"/>
+              </linearGradient>
+              <radialGradient id="glowCyan" cx=".5" cy=".45" r=".55">
+                <stop offset="0" stop-color="#2fb9e8" stop-opacity=".42"/><stop offset="1" stop-color="#2fb9e8" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="150" cy="115" rx="140" ry="105" fill="url(#glowCyan)"/>
+            <circle cx="150" cy="112" r="86" fill="url(#gCyan)" opacity=".95"/>
+            <circle cx="150" cy="112" r="86" fill="none" stroke="#bdeaff" stroke-opacity=".35" stroke-width="2"/>
+            <path d="M205 74 96 116c-8 3.2-7.6 12 0.6 14.4l29.5 8.9 11.4 35.4c2.5 7.6 11.8 9.1 16.9 2.8l18-21.8 34.8 25.6c6.3 4.7 15.4 1.1 17.2-6.7l17-93.8c1.5-8.4-6.9-15-14.7-11.6L205 74Z" fill="#eaf7ff" transform="translate(-14 -2) scale(.94)"/>
+            <path d="M128 140.5 214 84" stroke="#2fb9e8" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+            <ellipse cx="112" cy="66" rx="46" ry="18" fill="#ffffff" opacity=".25"/>
+          </svg>
+        </div>
+        <span class="ar-arrow" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12h15M13.5 5.5 20 12l-6.5 6.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <!-- CARD 3 — REELS -->
+      <a class="ar-card ar-card--pink" href="reels/">
+        <div class="ar-icon-box" aria-hidden="true">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="9.6" width="18" height="10.4" rx="2.4" stroke="#f056c8" stroke-width="2"/>
+            <path d="M3.6 9.4 4.7 4.9a1.8 1.8 0 0 1 2.2-1.3l12.4 2.9a1.8 1.8 0 0 1 1.3 2.2l-.5 2.1" stroke="#f056c8" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M8 4.6l1.8 4M13.4 5.8l1.8 4M18.8 7l1.6 3.7" stroke="#f056c8" stroke-width="2" stroke-linecap="round"/>
+            <path d="M10.2 12.6v4.4l4-2.2-4-2.2Z" fill="#f056c8"/>
+          </svg>
+        </div>
+        <div class="ar-card-main">
+          <h2 class="ar-card-title">Read my Reels</h2>
+          <p class="ar-card-count">59 articles</p>
+          <p class="ar-card-reads">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12Z" stroke="#9a97a8" stroke-width="1.7"/><circle cx="12" cy="12" r="3" stroke="#9a97a8" stroke-width="1.7"/></svg>
+            <span class="lreads"><b>121</b> reads</span>
+          </p>
+        </div>
+        <div class="ar-art" aria-hidden="true">
+          <svg viewBox="0 0 300 230">
+            <defs>
+              <linearGradient id="gPink" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ff8fe0"/><stop offset=".55" stop-color="#f056c8"/><stop offset="1" stop-color="#a1237f"/>
+              </linearGradient>
+              <radialGradient id="glowPink" cx=".5" cy=".45" r=".55">
+                <stop offset="0" stop-color="#f056c8" stop-opacity=".4"/><stop offset="1" stop-color="#f056c8" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="150" cy="115" rx="140" ry="105" fill="url(#glowPink)"/>
+            <g transform="translate(38 26) rotate(-7 112 90)">
+              <rect x="8" y="62" width="208" height="118" rx="18" fill="url(#gPink)"/>
+              <rect x="8" y="62" width="208" height="118" rx="18" fill="none" stroke="#ffd3f2" stroke-opacity=".4" stroke-width="2"/>
+              <path d="M14 58 22 14a10 10 0 0 1 12-8l142 30a10 10 0 0 1 8 12l-6 26" fill="#2a1030" stroke="#f056c8" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M52 12l14 40M96 21l14 40M140 30l14 40M184 39l12 38" stroke="#f056c8" stroke-width="10" stroke-linecap="round"/>
+              <path d="M92 96v52l46-26-46-26Z" fill="#fff" opacity=".95"/>
+              <ellipse cx="66" cy="84" rx="44" ry="12" fill="#ffffff" opacity=".22"/>
+            </g>
+          </svg>
+        </div>
+        <span class="ar-arrow" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12h15M13.5 5.5 20 12l-6.5 6.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <!-- CARD 4 — MEMORIES -->
+      <a class="ar-card ar-card--violet" href="memories/">
+        <div class="ar-icon-box" aria-hidden="true">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none">
+            <path d="M12 6.2C10.2 4.6 7.7 3.9 4.6 3.9c-.8 0-1.4.6-1.4 1.4v13c0 .8.6 1.4 1.4 1.4 3.1 0 5.6.7 7.4 2.3 1.8-1.6 4.3-2.3 7.4-2.3.8 0 1.4-.6 1.4-1.4v-13c0-.8-.6-1.4-1.4-1.4-3.1 0-5.6.7-7.4 2.3Z" stroke="#a78bfa" stroke-width="1.9" stroke-linejoin="round"/>
+            <path d="M12 6.2v15.4" stroke="#a78bfa" stroke-width="1.9"/>
+            <path d="M6.4 8.2c1.4.1 2.6.4 3.6 1M6.4 11.6c1.4.1 2.6.4 3.6 1M14 9.2c1-.6 2.2-.9 3.6-1M14 12.6c1-.6 2.2-.9 3.6-1" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" opacity=".75"/>
+          </svg>
+        </div>
+        <div class="ar-card-main">
+          <h2 class="ar-card-title">Memories</h2>
+          <p class="ar-card-count">45 stories &amp; writings</p>
+          <p class="ar-card-reads">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12Z" stroke="#9a97a8" stroke-width="1.7"/><circle cx="12" cy="12" r="3" stroke="#9a97a8" stroke-width="1.7"/></svg>
+            <span class="lreads"><b>15,556</b> reads</span>
+          </p>
+        </div>
+        <div class="ar-art" aria-hidden="true">
+          <svg viewBox="0 0 300 230">
+            <defs>
+              <linearGradient id="gViolet" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#c4b5fd"/><stop offset=".6" stop-color="#8b7cf6"/><stop offset="1" stop-color="#5b3ec9"/>
+              </linearGradient>
+              <radialGradient id="glowViolet" cx=".5" cy=".45" r=".55">
+                <stop offset="0" stop-color="#8b7cf6" stop-opacity=".42"/><stop offset="1" stop-color="#8b7cf6" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="150" cy="115" rx="140" ry="105" fill="url(#glowViolet)"/>
+            <g transform="translate(30 30)">
+              <path d="M120 38C98 16 66 6 26 6c-7 0-12 5-12 12v122c0 7 5 12 12 12 40 0 72 10 94 32 22-22 54-32 94-32 7 0 12-5 12-12V18c0-7-5-12-12-12-40 0-72 10-94 32Z" fill="url(#gViolet)"/>
+              <path d="M120 38v146" stroke="#2a1b57" stroke-width="5" opacity=".5"/>
+              <path d="M36 42c22 1 42 7 60 18M36 76c22 1 42 7 60 18M36 110c22 1 42 7 60 18M144 60c18-11 38-17 60-18M144 94c18-11 38-17 60-18M144 128c18-11 38-17 60-18" stroke="#efeaff" stroke-width="6" stroke-linecap="round" opacity=".55"/>
+              <ellipse cx="76" cy="24" rx="52" ry="12" fill="#ffffff" opacity=".22"/>
+            </g>
+          </svg>
+        </div>
+        <span class="ar-arrow" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 12h15M13.5 5.5 20 12l-6.5 6.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+    </section>
+</div>
   <div class="links-sub" style="margin-top:48px">// Connect</div>
   <div class="link-grid">
     <a class="lbtn reveal" href="https://instagram.com/deepak.deon" target="_blank" rel="noopener"><span class="li"><svg fill="#FF0069" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></span><span>Instagram<small>@deepak.deon</small></span></a>
