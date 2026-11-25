@@ -833,7 +833,108 @@
   @media (max-width:680px){
     #links{ padding-left:12px; padding-right:12px; }
   }
-</style>
+
+      /* ===== LIGHT THEME: My Projects + Articles cards ===== */
+      html[data-theme="light"] #apps-web-showcase{
+        --ink:#17171d; --muted:#5f5f6a; --muted-2:#6f6c7e;
+        --lime:#79a400; --lime-bright:#79a400;
+        --violet:#6a54e8; --violet-bright:#6a54e8;
+      }
+      html[data-theme="light"] .aw-feature--apps{
+        --halo:rgba(121,164,0,.12);
+        background:
+          radial-gradient(720px 300px at 62% -40px, rgba(121,164,0,.16), rgba(121,164,0,0) 62%),
+          linear-gradient(168deg, #ffffff 0%, #f5f7ea 55%, #eef2dd 100%);
+        border:1px solid rgba(121,164,0,.35);
+        box-shadow:0 24px 60px rgba(23,23,29,.12), 0 0 64px rgba(121,164,0,.10), inset 0 1px 0 rgba(255,255,255,.85);
+      }
+      html[data-theme="light"] .aw-feature--web{
+        --halo:rgba(106,84,232,.14);
+        background:
+          radial-gradient(720px 300px at 62% -40px, rgba(106,84,232,.15), rgba(106,84,232,0) 62%),
+          linear-gradient(168deg, #ffffff 0%, #f3f1fc 55%, #eae7f9 100%);
+        border:1px solid rgba(106,84,232,.35);
+        box-shadow:0 24px 60px rgba(23,23,29,.12), 0 0 64px rgba(106,84,232,.10), inset 0 1px 0 rgba(255,255,255,.85);
+      }
+      html[data-theme="light"] .aw-head-text h2{ color:#17171d; }
+      html[data-theme="light"] .aw-icon-box{
+        background:linear-gradient(160deg, rgba(23,23,29,.06), rgba(23,23,29,.02));
+        border:1px solid rgba(23,23,29,.10);
+      }
+      html[data-theme="light"] .aw-feature--apps .aw-icon-box{ box-shadow:0 0 34px rgba(121,164,0,.18), inset 0 0 24px rgba(121,164,0,.06); }
+      html[data-theme="light"] .aw-feature--web .aw-icon-box{ box-shadow:0 0 34px rgba(106,84,232,.20), inset 0 0 24px rgba(106,84,232,.07); }
+      html[data-theme="light"] .aw-feature--apps .aw-icon-box svg{ stroke:#79a400; }
+      html[data-theme="light"] .aw-feature--web .aw-icon-box svg{ stroke:#6a54e8; }
+      html[data-theme="light"] .aw-divider{
+        background:linear-gradient(180deg, transparent, rgba(23,23,29,.16) 25%, rgba(23,23,29,.16) 75%, transparent);
+      }
+      html[data-theme="light"] .aw-feature--apps .aw-arrow-btn{
+        border:1.5px solid rgba(121,164,0,.65);
+        background:rgba(121,164,0,.14);
+        box-shadow:0 0 26px rgba(121,164,0,.18), inset 0 0 14px rgba(121,164,0,.06);
+      }
+      html[data-theme="light"] .aw-feature--web .aw-arrow-btn{
+        border:1.5px solid rgba(106,84,232,.65);
+        background:rgba(106,84,232,.14);
+        box-shadow:0 0 26px rgba(106,84,232,.20), inset 0 0 14px rgba(106,84,232,.06);
+      }
+      html[data-theme="light"] .aw-feature--apps .aw-arrow-btn:hover{ background:rgba(121,164,0,.22); }
+      html[data-theme="light"] .aw-feature--web .aw-arrow-btn:hover{ background:rgba(106,84,232,.22); }
+      html[data-theme="light"] .aw-arrow-btn svg{ stroke:#17171d; }
+      html[data-theme="light"] .aw-preview{
+        background:rgba(23,23,29,.05);
+        border:1px solid rgba(23,23,29,.10);
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.6), inset 0 18px 34px rgba(23,23,29,.06);
+      }
+      html[data-theme="light"] .aw-feature--web .aw-preview{ background:rgba(23,23,29,.05); }
+      html[data-theme="light"] .aw-app-tile{
+        box-shadow:0 10px 22px rgba(23,23,29,.18), inset 0 1px 0 rgba(255,255,255,.5), inset 0 -10px 18px rgba(0,0,0,.08);
+      }
+      html[data-theme="light"] .aw-thumb{
+        box-shadow:0 14px 28px rgba(23,23,29,.20), inset 0 0 0 1px rgba(23,23,29,.08);
+      }
+      html[data-theme="light"] #articles-showcase{
+        --text:#17171d; --muted:#5f5f6a; --muted-2:#6f6c7e;
+        --violet:#6a54e8; --violet-bright:#6a54e8;
+        --lime:#79a400; --lime-soft:#79a400;
+        --cyan:#0e7fa8; --pink:#d6339e;
+      }
+      html[data-theme="light"] .ar-card--lime{ --accent-rgb:121,164,0; }
+      html[data-theme="light"] .ar-card--cyan{ --accent-rgb:14,127,168; }
+      html[data-theme="light"] .ar-card--pink{ --accent-rgb:214,51,158; }
+      html[data-theme="light"] .ar-card--violet{ --accent-rgb:106,84,232; }
+      html[data-theme="light"] .ar-card{
+        background:
+          radial-gradient(460px 190px at 88% 0%, rgba(var(--accent-rgb),.16), transparent 62%),
+          linear-gradient(135deg, rgba(var(--accent-rgb),.08) 0%, rgba(255,255,255,0) 50%, rgba(23,23,29,.03) 100%),
+          #ffffff;
+        box-shadow:
+          0 0 24px rgba(var(--accent-rgb),.10),
+          0 14px 30px rgba(23,23,29,.12),
+          inset 0 1px 0 rgba(255,255,255,.8);
+      }
+      html[data-theme="light"] .ar-card:hover, html[data-theme="light"] .ar-card:focus-visible{
+        border-color:rgba(var(--accent-rgb),.42);
+        box-shadow:
+          0 0 36px rgba(var(--accent-rgb),.18),
+          0 18px 36px rgba(23,23,29,.14),
+          inset 0 1px 0 rgba(255,255,255,.8);
+      }
+      html[data-theme="light"] .ar-card-reads{
+        background:rgba(23,23,29,.06);
+        border:1px solid rgba(23,23,29,.12);
+      }
+      html[data-theme="light"] .ar-card-reads .lreads b{ color:#17171d; }
+      html[data-theme="light"] .ar-arrow svg path{ stroke:#17171d; }
+      html[data-theme="light"] .ar-card--lime .ar-icon-box [stroke="#b8e62e"]{ stroke:#79a400; }
+      html[data-theme="light"] .ar-card--lime .ar-icon-box [fill="#b8e62e"]{ fill:#79a400; }
+      html[data-theme="light"] .ar-card--cyan .ar-icon-box [stroke="#2fb9e8"]{ stroke:#0e7fa8; }
+      html[data-theme="light"] .ar-card--cyan .ar-icon-box [fill="#2fb9e8"]{ fill:#0e7fa8; }
+      html[data-theme="light"] .ar-card--pink .ar-icon-box [stroke="#f056c8"]{ stroke:#d6339e; }
+      html[data-theme="light"] .ar-card--pink .ar-icon-box [fill="#f056c8"]{ fill:#d6339e; }
+      html[data-theme="light"] .ar-card--violet .ar-icon-box [stroke="#a78bfa"]{ stroke:#6a54e8; }
+      html[data-theme="light"] .ar-card--violet .ar-icon-box [fill="#a78bfa"]{ fill:#6a54e8; }
+    </style>
 <script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
 <style>
 .srch{position:relative;max-width:640px;margin:4px 0 20px;scroll-margin-top:96px}
