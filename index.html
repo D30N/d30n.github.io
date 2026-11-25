@@ -432,7 +432,7 @@
       /* Web preview row */
       .aw-web-row{
         display:grid;
-        grid-template-columns:1fr 1fr 1fr 86px;
+        grid-template-columns:1fr 1fr 1fr 78px;
         gap:clamp(12px,1.8vw,18px);
         align-items:start;
       }
@@ -470,10 +470,11 @@
       }
       .aw-web-label svg{ flex:0 0 auto; opacity:.75; }
       .aw-tile-more-web{
-        aspect-ratio:auto;
-        height:100%;
-        min-height:120px;
-        align-self:stretch;
+        aspect-ratio:1/1;
+        height:auto;
+        min-height:0;
+        align-self:center;
+        font-size:18px;
         border-radius:16px;
         background:linear-gradient(160deg,#221c38,#17131f);
         border:1px solid rgba(157,140,255,.16);
@@ -558,7 +559,7 @@
         .aw-preview{ margin-top:18px; padding:14px 12px; border-radius:16px; }
         .aw-app-row{ grid-template-columns:repeat(6,1fr); gap:8px; }
         .aw-app-tile{ border-radius:12px; }
-        .aw-web-row{ grid-template-columns:1fr 1fr 1fr 52px; gap:8px; }
+        .aw-web-row{ grid-template-columns:1fr 1fr 1fr 46px; gap:8px; }
         .aw-tile-more-web{ min-height:0; aspect-ratio:1/1; }
         .aw-web-label{ font-size:11px; gap:4px; }
         .aw-web-label svg{ width:12px; height:12px; }
@@ -811,7 +812,8 @@
 
 <!-- Links -->
 <section id="links">
-  <h2 class="reveal">All My <em>Works</em></h2>
+  <div class="sec-tag reveal">// all my works</div>
+  <h2 class="reveal">My <em>Projects</em></h2>
 <div id="apps-web-showcase">
 
       <!-- ================= MY APPS ================= -->
@@ -830,7 +832,7 @@
             <div class="aw-head-text">
               <h2>My Apps</h2>
               <p class="aw-count">17 apps</p>
-              <p class="aw-sub">12 android apps &amp; 5 web apps</p>
+              <p class="aw-sub">Android &amp; web apps</p>
             </div>
           </div>
           <div class="aw-spacer"></div>
