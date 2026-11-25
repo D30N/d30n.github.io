@@ -104,6 +104,8 @@
   .about-txt a{text-decoration:none;color:inherit}
   .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;text-decoration:none;color:inherit;animation:statglow 3.4s ease-in-out infinite}
+  .stat .sic{display:block;width:26px;height:26px;color:#f2f0ea;margin-bottom:12px}
+  .stat .sic svg{width:100%;height:100%;display:block}
   .stat:nth-child(2){animation-delay:.5s}
   .stat:nth-child(3){animation-delay:1s}
   .stat:nth-child(4){animation-delay:1.5s}
@@ -327,10 +329,10 @@
       <a class="hl-v" href="memories/">short stories and memoirs</a>!
     </p>
     <div class="stats reveal">
-      <a class="stat" href="#reels"><div class="num" data-count="50" data-suffix="K+">50K+</div><div class="lbl">Instagram followers</div></a>
-      <a class="stat" href="telegram/deonwrites-12-16/"><div class="num" data-count="15" data-suffix="K+">15K+</div><div class="lbl">Telegram subscribers</div></a>
-      <a class="stat" href="#links"><div class="num" data-count="36" data-suffix="">36</div><div class="lbl">Successful projects</div></a>
-      <a class="stat" href="#links"><div class="num" data-count="273" data-suffix="">273</div><div class="lbl">Tech articles &amp; stories</div></a>
+      <a class="stat" href="#reels"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg></span><div class="num" data-count="50" data-suffix="K+">50K+</div><div class="lbl">Instagram followers</div></a>
+      <a class="stat" href="telegram/deonwrites-12-16/"><span class="sic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 3.3 2.9 10.6c-1.3.5-1.3 1.3-.2 1.6l4.9 1.5 1.9 6c.2.7.1.9.8.9.6 0 .8-.3 1.1-.8l2.8-2.7 5.8 4.3c1 .6 1.8.3 2.1-.9l3.8-17.4c.3-1.3-.5-1.9-1.6-1.6l-.4.8zM8.9 13.6l10.9-6.9c.5-.3 1-.1.6.2l-9.3 8.4-.4 3.9-1.8-5.6z"/></svg></span><div class="num" data-count="15" data-suffix="K+">15K+</div><div class="lbl">Telegram subscribers</div></a>
+      <a class="stat" href="#links"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v6a5 5 0 0 1-10 0V4z"/><path d="M7 6H4a2 2 0 0 0 0 4h3"/><path d="M17 6h3a2 2 0 0 1 0 4h-3"/></svg></span><div class="num" data-count="36" data-suffix="">36</div><div class="lbl">Successful projects</div></a>
+      <a class="stat" href="#links"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 19V6a2 2 0 0 1 2-2h13v13H6a2 2 0 0 0-2 2zm0 0a2 2 0 0 0 2 2h13"/><path d="M9 8h6"/></svg></span><div class="num" data-count="273" data-suffix="">273</div><div class="lbl">Tech articles &amp; stories</div></a>
     </div>
   </div>
 </section>
