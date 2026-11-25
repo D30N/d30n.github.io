@@ -93,6 +93,8 @@
   h2 em{font-style:normal;color:var(--lime)}
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .95s cubic-bezier(.22,1,.36,1),transform .95s cubic-bezier(.22,1,.36,1)}
   .reveal.in{opacity:1;transform:none}
+  a,button{-webkit-tap-highlight-color:transparent}
+  .stat:active,.ar-card:active,.aw-app-tile:active,.rcard:active,.lbtn:active,.btn:active,.aw-arrow-btn:active{filter:brightness(1.25)}
 
   .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,4vw,56px)}
   @media(max-width:820px){.about-grid{grid-template-columns:1fr}}
@@ -104,7 +106,12 @@
   .about-txt a{text-decoration:none;color:inherit}
   .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;text-decoration:none;color:inherit;animation:statglow 3.4s ease-in-out infinite}
-  .stat .sic{display:block;width:26px;height:26px;color:#f2f0ea;margin-bottom:12px}
+  .stat .sic{display:block;width:26px;height:26px;color:#f2f0ea;margin-bottom:12px;opacity:0;transform:scale(.7);transition:opacity .6s ease,transform .6s ease}
+  .stats.in .sic{opacity:1;transform:scale(1)}
+  .stats.in .stat:nth-child(1) .sic{transition-delay:.05s}
+  .stats.in .stat:nth-child(2) .sic{transition-delay:.15s}
+  .stats.in .stat:nth-child(3) .sic{transition-delay:.25s}
+  .stats.in .stat:nth-child(4) .sic{transition-delay:.35s}
   .stat .sic img{width:100%;height:100%;display:block;object-fit:contain}
   html[data-theme="light"] .stat .sic img{filter:invert(1)}
   .stat:nth-child(2){animation-delay:.5s}
@@ -398,12 +405,17 @@
 
       /* App icon row */
       .aw-app-row{
-        display:grid;
-        grid-template-columns:repeat(6, 1fr);
+        display:flex;
         gap:clamp(10px,1.8vw,18px);
         align-items:stretch;
+        overflow-x:auto;
+        scrollbar-width:none;
+        -webkit-overflow-scrolling:touch;
       }
+      .aw-app-row::-webkit-scrollbar{display:none}
       .aw-app-tile{
+        flex:0 0 auto;
+        width:clamp(58px,15vw,168px);
         aspect-ratio:1/1;
         border-radius:16px;
         display:grid; place-items:center;
@@ -418,25 +430,17 @@
       .aw-tile-video  { background:linear-gradient(150deg,#f96a5e 0%, #ef3f36 55%, #d92c22 100%); }
       .aw-tile-leaf   { background:linear-gradient(150deg,#4cc95e 0%, #28a83e 55%, #1a8430 100%); }
       .aw-tile-camera { background:linear-gradient(150deg,#7e8ea3 0%, #55647a 55%, #3c485a 100%); }
-      .aw-tile-more{
-        background:linear-gradient(160deg,#232723,#191c19);
-        border:1px solid rgba(255,255,255,.07);
-        color:#fff;
-        font-size:clamp(17px,2vw,21px);
-        font-weight:700;
-        letter-spacing:.01em;
-        text-decoration:none;
-        box-shadow:0 14px 28px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);
-      }
-
       /* Web preview row */
       .aw-web-row{
-        display:grid;
-        grid-template-columns:1fr 1fr 1fr 78px;
+        display:flex;
         gap:clamp(12px,1.8vw,18px);
         align-items:start;
+        overflow-x:auto;
+        scrollbar-width:none;
+        -webkit-overflow-scrolling:touch;
       }
-      .aw-web-item{ min-width:0; }
+      .aw-web-row::-webkit-scrollbar{display:none}
+      .aw-web-item{ flex:0 0 auto; width:clamp(140px,32vw,320px); min-width:0; }
       .aw-thumb{
         border-radius:12px;
         overflow:hidden;
@@ -469,17 +473,6 @@
         white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
       }
       .aw-web-label svg{ flex:0 0 auto; opacity:.75; }
-      .aw-tile-more-web{
-        aspect-ratio:1/1;
-        height:auto;
-        min-height:0;
-        align-self:center;
-        font-size:18px;
-        border-radius:16px;
-        background:linear-gradient(160deg,#221c38,#17131f);
-        border:1px solid rgba(157,140,255,.16);
-      }
-
       /* Mini site: Photo Compressor */
       .aw-mini-pc .aw-bar{ background:#6a48e8; }
       .aw-mini-pc .aw-bar i{ background:rgba(255,255,255,.55); }
@@ -557,10 +550,9 @@
         .aw-arrow-btn{ width:46px; height:36px; }
         .aw-arrow-btn svg{ width:20px; height:20px; }
         .aw-preview{ margin-top:18px; padding:14px 12px; border-radius:16px; }
-        .aw-app-row{ grid-template-columns:repeat(6,1fr); gap:8px; }
+        .aw-app-row{ gap:8px; }
         .aw-app-tile{ border-radius:12px; }
-        .aw-web-row{ grid-template-columns:1fr 1fr 1fr 46px; gap:8px; }
-        .aw-tile-more-web{ min-height:0; aspect-ratio:1/1; }
+        .aw-web-row{ gap:8px; }
         .aw-web-label{ font-size:11px; gap:4px; }
         .aw-web-label svg{ width:12px; height:12px; }
       }
@@ -1154,7 +1146,11 @@
             <a class="aw-app-tile" href="apps/" aria-label="Group Xpense"><img src="apps/icons/group-xpense.png" alt="Group Xpense"></a>
             <a class="aw-app-tile" href="apps/" aria-label="BorrowTrack"><img src="apps/icons/borrowtrack.png" alt="BorrowTrack"></a>
             <a class="aw-app-tile" href="apps/" aria-label="PdfToWord"><img src="apps/icons/pdftoword.png" alt="PdfToWord"></a>
-            <a class="aw-app-tile aw-tile-more" href="apps/" aria-label="12 more apps">+12</a>
+            <a class="aw-app-tile" href="apps/" aria-label="InstaW Live"><img src="apps/icons/instaw-live.png" alt="InstaW Live"></a>
+            <a class="aw-app-tile" href="apps/" aria-label="YoutuW Live"><img src="apps/icons/youtuw-live.png" alt="YoutuW Live"></a>
+            <a class="aw-app-tile" href="apps/" aria-label="ChopLight"><img src="apps/icons/choplight.png" alt="ChopLight"></a>
+            <a class="aw-app-tile" href="apps/" aria-label="DNS Toggle"><img src="apps/icons/dns-toggle.png" alt="DNS Toggle"></a>
+            <a class="aw-app-tile" href="apps/" aria-label="MollywoodSearchApp"><img src="apps/icons/mollywoodsearchapp.png" alt="MollywoodSearchApp"></a>
           </div>
         </div>
       </section>
@@ -1173,7 +1169,7 @@
             <div class="aw-divider" aria-hidden="true"></div>
             <div class="aw-head-text">
               <h2>Web Projects</h2>
-              <p class="aw-count">19 web projects</p>
+              <p class="aw-count">19 projects</p>
               <p class="aw-sub">12 shipped</p>
             </div>
           </div>
@@ -1235,7 +1231,30 @@
                 <img src="websites/shots/ejtt-groups.jpg" alt="EJ Table Tennis Tournament">
               </div>
             </div>
-            <a class="aw-app-tile aw-tile-more aw-tile-more-web" href="websites/" aria-label="16 more web projects">+16</a>
+            <div class="aw-web-item">
+              <div class="aw-thumb">
+                <div class="aw-bar"><i></i><i></i><i></i><span class="aw-url"></span></div>
+                <img src="websites/shots/pdf-editor.jpg" alt="PDF Editor">
+              </div>
+            </div>
+            <div class="aw-web-item">
+              <div class="aw-thumb">
+                <div class="aw-bar"><i></i><i></i><i></i><span class="aw-url"></span></div>
+                <img src="websites/shots/image-compressor.jpg" alt="Image Compressor">
+              </div>
+            </div>
+            <div class="aw-web-item">
+              <div class="aw-thumb">
+                <div class="aw-bar"><i></i><i></i><i></i><span class="aw-url"></span></div>
+                <img src="websites/shots/old-bridge-cafe.jpg" alt="Old Bridge Cafe">
+              </div>
+            </div>
+            <div class="aw-web-item">
+              <div class="aw-thumb">
+                <div class="aw-bar"><i></i><i></i><i></i><span class="aw-url"></span></div>
+                <img src="websites/shots/deons-deals.jpg" alt="Deon's Deals">
+              </div>
+            </div>
           </div>
         </div>
       </section>
