@@ -589,7 +589,7 @@
   .ar-wrap{
     max-width:1120px;
     margin:0 auto;
-    padding:8px 24px 8px;
+    padding:28px 24px 8px;
   }
 
   /* ---------- Section header ---------- */
@@ -620,61 +620,38 @@
   .ar-search{
     position:relative;
     margin-top:28px;
-    height:72px;
-    border-radius:var(--radius);
-    border:2px solid rgba(139,124,246,.75);
-    background:linear-gradient(180deg,#15151f 0%, #10101a 100%);
-    box-shadow:
-      0 0 0 1px rgba(139,124,246,.12),
-      0 0 32px rgba(139,124,246,.28),
-      0 12px 28px rgba(0,0,0,.45),
-      inset 0 1px 0 rgba(255,255,255,.05);
+    background:var(--bg2);
+    border:1.5px solid var(--dim);
+    border-radius:14px;
     display:flex;
     align-items:center;
-    gap:16px;
-    padding:0 26px;
-    transition:box-shadow .25s ease, border-color .25s ease;
+    transition:border-color .25s ease, box-shadow .25s ease;
   }
   .ar-search:focus-within{
-    border-color:rgba(167,139,250,.95);
-    box-shadow:
-      0 0 0 1px rgba(167,139,250,.2),
-      0 0 42px rgba(139,124,246,.42),
-      0 12px 28px rgba(0,0,0,.45),
-      inset 0 1px 0 rgba(255,255,255,.06);
+    border-color:var(--lime);
+    box-shadow:0 0 0 3px rgba(200,245,66,.15);
   }
-  .ar-search svg{flex:0 0 auto;width:24px;height:24px}
+  .ar-search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:19px;height:19px;color:var(--lime)}
   .ar-search input{
     flex:1;
     min-width:0;
+    width:100%;
     background:transparent;
     border:0;
     outline:0;
     color:var(--text);
     font-family:inherit;
-    font-size:clamp(16px,1.8vw,20px);
+    font-size:15.5px;
     font-weight:500;
     letter-spacing:.01em;
-    min-height:36px;
+    padding:15px 18px 15px 48px;
+    min-height:0;
   }
-  .ar-search input::placeholder{color:#8b889b}
-  .ar-search .ar-count-chip{
-    flex:0 0 auto;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:var(--violet-bright);
-    border:1px solid rgba(139,124,246,.35);
-    background:rgba(139,124,246,.10);
-    padding:6px 10px;
-    border-radius:999px;
-    white-space:nowrap;
-  }
+  .ar-search input::placeholder{color:var(--dim);opacity:1}
 
   /* ---------- Cards ---------- */
   .ar-cards{
-    margin-top:32px;
+    margin-top:24px;
     display:flex;
     flex-direction:column;
     gap:18px;
@@ -821,28 +798,21 @@
 
   /* ---------- Tablet ---------- */
   @media (max-width:1020px){
-    .ar-wrap{padding:8px 20px 8px}
+    .ar-wrap{padding:28px 20px 8px}
     .ar-card{gap:18px;padding:18px 22px}
     .ar-art{right:60px;width:170px;height:135px;opacity:.75}
     .ar-icon-box{flex-basis:64px;width:64px;height:64px;border-radius:16px}
-    .ar-search{height:64px;padding:0 22px}
-    .ar-search .ar-count-chip{display:none}
   }
 
   /* ---------- Mobile ---------- */
   @media (max-width:640px){
-    .ar-wrap{padding:8px 14px 8px}
+    .ar-wrap{padding:24px 14px 8px}
     .ar-kicker{letter-spacing:.34em}
     .ar-subtitle{margin-top:8px}
     .ar-search{
       margin-top:20px;
-      height:58px;
-      padding:0 18px;
-      gap:12px;
-      border-radius:20px;
     }
-    .ar-search svg{width:20px;height:20px}
-    .ar-cards{margin-top:22px;gap:14px}
+    .ar-cards{margin-top:14px;gap:14px}
     .ar-card{
       min-height:0;
       border-radius:20px;
@@ -1303,11 +1273,11 @@
 
     <div class="ar-search" role="search">
       <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <circle cx="10.8" cy="10.8" r="6.6" stroke="#b8e62e" stroke-width="2.4"/>
+        <circle cx="10.8" cy="10.8" r="6.6" stroke="currentColor" stroke-width="2.4"/>
         <path d="M15.8 15.8 20.6 20.6" stroke="#b8e62e" stroke-width="2.4" stroke-linecap="round"/>
       </svg>
       <input id="srch-in" type="search" placeholder="Search articles..." aria-label="Search articles" autocomplete="off" /><div id="srch-out"></div>
-      <span class="ar-count-chip">189 articles</span>
+      
     </div>
 
     <section class="ar-cards" id="cards" aria-label="Article categories">
