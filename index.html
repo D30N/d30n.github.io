@@ -584,13 +584,8 @@
   font-family:"Plus Jakarta Sans", "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   color:var(--text);
   -webkit-font-smoothing:antialiased;
+  padding-top:clamp(140px,20vw,260px);
 }
-
-  .ar-wrap{
-    max-width:1120px;
-    margin:0 auto;
-    padding:clamp(140px,20vw,260px) 24px 8px;
-  }
 
   /* ---------- Section header ---------- */
   .ar-kicker{
@@ -793,7 +788,6 @@
 
   /* ---------- Tablet ---------- */
   @media (max-width:1020px){
-    .ar-wrap{padding:clamp(140px,20vw,260px) 20px 8px}
     .ar-card{gap:18px;padding:18px 22px}
     .ar-art{right:60px;width:170px;height:135px;opacity:.75}
     .ar-icon-box{flex-basis:64px;width:64px;height:64px;border-radius:16px}
@@ -801,7 +795,6 @@
 
   /* ---------- Mobile ---------- */
   @media (max-width:640px){
-    .ar-wrap{padding:clamp(140px,20vw,260px) 14px 8px}
     .ar-subtitle{margin-top:8px}
     .ar-search{
       margin-top:20px;
