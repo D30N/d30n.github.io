@@ -240,7 +240,7 @@
         --lime-bright:#c9f73a;
         --violet:#9d8cff;
         --violet-bright:#b3a6ff;
-        --card-radius:32px;
+        --card-radius:26px;
   font-family:"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   color:var(--ink);
   -webkit-font-smoothing:antialiased;
@@ -252,7 +252,7 @@
       .aw-wrap{
         max-width:1120px;
         margin:0 auto;
-        padding:56px 28px 84px;
+        padding:36px 24px 56px;
       }
 
       /* ---------- Section header ---------- */
@@ -263,23 +263,23 @@
       .aw-kicker .aw-slashes{
         color:var(--violet-bright);
         font-weight:800;
-        font-size:clamp(28px,4.4vw,44px);
+        font-size:clamp(24px,3.6vw,34px);
         letter-spacing:.02em;
         line-height:1;
         text-shadow:0 0 22px rgba(157,140,255,.45);
       }
       .aw-kicker .aw-kicker-title{
         margin:0;
-        font-size:clamp(28px,4.4vw,44px);
+        font-size:clamp(24px,3.6vw,34px);
         font-weight:800;
         letter-spacing:-.01em;
         line-height:1.08;
         color:#fff;
       }
       .aw-subtitle{
-        margin:0 0 52px 4px;
+        margin:0 0 32px 4px;
         color:var(--muted);
-        font-size:clamp(16px,2vw,21px);
+        font-size:clamp(14px,1.6vw,17px);
         font-weight:500;
       }
 
@@ -287,11 +287,11 @@
       .aw-feature{
         position:relative;
         border-radius:var(--card-radius);
-        padding:40px 44px 36px;
+        padding:26px 28px 24px;
         overflow:hidden;
         isolation:isolate;
       }
-      .aw-feature + .aw-feature{ margin-top:34px; }
+      .aw-feature + .aw-feature{ margin-top:22px; }
       .aw-feature::after{
         content:"";
         position:absolute; inset:0; z-index:0; pointer-events:none;
@@ -318,30 +318,31 @@
       }
 
       .aw-card-top{
-        display:flex; align-items:center; gap:26px;
+        display:flex; align-items:center; gap:18px;
       }
-      .aw-head-group{ display:flex; align-items:center; gap:26px; min-width:0; }
+      .aw-head-group{ display:flex; align-items:center; gap:16px; min-width:0; }
       .aw-icon-box{
         flex:0 0 auto;
-        width:96px; height:96px;
-        border-radius:24px;
+        width:68px; height:68px;
+        border-radius:18px;
         display:grid; place-items:center;
         background:linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
         border:1px solid rgba(255,255,255,.08);
       }
+      .aw-icon-box svg{ width:38px; height:38px; }
       .aw-feature--apps .aw-icon-box{ box-shadow:0 0 34px rgba(184,236,58,.18), inset 0 0 24px rgba(184,236,58,.06); }
       .aw-feature--web  .aw-icon-box{ box-shadow:0 0 34px rgba(157,140,255,.20), inset 0 0 24px rgba(157,140,255,.07); }
-      .aw-divider{ flex:0 0 auto; width:1px; align-self:stretch; min-height:92px; background:linear-gradient(180deg, transparent, rgba(255,255,255,.16) 25%, rgba(255,255,255,.16) 75%, transparent); }
+      .aw-divider{ flex:0 0 auto; width:1px; align-self:stretch; min-height:64px; background:linear-gradient(180deg, transparent, rgba(255,255,255,.16) 25%, rgba(255,255,255,.16) 75%, transparent); }
       .aw-head-text{ min-width:0; }
       .aw-head-text h2{
         margin:0 0 6px;
-        font-size:clamp(30px,3.6vw,42px);
+        font-size:clamp(24px,3vw,30px);
         font-weight:800; letter-spacing:-.015em; line-height:1.05; color:#fff;
         white-space:nowrap;
       }
       .aw-head-text .aw-count{
         margin:0 0 6px;
-        font-size:clamp(21px,2.5vw,27px);
+        font-size:clamp(17px,2vw,20px);
         font-weight:800; line-height:1.15;
       }
       .aw-feature--apps .aw-count{ color:var(--lime-bright); }
@@ -349,7 +350,7 @@
       .aw-head-text .aw-sub{
         margin:0;
         color:var(--muted);
-        font-size:clamp(15px,1.9vw,20px);
+        font-size:clamp(13px,1.6vw,15px);
         font-weight:500;
         white-space:nowrap;
       }
@@ -357,13 +358,13 @@
       .aw-right-stack{ display:contents; }
 
       .aw-deco{ flex:0 0 auto; pointer-events:none; }
-      .aw-deco-android{ width:248px; margin-bottom:-64px; margin-top:-18px; filter:drop-shadow(0 10px 34px rgba(150,205,45,.35)); }
-      .aw-deco-browser{ width:264px; margin-bottom:-58px; margin-top:-8px; filter:drop-shadow(0 16px 34px rgba(124,93,250,.35)); transform:rotate(-7deg); }
+      .aw-deco-android{ width:170px; margin-bottom:-44px; margin-top:-12px; filter:drop-shadow(0 10px 34px rgba(150,205,45,.35)); }
+      .aw-deco-browser{ width:180px; margin-bottom:-40px; margin-top:-6px; filter:drop-shadow(0 16px 34px rgba(124,93,250,.35)); transform:rotate(-7deg); }
 
       .aw-arrow-btn{
         flex:0 0 auto;
         display:inline-flex; align-items:center; justify-content:center;
-        width:66px; height:50px;
+        width:54px; height:42px;
         border-radius:999px;
         text-decoration:none;
         transition:transform .25s ease, background .25s ease, box-shadow .25s ease;
@@ -386,9 +387,9 @@
 
       /* ---------- Inner preview containers ---------- */
       .aw-preview{
-        margin-top:34px;
-        border-radius:24px;
-        padding:28px;
+        margin-top:22px;
+        border-radius:18px;
+        padding:18px;
         background:rgba(5,6,5,.48);
         border:1px solid rgba(255,255,255,.055);
         box-shadow:inset 0 1px 0 rgba(255,255,255,.03), inset 0 18px 34px rgba(0,0,0,.28);
@@ -399,18 +400,19 @@
       .aw-app-row{
         display:grid;
         grid-template-columns:repeat(6, 1fr);
-        gap:clamp(14px,2.4vw,30px);
+        gap:clamp(10px,1.8vw,18px);
         align-items:stretch;
       }
       .aw-app-tile{
         aspect-ratio:1/1;
-        border-radius:24px;
+        border-radius:16px;
         display:grid; place-items:center;
         box-shadow:0 14px 28px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.22), inset 0 -10px 18px rgba(0,0,0,.18);
         transition:transform .25s ease;
       }
       .aw-app-tile:hover{ transform:translateY(-3px); }
       .aw-app-tile svg{ width:56%; height:56%; display:block; filter:drop-shadow(0 3px 6px rgba(0,0,0,.25)); }
+      .aw-app-tile img{ width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block; }
       .aw-tile-photo  { background:linear-gradient(150deg,#8b6cf5 0%, #6a48e8 55%, #5433c9 100%); }
       .aw-tile-folder { background:linear-gradient(150deg,#5ea2f7 0%, #2f7bf0 55%, #1c5fd0 100%); }
       .aw-tile-video  { background:linear-gradient(150deg,#f96a5e 0%, #ef3f36 55%, #d92c22 100%); }
@@ -420,7 +422,7 @@
         background:linear-gradient(160deg,#232723,#191c19);
         border:1px solid rgba(255,255,255,.07);
         color:#fff;
-        font-size:clamp(20px,2.4vw,27px);
+        font-size:clamp(17px,2vw,21px);
         font-weight:700;
         letter-spacing:.01em;
         text-decoration:none;
@@ -431,12 +433,12 @@
       .aw-web-row{
         display:grid;
         grid-template-columns:1fr 1fr 1fr 86px;
-        gap:clamp(16px,2.4vw,28px);
+        gap:clamp(12px,1.8vw,18px);
         align-items:start;
       }
       .aw-web-item{ min-width:0; }
       .aw-thumb{
-        border-radius:14px;
+        border-radius:12px;
         overflow:hidden;
         aspect-ratio:4/2.9;
         background:#fff;
@@ -454,11 +456,16 @@
       .aw-thumb .aw-bar .aw-url{
         margin-left:5px; flex:1; height:7px; border-radius:99px;
       }
+      .aw-thumb .aw-bar{ background:#1b1b21; }
+      .aw-thumb .aw-bar i{ background:rgba(255,255,255,.45); }
+      .aw-thumb .aw-bar .aw-url{ background:rgba(255,255,255,.22); }
+      .aw-thumb img{ flex:1; width:100%; min-height:0; object-fit:cover; display:block; }
+      .aw-web-item{ text-decoration:none; }
       .aw-web-label{
         display:flex; align-items:center; gap:8px;
-        margin-top:14px;
+        margin-top:10px;
         color:#e9e9ec;
-        font-size:15.5px; font-weight:600;
+        font-size:14px; font-weight:600;
         white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
       }
       .aw-web-label svg{ flex:0 0 auto; opacity:.75; }
@@ -523,18 +530,18 @@
 
       /* ---------- Responsive ---------- */
       @media (max-width: 900px){
-        .aw-deco-android{ width:180px; }
-        .aw-deco-browser{ width:190px; }
-        .aw-feature{ padding:34px 30px 30px; }
+        .aw-deco-android{ width:140px; }
+        .aw-deco-browser{ width:150px; }
+        .aw-feature{ padding:26px 22px 22px; }
       }
       @media (max-width: 680px){
         .aw-wrap{ padding:38px 16px 60px; }
         .aw-subtitle{ margin-bottom:36px; }
-        .aw-feature{ padding:26px 20px 22px; border-radius:26px; }
+        .aw-feature{ padding:20px 16px 18px; border-radius:22px; }
         .aw-card-top{ gap:14px; align-items:flex-start; }
         .aw-head-group{ gap:14px; flex:1 1 auto; }
-        .aw-icon-box{ width:62px; height:62px; border-radius:17px; }
-        .aw-icon-box svg{ width:34px; height:34px; }
+        .aw-icon-box{ width:54px; height:54px; border-radius:15px; }
+        .aw-icon-box svg{ width:30px; height:30px; }
         .aw-divider{ display:none; }
         .aw-head-text h2{ font-size:27px; white-space:normal; }
         .aw-head-text .aw-count{ font-size:19px; }
@@ -546,10 +553,10 @@
         }
         .aw-deco-android{ width:92px; margin:0; opacity:.85; }
         .aw-deco-browser{ width:96px; margin:0; opacity:.85; }
-        .aw-arrow-btn{ width:52px; height:40px; }
+        .aw-arrow-btn{ width:46px; height:36px; }
         .aw-arrow-btn svg{ width:20px; height:20px; }
-        .aw-preview{ margin-top:24px; padding:18px 16px; border-radius:20px; }
-        .aw-app-row{ grid-template-columns:repeat(3,1fr); gap:14px; }
+        .aw-preview{ margin-top:18px; padding:14px 12px; border-radius:16px; }
+        .aw-app-row{ grid-template-columns:repeat(3,1fr); gap:10px; }
         .aw-app-tile{ border-radius:18px; }
         .aw-web-row{ grid-template-columns:1fr; gap:20px; }
         .aw-tile-more-web{ min-height:64px; aspect-ratio:auto; }
@@ -872,21 +879,11 @@
 
         <div class="aw-preview">
           <div class="aw-app-row">
-            <div class="aw-app-tile aw-tile-photo" role="img" aria-label="Photo app">
-              <svg viewBox="0 0 48 48" fill="none"><circle cx="33" cy="15" r="4.5" fill="#fff" opacity=".95"/><path d="M8 36 L20 22 L27 30 L32 25 L40 36 Z" fill="#fff" opacity=".95"/></svg>
-            </div>
-            <div class="aw-app-tile aw-tile-folder" role="img" aria-label="Files app">
-              <svg viewBox="0 0 48 48" fill="none"><path d="M6 14 a4 4 0 0 1 4-4 h9 l4 5 h15 a4 4 0 0 1 4 4 v15 a4 4 0 0 1-4 4 H10 a4 4 0 0 1-4-4 Z" fill="#dceeff"/><path d="M6 21 h36 v13 a4 4 0 0 1-4 4 H10 a4 4 0 0 1-4-4 Z" fill="#fff" opacity=".92"/></svg>
-            </div>
-            <div class="aw-app-tile aw-tile-video" role="img" aria-label="Video player app">
-              <svg viewBox="0 0 48 48" fill="none"><path d="M19 14.5 v19 c0 1.8 2 2.9 3.5 2 L37 26 a2.4 2.4 0 0 0 0-4 L22.5 12.5 C21 11.6 19 12.7 19 14.5 Z" fill="#fff"/></svg>
-            </div>
-            <div class="aw-app-tile aw-tile-leaf" role="img" aria-label="Utility app">
-              <svg viewBox="0 0 48 48" fill="none"><path d="M37 9 C22 11 12 20 11 35 c-.1 1.8 1.2 3 3 3 C29 37 37 26 37 9 Z" fill="#eaffea" opacity=".96"/><path d="M14 36 C19 27 26 19 34 13" stroke="#28a83e" stroke-width="2.6" stroke-linecap="round"/></svg>
-            </div>
-            <div class="aw-app-tile aw-tile-camera" role="img" aria-label="Camera app">
-              <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="14.5" fill="#10151d"/><circle cx="24" cy="24" r="14.5" stroke="#e8eef7" stroke-width="3.4"/><circle cx="24" cy="24" r="7.5" fill="#3d7ac8"/><circle cx="21" cy="21" r="2.6" fill="#bcd8ff"/></svg>
-            </div>
+            <a class="aw-app-tile" href="apps/" aria-label="DEONISM"><img src="apps/icons/deonism.png" alt="DEONISM"></a>
+            <a class="aw-app-tile" href="apps/" aria-label="Tap Expense"><img src="apps/icons/tap-expense.png" alt="Tap Expense"></a>
+            <a class="aw-app-tile" href="apps/" aria-label="Group Xpense"><img src="apps/icons/group-xpense.png" alt="Group Xpense"></a>
+            <a class="aw-app-tile" href="apps/" aria-label="BorrowTrack"><img src="apps/icons/borrowtrack.png" alt="BorrowTrack"></a>
+            <a class="aw-app-tile" href="apps/" aria-label="PdfToWord"><img src="apps/icons/pdftoword.png" alt="PdfToWord"></a>
             <a class="aw-app-tile aw-tile-more" href="apps/" aria-label="12 more apps">+12</a>
           </div>
         </div>
@@ -950,63 +947,30 @@
 
         <div class="aw-preview">
           <div class="aw-web-row">
-            <div class="aw-web-item">
-              <div class="aw-thumb aw-mini-pc">
+            <a class="aw-web-item" href="https://palaikari.deepakdeon.in">
+              <div class="aw-thumb">
                 <div class="aw-bar"><i></i><i></i><i></i><span class="aw-url"></span></div>
-                <div class="aw-body">
-                  <div>
-                    <h4>Photo<br/>Compressor</h4>
-                    <div class="aw-lines"><i style="width:64px"></i><i style="width:48px"></i></div>
-                    <div class="aw-cta"></div>
-                  </div>
-                  <div class="aw-imgbox">
-                    <svg width="44" height="34" viewBox="0 0 48 36"><circle cx="36" cy="8" r="4" fill="#fff" opacity=".9"/><path d="M4 32 L18 16 L25 24 L30 19 L44 32 Z" fill="#fff" opacity=".95"/></svg>
-                  </div>
-                </div>
+                <img src="websites/shots/palaikari.jpg" alt="Palaikari Fish Farm">
               </div>
-              <div class="aw-web-label">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cfcfe0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
-                Photo Compressor
-              </div>
-            </div>
-
-            <div class="aw-web-item">
-              <div class="aw-thumb aw-mini-pr">
+              <div class="aw-web-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cfcfe0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+                Palaikari</div>
+            </a>
+            <a class="aw-web-item" href="https://followcheck.deepakdeon.in/">
+              <div class="aw-thumb">
                 <div class="aw-bar"><i></i><i></i><i></i><span class="aw-url"></span></div>
-                <div class="aw-body">
-                  <div>
-                    <h4>Smartphone<br/>Recommendations</h4>
-                    <div class="aw-lines"><i style="width:58px"></i><i style="width:44px"></i></div>
-                    <div class="aw-cta"></div>
-                  </div>
-                  <div class="aw-phone"></div>
-                </div>
+                <img src="websites/shots/instagram-follow-back-checker.jpg" alt="Instagram Follow Back Checker">
               </div>
-              <div class="aw-web-label">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cfcfe0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
-                Phone Recommendations
-              </div>
-            </div>
-
-            <div class="aw-web-item">
-              <div class="aw-thumb aw-mini-tools">
+              <div class="aw-web-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cfcfe0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+                Instagram Follow Back Checker</div>
+            </a>
+            <a class="aw-web-item" href="https://ejtt.deepakdeon.in/">
+              <div class="aw-thumb">
                 <div class="aw-bar"><i></i><i></i><i></i><span class="aw-url"></span></div>
-                <div class="aw-body">
-                  <h4>Useful Online Tools</h4>
-                  <div class="aw-grid">
-                    <div class="aw-tool"><svg width="17" height="17" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3" fill="#8b6cf5"/><circle cx="9" cy="10" r="1.8" fill="#fff"/><path d="M5 17 L10.5 11.5 L14 15 L16.5 12.5 L20 17 Z" fill="#fff"/></svg><i></i></div>
-                    <div class="aw-tool"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#e05299" stroke-width="2.2" stroke-linecap="round"><circle cx="6.5" cy="7" r="2.6"/><circle cx="6.5" cy="17" r="2.6"/><path d="M8.7 9 20 19 M8.7 15 20 5"/></svg><i></i></div>
-                    <div class="aw-tool"><svg width="17" height="17" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="#ffb020"/><path d="M12 7.5 V12 l3 2" stroke="#fff" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg><i></i></div>
-                    <div class="aw-tool"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#3d9be9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 L6.2 13.5 L16.5 3.2 a2.05 2.05 0 0 1 2.9 0 l1.4 1.4 a2.05 2.05 0 0 1 0 2.9 L10.5 17.8 Z"/><path d="M14.5 5.2 l4.3 4.3"/></svg><i></i></div>
-                  </div>
-                </div>
+                <img src="websites/shots/ejtt-groups.jpg" alt="EJ Table Tennis Tournament">
               </div>
-              <div class="aw-web-label">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cfcfe0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
-                My Tools
-              </div>
-            </div>
-
+              <div class="aw-web-label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cfcfe0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+                EJ TT</div>
+            </a>
             <a class="aw-app-tile aw-tile-more aw-tile-more-web" href="websites/" aria-label="16 more web projects">+16</a>
           </div>
         </div>
