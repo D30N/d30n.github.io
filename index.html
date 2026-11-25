@@ -878,7 +878,11 @@
     .ar-card:hover{transform:none}
     .ar-card:hover .ar-arrow{transform:none}
   }
-  </style>
+    /* Phone view: widen the Projects + Articles section a little */
+  @media (max-width:680px){
+    #links{ padding-left:12px; padding-right:12px; }
+  }
+</style>
 <script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
 <style>
 .srch{position:relative;max-width:640px;margin:4px 0 20px;scroll-margin-top:96px}
