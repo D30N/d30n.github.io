@@ -72,6 +72,13 @@
   html[data-theme="light"] .post blockquote{color:#55503f}
 
   .pub-date{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-top:4px}
+  .listen-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:var(--card,#12121a);color:var(--ink);cursor:pointer;transition:.25s;padding:0;flex:none}
+  .listen-btn:hover{border-color:var(--lime);color:var(--lime)}
+  .listen-btn svg{width:19px;height:19px;display:block}
+  .listen-btn .ic-stop{display:none}
+  .listen-btn.playing{border-color:var(--lime);color:var(--lime)}
+  .listen-btn.playing .ic-stop{display:block}
+  .listen-btn.playing .ic-play{display:none}
 </style>
 <script>try{if(localStorage.getItem('dd-theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
 <style>
@@ -122,7 +129,7 @@
     <a class="logo" href="../../">DEON<span>.</span></a>
     <span class="hdr-right"><a class="home-link" href="../">&larr; Memories</a></span>
   </header>
-  <div class="dd-fab"><button class="theme-toggle" type="button" aria-label="Switch dark / light theme"><svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button><span class="dd-fsc"><button class="dd-fs" type="button" data-d="-1" aria-label="Decrease font size">A&minus;</button><button class="dd-fs" type="button" data-d="1" aria-label="Increase font size">A+</button></span></div>
+  <div class="dd-fab"><button class="theme-toggle" type="button" aria-label="Switch dark / light theme"><svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button><span class="dd-fsc"><button class="dd-fs" type="button" data-d="-1" aria-label="Decrease font size">A&minus;</button><button class="dd-fs" type="button" data-d="1" aria-label="Increase font size">A+</button></span><button class="listen-btn" id="listenBtn" type="button" aria-label="Listen to this story"><svg class="ic-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg><svg class="ic-stop" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/></svg></button></div>
   <div class="sec-tag">// Memories</div>
   <h1 class="title">അച്ചാച്ചന്റെ ഫസ്റ്റ് ലവ്</h1>
   <div class="pub-date">April 2, 2017 <span class="dd-rt">&middot; 1 min read</span></div>
@@ -307,6 +314,22 @@ fetch('https://abacus.jasoncameron.dev/hit/'+NS+'/'+K).then(function(r){return r
     sc.src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js";
     sc.onload=go; document.head.appendChild(sc);
   }
+})();
+</script>
+<script>
+/* ---------- Listen button: plays the pre-generated Gemini narration for this story (audio.mp3 beside this page) ---------- */
+(function(){
+  var btn = document.getElementById('listenBtn');
+  if(!btn) return;
+  var audio = new Audio('audio.mp3');
+  audio.preload = 'none';
+  function setBtn(on){ btn.classList.toggle('playing', on); }
+  btn.addEventListener('click', function(){
+    if(!audio.paused){ audio.pause(); setBtn(false); return; }
+    audio.play().then(function(){ setBtn(true); }).catch(function(){ setBtn(false); });
+  });
+  audio.addEventListener('ended', function(){ setBtn(false); });
+  window.addEventListener('pagehide', function(){ if(!audio.paused){ audio.pause(); setBtn(false); } });
 })();
 </script>
 </body>
